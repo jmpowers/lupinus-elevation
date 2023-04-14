@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Jacob Heiling, John Powers" />
+
+<meta name="date" content="2023-04-14" />
+
+<title>Lupine volatiles</title>
+
+<script src="libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/navigation-1.1/codefolding.js"></script>
+<link href="libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Lupine volatiles</h1>
+<h4 class="author">Jacob Heiling, John Powers</h4>
+<h4 class="date">2023-04-14</h4>
+
+</div>
+
+
+<style type="text/css">
+.main-container { max-width: 1000px; margin-left: 0; margin-right: auto; }
+img{ max-width:200%; height: auto; }
+td, th { padding : 6px }
+</style>
+<div id="read-scent-data" class="section level1">
+<h1>Read scent data</h1>
+<pre class="r"><code>#reading in the Shimadzu search output is slow, skip it
+#source(&quot;../read_shimadzu.R&quot;)
+#setwd(&quot;../Maxfield/data&quot;)
+#datafiles &lt;- list.files(pattern=&quot;Lupinus&quot;); datafiles %&gt;% set_names() %&gt;% map(read.shimadzu) %&gt;% bind_rows(.id=&quot;batch&quot;)
+# lup.data &lt;-  read.shimadzu(&quot;Lupinus_2017thru2021.txt&quot;) 
+# setwd(path)
+# save(lup.data, file=&quot;data/lupinus_gc_2017thru2021.rda&quot;)
+
+load(&quot;data/lupinus_gc_2017thru2021.rda&quot;)
+sort(unique(lup.data$Filename))</code></pre>
+<pre><code>  [1] 4011_08282019.qgd                    4012_08282019.qgd                   
+  [3] 4013_08282019.qgd                    4014_08282019.qgd                   
+  [5] 4015_08282019.qgd                    4016_08282019.qgd                   
+  [7] 4017_08292019am.qgd                  401air1_08292019am.qgd              
+  [9] 401air2_08292019am.qgd               AirBellNAug16_08202018.qgd          
+ [11] AirBellNAug18_08202018.qgd           bbair1_08282019.qgd                 
+ [13] bcn1_08302019am.qgd                  bcn2_08302019am.qgd                 
+ [15] bcn3_08302019am.qgd                  bcn4_08302019am.qgd                 
+ [17] bcnair1_08302019am.qgd               beetles_lerb_08292019am.qgd         
+ [19] BellNBeetleAug16_08202018.qgd        BellNBeetleAug18_08212018.qgd       
+ [21] BellNFlr27Aug18_08202018.qgd         BellNFlr29Aug18_08202018.qgd        
+ [23] BellNFlr30Aug16_08202018.qgd         BellNFlr31Aug16_08202018.qgd        
+ [25] BellNFlr32Aug16_08202018.qgd         BellNFlr33Aug16_08202018.qgd        
+ [27] BellNFlr34Aug16_08202018.qgd         BellNFlr35Aug16_08202018.qgd        
+ [29] BellNFlr38Aug16_08202018.qgd         BellNFlr39Aug16_08202018.qgd        
+ [31] BellNFlr40Aug16_08202018.qgd         BellNFlr42Aug16_08202018.qgd        
+ [33] BellNFlr44Aug18_08202018.qgd         BellNFlr45Aug18_08202018.qgd        
+ [35] BellNFlr45Aug18retry_08212018.qgd    BellNFlr46Aug18_08212018.qgd        
+ [37] BellNFlr48Aug18_08212018.qgd         BellNLeaf38Aug16_08202018.qgd       
+ [39] BellNLeaf40Aug16_08202018.qgd        Blank_08202018.qgd                  
+ [41] Blank_08212018.qgd                   Blank_08282019.qgd                  
+ [43] Blank_08292019am.qgd                 Blank_08292019pm.qgd                
+ [45] Blank_08302019am.qgd                 Blank1_8112021_01.qgd               
+ [47] Blank1_8122021_01.qgd                BVB1_08282019.qgd                   
+ [49] BVB2_08282019.qgd                    BVB3_08282019.qgd                   
+ [51] BVB4_08282019.qgd                    bwb1_08292019pm.qgd                 
+ [53] bwb2_08292019pm.qgd                  bwb3_08292019pm.qgd                 
+ [55] bwb4_08292019pm.qgd                  bwb5_08292019pm.qgd                 
+ [57] bwb6_08292019pm.qgd                  bwb7_08292019pm.qgd                 
+ [59] bwb8_08292019pm.qgd                  bwb9_08292019pm.qgd                 
+ [61] bwbair1_08292019pm.qgd               cm2forreal_08312019.qgd             
+ [63] cmn1_08302019am.qgd                  cmn2reallycm3_08302019am.qgd        
+ [65] cmn3reallycm4_08302019am.qgd         cmn4reallycm5_08302019am.qgd        
+ [67] cmn5reallycm6_08302019am.qgd         cmn6reallycm7_08302019am.qgd        
+ [69] cmnair1_08302019am.qgd               elk1_08292019am.qgd                 
+ [71] elk2_08292019am.qgd                  elk3_08292019am.qgd                 
+ [73] elk4_08292019am.qgd                  elk5_08292019am.qgd                 
+ [75] elk6_08292019am.qgd                  elk7_08292019am.qgd                 
+ [77] elk8_08292019am.qgd                  elkair1_08292019am.qgd              
+ [79] ERB1_08282019.qgd                    ERB2_08282019.qgd                   
+ [81] ERB3_08282019.qgd                    ERB4_08282019.qgd                   
+ [83] ERB5_08282019.qgd                    ERB6_08282019.qgd                   
+ [85] ERB7_08282019.qgd                    ERB8_08282019.qgd                   
+ [87] ERB9_08282019.qgd                    ERBAIR1_08282019.qgd                
+ [89] ERBAIR2_08282019.qgd                 LERB1_08282019.qgd                  
+ [91] LERB2_08282019.qgd                   LERB3_08282019.qgd                  
+ [93] lerb4_08292019pm.qgd                 lerb5_08292019pm.qgd                
+ [95] lerb6_08292019pm.qgd                 LERBAIR1_08282019.qgd               
+ [97] lerbair2_08292019pm.qgd              Lupine1Aug3L_08252017.qgd           
+ [99] Lupine2Aug3L_08252017.qgd            Lupine3Aug3_08252017.qgd            
+[101] Lupine4Aug3_08252017.qgd             Lupine5Aug3L_08262017.qgd           
+[103] LupineR1Aug20_08252017.qgd           LupineR2Aug20redo_08252017.qgd      
+[105] LupineR3Aug20_08252017.qgd           LupineR4Aug20_08252017.qgd          
+[107] Lupinus_brc_20_1_8122021_11.qgd      Lupinus_brc_20_2_8122021_20.qgd     
+[109] Lupinus_brc_20_2_8132021_20.qgd      Lupinus_brc_20_3_8142021_05.qgd     
+[111] Lupinus_brc_20_4_8142021_06.qgd      Lupinus_brc_20_5_8122021_17.qgd     
+[113] Lupinus_brc_20_6_8122021_15.qgd      Lupinus_brc_20_7_8122021_13.qgd     
+[115] Lupinus_brc_20_8_8132021_17.qgd      Lupinus_brc_20_air_1_8132021_19.qgd 
+[117] Lupinus_bur_20_1_8112021_04.qgd      Lupinus_bur_20_2_8112021_06.qgd     
+[119] Lupinus_bur_20_3_8112021_10.qgd      Lupinus_bur_20_4_8112021_08.qgd     
+[121] Lupinus_bur_20_5_8112021_07.qgd      Lupinus_bur_20_6_8112021_02.qgd     
+[123] Lupinus_bur_20_7_8112021_05.qgd      Lupinus_bur_20_8_8112021_09.qgd     
+[125] Lupinus_bur_20_air_1_8112021_03.qgd  Lupinus_bvb_20_1_8122021_07.qgd     
+[127] Lupinus_bvb_20_2_8122021_08.qgd      Lupinus_bvb_20_3_8122021_06.qgd     
+[129] Lupinus_bvb_20_4_8132021_11.qgd      Lupinus_bvb_20_5_8132021_10.qgd     
+[131] Lupinus_bvb_20_6_8122021_09.qgd      Lupinus_bvb_20_7_8132021_14.qgd     
+[133] Lupinus_bvb_20_8_8132021_13.qgd      Lupinus_bvb_20_9_8132021_12.qgd     
+[135] Lupinus_bvb_20_air_1_8122021_10.qgd  Lupinus_chs_20_1_8132021_08.qgd     
+[137] Lupinus_chs_20_2_8132021_05.qgd      Lupinus_chs_20_3_8132021_09.qgd     
+[139] Lupinus_chs_20_4_8132021_07.qgd      Lupinus_chs_20_air_1_8132021_06.qgd 
+[141] Lupinus_eml_20_1_8132021_03.qgd      Lupinus_eml_20_2_8132021_04.qgd     
+[143] Lupinus_eml_20_3_8112021_11.qgd      Lupinus_eml_20_4_8112021_14.qgd     
+[145] Lupinus_eml_20_5_8112021_13.qgd      Lupinus_eml_20_6_8112021_16.qgd     
+[147] Lupinus_eml_20_7_8112021_17.qgd      Lupinus_eml_20_8_8112021_15.qgd     
+[149] Lupinus_eml_20_air_1_8132021_01.qgd  Lupinus_eml_20_air_2_8112021_12.qgd 
+[151] Lupinus_lerb_20_2_8132021_18.qgd     Lupinus_lerb_20_3_8122021_12.qgd    
+[153] Lupinus_lerb_20_4_8142021_02.qgd     Lupinus_lerb_20_5_8142021_04.qgd    
+[155] Lupinus_lerb_20_6_8122021_16.qgd     Lupinus_lerb_20_7_8122021_14.qgd    
+[157] Lupinus_lerb_20_8_8122021_18.qgd     Lupinus_lerb_20_8_8132021_16.qgd    
+[159] Lupinus_lerb_20_9_8132021_15.qgd     Lupinus_lerb_20_air_1_8122021_19.qgd
+[161] Lupinus_npb_20_1_8122021_03.qgd      Lupinus_npb_20_1_8132021_02.qgd     
+[163] Lupinus_npb_20_1_8142021_03.qgd      Lupinus_npb_20_2_8122021_05.qgd     
+[165] Lupinus_npb_20_3_8122021_02.qgd      Lupinus_npb_20_4_8112021_20.qgd     
+[167] Lupinus_npb_20_5_8112021_18.qgd      Lupinus_npb_20_6_8112021_19.qgd     
+[169] Lupinus_npb_20_air_1_8122021_04.qgd  mar1_08282019.qgd                   
+[171] mar10_08282019.qgd                   mar2_08282019.qgd                   
+[173] mar3_08282019.qgd                    mar4_08282019.qgd                   
+[175] mar5_08282019.qgd                    mar6_08282019.qgd                   
+[177] mar7_08282019.qgd                    mar8_08282019.qgd                   
+[179] mar9_08282019.qgd                    marair1_08282019.qgd                
+[181] marair2_08282019.qgd                 mex1_08292019am.qgd                 
+[183] mex2_08292019am.qgd                  mex3_08292019am.qgd                 
+[185] mex4_08292019am.qgd                  mex5_08292019am.qgd                 
+[187] mex6_08292019pm.qgd                  mexair1_08292019pm.qgd              
+[189] thrips_elk_08292019am.qgd            ypo1_08292019pm.qgd                 
+[191] ypo2_08292019pm.qgd                  ypo3_08302019am.qgd                 
+[193] ypo4_08302019am.qgd                  ypoair1_08292019pm.qgd              
+194 Levels: 4011_08282019.qgd 4012_08282019.qgd ... ypoair1_08292019pm.qgd</code></pre>
+<pre class="r"><code>lup.all &lt;- lup.data %&gt;% 
+  #filter(str_detect(Filename, &quot;Lupinus|Blank&quot;)) %&gt;% 
+  dcast(Filename~Name, sum, value.var=&quot;Area&quot;)
+rownames(lup.all) &lt;- lup.all[,1]
+lup.all[,1] &lt;- NULL
+lup.cut &lt;- lup.all[,colSums(lup.all)&gt;1e8]#arbitrary cutoff 5e7</code></pre>
+<pre class="r"><code>k &lt;- 7
+set.seed(1)
+km &lt;- kmeans(decostand(lup.cut, method=&quot;log&quot;), k, nstart=3)
+
+lup.km &lt;- tibble(FileName=rownames(lup.all)) %&gt;% 
+  mutate(rowSum = rowSums(lup.all),
+         Type =  str_detect(FileName, &quot;Blank&quot;) %&gt;% if_else(&quot;blank&quot;,&quot;sample&quot;) %&gt;% factor,
+         #str_extract(FileName, &quot;Blank|Lupinus&quot;) %&gt;% fct_recode(blank=&quot;Blank&quot;,sample=&quot;Lupinus&quot;)
+         nameBlank = Type==&quot;blank&quot;,
+         runYear = str_extract(FileName, &quot;2017|2018|2019|2020|2021&quot;) %&gt;%factor,#replace_na(&quot;2018&quot;) %&gt;%
+         Cluster = km$cluster) %&gt;% # Figure out which k-means clusters are the blanks
+  mutate(kBlank = Cluster %in% (count(., nameBlank, Cluster) %&gt;% filter(nameBlank, n&gt;2) %&gt;% pull(Cluster)),
+         Mixup = nameBlank != kBlank)
+
+lup.km %&gt;% count(kBlank, nameBlank)</code></pre>
+<pre><code># A tibble: 3 × 3
+  kBlank nameBlank     n
+  &lt;lgl&gt;  &lt;lgl&gt;     &lt;int&gt;
+1 FALSE  FALSE       144
+2 TRUE   FALSE        42
+3 TRUE   TRUE          8</code></pre>
+<pre class="r"><code>#Blanks are in two clusters near other samples, so kmeans not working very well to distinguish them (unless high n)</code></pre>
+</div>
+<div id="read-metadata" class="section level1">
+<h1>Read metadata</h1>
+<pre class="r"><code># Moved this section from markes_sequence.R, code above that section outputs this Rdata:
+load(&quot;data/markes_sequence.rda&quot;)#../Inventory/
+
+lupinus &lt;- sequ.summary$FileName %in% lup.km$FileName # #str_detect(sequ.summary$FullName, &quot;Lupinus|lupinus|Lupine&quot;)
+lupinus.batchids &lt;- sequ.summary %&gt;% filter(lupinus) %&gt;% select(id) %&gt;% unique() %&gt;% na.omit() 
+lupgc &lt;- sequ.summary %&gt;% 
+  filter(id %in% lupinus.batchids$id | lupinus) %&gt;% #get entire batch if it had a sample that matches 
+  left_join(lup.km %&gt;% select(FileName, rowSum, nameBlank, Mixup, kBlank, Cluster), by=&quot;FileName&quot;) %&gt;% 
+  write_csv(&quot;output/lupinus_all_2017thru2021.csv&quot;)
+
+
+popnames = c(`2017`=&quot;Lupine 2017&quot;,brc=&quot;Brush Creek Trailhead&quot;,
+             lerb=&quot;Lower East River Bridge&quot;, erb=&quot;East River Bridge&quot;, bur=&quot;Burro Park&quot;,
+             eml=&quot;Emerald Lake&quot;, mar=&quot;Marmot Mesa&quot;,
+             bvb=&quot;Bellview Bench&quot;, mex=&quot;Mexican Cut Turnoff&quot;,
+             elk=&quot;Elko Park&quot;, `401`=&quot;401&quot;, 
+             npb=&quot;North Pole Basin&quot;, chs=&quot;Currant Hill&quot;, BellN=&quot;BellN 2018&quot;,
+             bcn=&quot;Bellview Corner&quot;, bwb=&quot;Bellview Wilderness Boundary&quot;,
+             ypo=&quot;Yule Pass Trailhead&quot;, cmn=&quot;Cinnamon&quot;)
+#can&#39;t find Gothic Parking Lot abbreviation, perhaps that is LERB (lower east river bridge?). 2018 samples are all labeled BellN. 
+
+# Get metadata from filenames in &quot;RMBL GC-MS Data Inventory&quot;
+lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv&quot;, na=&quot;NA&quot;) %&gt;% 
+  filter(user==&quot;J Heiling : Lupinus&quot;) %&gt;% 
+  distinct(FileName, .keep_all = TRUE) %&gt;% 
+  mutate(sample = na_if(sample,&quot;&quot;) %&gt;% coalesce(FileName) %&gt;% str_remove(&quot;.qgd&quot;)) %&gt;% 
+  select(index, FileName, batch, sample) %&gt;% 
+  mutate(type = ifelse(str_detect(sample,&quot;air&quot;), &quot;ambient&quot;, &quot;floral&quot;),
+         sample_grid = str_remove(sample, &quot;air_&quot;)) %&gt;% 
+  separate(sample_grid, into=c(&quot;species&quot;,&quot;pop&quot;,&quot;sample_year&quot;,&quot;plant&quot;,&quot;rundate&quot;,&quot;GCn&quot;), remove=F) %&gt;% 
+  full_join(lupgc %&gt;% distinct(FileName, .keep_all = T), by=&quot;FileName&quot;) %&gt;% 
+  # lupmeta %&gt;% select(index, FileName, sample, rowSum, Cluster, type, pop, sample_year, plant, rundate, GCn) %&gt;% 
+  #   drop_na(Cluster) %&gt;% 
+  #   separate(FileName, into=paste0(&quot;fn&quot;,1:8), remove=F, fill=&quot;right&quot;) %&gt;% 
+  #   write_csv(&quot;output/lupmeta.csv&quot;, na=&quot;&quot;) #fill in metadata for old samples (2017-2019)
+  rows_update(read_tsv(&quot;data/lupmeta2017thru2021 - lupmeta.tsv&quot;, col_types=&quot;ccccccccccccccccccc&quot;) %&gt;% 
+                filter(is.na(index)) %&gt;% 
+                select(FileName, type, pop, sample_year, plant, rundate), by=&quot;FileName&quot;) %&gt;% 
+  mutate(index = coalesce(index, 10000 + 1:nrow(.)),
+         sample = coalesce(sample, FileName) %&gt;% str_remove(&quot;.qgd&quot;)) %&gt;% #these filled samples were excluded above with na_if(sample,&quot;&quot;)
+  drop_na(nameBlank) %&gt;% #drops rows in same batchids but not integrated (other people&#39;s samples)
+  filter(!nameBlank) %&gt;% #!kBlank
+  filter(type %in% c(&quot;ambient&quot;,&quot;floral&quot;)) %&gt;% #exclude leaf controls and insects
+  mutate(population = factor(recode(pop, !!!popnames), levels=popnames))
+
+with(lupmeta, table(population, sample_year))</code></pre>
+<pre><code>                              sample_year
+population                     17 18 19 20
+  Lupine 2017                   9  0  0  0
+  Brush Creek Trailhead         0  0  0  9
+  Lower East River Bridge       0  0  9 10
+  East River Bridge             0  0 10  0
+  Burro Park                    0  0  0  9
+  Emerald Lake                  0  0  0 11
+  Marmot Mesa                   0  0 12  0
+  Bellview Bench                0  0  5 10
+  Mexican Cut Turnoff           0  0  7  0
+  Elko Park                     0  0  9  0
+  401                           0  0  9  0
+  North Pole Basin              0  0  0  9
+  Currant Hill                  0  0  0  5
+  BellN 2018                    0 20  0  0
+  Bellview Corner               0  0  5  0
+  Bellview Wilderness Boundary  0  0 10  0
+  Yule Pass Trailhead           0  0  5  0
+  Cinnamon                      0  0  8  0</code></pre>
+<pre class="r"><code>lup &lt;- lup.all[lupmeta$FileName,]
+rownames(lup) &lt;- rownames(lupmeta) &lt;- lupmeta$index
+save(lup, lupmeta, file=&quot;output/lupinus_volatiles_2017thru2021.rda&quot;)</code></pre>
+</div>
+<div id="compare-all-samples-and-blanks" class="section level1">
+<h1>Compare all samples and blanks</h1>
+<pre class="r"><code>lup.nmds &lt;- metaMDS(sqrt(lup.cut), dist=&quot;bray&quot;, autotransform = FALSE, trace=F)
+lup.nmds.points &lt;- fortify(lup.nmds) %&gt;% as_tibble() %&gt;% 
+  filter(Score==&quot;sites&quot;) %&gt;% left_join(lup.km, by=c(&quot;Label&quot;=&quot;FileName&quot;))
+
+nmds.plot &lt;- ggplot(lup.nmds.points, aes(x=NMDS1, y=NMDS2, shape=Type)) + theme_classic()
+nmds.plot + geom_point(aes(color=log(rowSum)), size=2) + scale_color_viridis_c()</code></pre>
+<p><img src="plots/blanks-1.svg" width="960" /></p>
+<pre class="r"><code>nmds.plot + geom_point(aes(color=runYear), size=2)</code></pre>
+<p><img src="plots/blanks-2.svg" width="960" /></p>
+<pre class="r"><code>nmds.plot + geom_point(aes(color=factor(Cluster)), size=2)</code></pre>
+<p><img src="plots/blanks-3.svg" width="960" /></p>
+<pre class="r"><code>nmds.plot + geom_point(aes(color=nameBlank), size=2)</code></pre>
+<p><img src="plots/blanks-4.svg" width="960" /></p>
+<pre class="r"><code>lup.cap &lt;- capscale(lup.cut ~ nameBlank, distance=&quot;bray&quot;, metaMDSdist = F, data=lup.km)
+anova(lup.cap)</code></pre>
+<pre><code>Permutation test for capscale under reduced model
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = lup.cut ~ nameBlank, data = lup.km, distance = &quot;bray&quot;, metaMDSdist = F)
+          Df SumOfSqs      F Pr(&gt;F)  
+Model      1    0.580 1.8799  0.056 .
+Residual 192   59.201                
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble() %&gt;% 
+  filter(Score==&quot;sites&quot;) %&gt;% left_join(lup.km, by=c(&quot;Label&quot;=&quot;FileName&quot;))
+ggplot(lup.cap.points, aes(x=CAP1, y=MDS1, alpha=nameBlank)) + geom_point() +
+  scale_alpha_manual(values=c(0.2,1))</code></pre>
+<p><img src="plots/blanks-5.svg" width="960" /></p>
+<pre class="r"><code>cap.chems &lt;- fortify(lup.cap) %&gt;% as_tibble() %&gt;% filter(Score==&quot;species&quot;) %&gt;% arrange(desc(CAP1))</code></pre>
+</div>
+<div id="compare-flowers-and-ambient-controls" class="section level1">
+<h1>Compare flowers and ambient controls</h1>
+<pre class="r"><code>with(lupmeta, table(type, sample_year))</code></pre>
+<pre><code>         sample_year
+type      17 18 19 20
+  ambient  0  2 15  9
+  floral   9 18 74 54</code></pre>
+<pre class="r"><code>lup.nmds.noblanks &lt;- metaMDS(lup[,colSums(lup)&gt;1e8], distance=&quot;bray&quot;, autotransform=F, trace=F)
+lup.nmds.points &lt;-  as_tibble(fortify(lup.nmds.noblanks))
+lup.nmds.points %&gt;% filter(Score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
+ggplot(aes(x=NMDS1, y=NMDS2)) + 
+  geom_label(aes(label=sample, color=type)) +
+  geom_text(data= lup.nmds.points %&gt;% filter(Score==&quot;species&quot;), aes(label=Label))</code></pre>
+<p><img src="plots/ambients-1.svg" width="960" /></p>
+<pre class="r"><code>lup.cap.noblanks &lt;- capscale(lup[,colSums(lup)&gt;1e8] ~ type, distance=&quot;bray&quot;, metaMDSdist = F, data=lupmeta)
+anova(lup.cap.noblanks, by=&quot;term&quot;)</code></pre>
+<pre><code>Permutation test for capscale under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = lup[, colSums(lup) &gt; 1e+08] ~ type, data = lupmeta, distance = &quot;bray&quot;, metaMDSdist = F)
+          Df SumOfSqs      F Pr(&gt;F)
+type       1    0.406 1.3312   0.23
+Residual 179   54.645              </code></pre>
+<pre class="r"><code>lup.cap.points &lt;-  as_tibble(fortify(lup.cap.noblanks))
+lup.cap.points %&gt;% filter(Score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
+  ggplot(aes(x=CAP1, y=MDS1)) + 
+  geom_label(aes(label=sample, color=paste(type, sample_year))) +
+  geom_text(data= lup.cap.points %&gt;% filter(Score==&quot;species&quot;), aes(label=Label))</code></pre>
+<p><img src="plots/ambients-2.svg" width="960" /></p>
+</div>
+<div id="filtering" class="section level1">
+<h1>Filtering</h1>
+<pre class="r"><code>lup.data.cut &lt;- lup.data[lup.data$Filename %in% lupmeta$FileName,]
+lup.data.cut$Filename &lt;- lupmeta$sample[match(lup.data.cut$Filename, lupmeta$FileName)]
+lup.data.cut &lt;- lup.data.cut[lup.data.cut$Name != &quot;&quot;, ]
+lup.data.cut$Name &lt;- droplevels(lup.data.cut$Name)
+longdata &lt;- load_longdata(lup.data.cut, sample=&quot;Filename&quot;, RT=&quot;Ret.Time&quot;, name=&quot;Name&quot;, area=&quot;Area&quot;, match = &quot;SI&quot;, maxmatch=100)
+metadata &lt;- load_metadata(lupmeta, sample=&quot;sample&quot;, type=&quot;type&quot;)
+metadata$type &lt;- factor(metadata$type)
+vol.all &lt;- make_sampletable(longdata, metadata)
+chems &lt;- make_chemtable(longdata, metadata)
+
+### Flower filtering
+chemsf &lt;- chems %&gt;%
+  filter_RT(2, 17) %&gt;% 
+  filter_match(0.8) %&gt;% 
+  filter_freq(0.1, group = FALSE) %&gt;% 
+  filter_contaminant(cont.list = c(&quot;Decanoic acid, silver(1+) salt&quot;,
+                                   &quot;1,1,1,3,5,7,9,11,11,11-Decamethyl-5-(trimethylsiloxy)hexasiloxane&quot;,
+                                   &quot;Oxirane, decyl-&quot;,&quot;Tetradecane, 4-methyl-&quot;, &quot;Octadecane, 1-chloro-&quot;,
+                                   &quot;Cyclobutane, 1,2-bis(1-methylethenyl)-, trans-&quot;, 
+                                   &quot;Hexyl chloroformate&quot;, &quot;Trifluoroacetic acid,n-tridecyl ester&quot;,
+                                   &quot;Hexadecane, 2,6,11,15-tetramethyl-&quot;,&quot;Decane, 2,3,5,8-tetramethyl-&quot;,
+                                   &quot;2-Pentanol, 3-chloro-4-methyl-, (R*,R*)-(.+/-.)-&quot;)) %&gt;% 
+  filter_area(min_maximum = 1e6) %&gt;% 
+  filter_ambient_ratio(vol.all, metadata, ratio = 4) %&gt;%
+  filter_ambient_ttest(vol.all, metadata, alpha = 0.05, adjust = &quot;fdr&quot;) %&gt;%
+  combine_filters() 
+chemsf$filter_final &lt;- with(chemsf, filter_RT == &quot;OK&quot; &amp; filter_match==&quot;OK&quot; &amp; filter_freq.floral == &quot;OK&quot; &amp; 
+                              filter_contaminant == &quot;OK&quot; &amp; filter_area == &quot;OK&quot; &amp; filter_ambient_ratio == &quot;OK&quot;)
+
+plot_filters(chemsf, option=&quot;prop&quot;)</code></pre>
+<p><img src="plots/filtering-1.svg" width="960" /></p>
+<pre class="r"><code>plot_filters(chemsf, option=&quot;rarity&quot;)</code></pre>
+<p><img src="plots/filtering-2.svg" width="960" /></p>
+<pre class="r"><code>plot_filters(chemsf, option=&quot;ambient&quot;)</code></pre>
+<p><img src="plots/filtering-3.svg" width="960" /></p>
+<pre class="r"><code>plot_filters(chemsf, option=&quot;volcano&quot;)</code></pre>
+<p><img src="plots/filtering-4.svg" width="960" /></p>
+<pre class="r"><code>#Pruning 
+vol &lt;- prune_sampletable(vol.all, chemsf, metadata)
+meta &lt;- metadata[metadata$type == &quot;floral&quot;,][rowSums(vol)&gt;0,]
+vol &lt;- vol[rowSums(vol)&gt;0,]
+chm &lt;- chemsf[match(colnames(vol), chemsf$name),]
+
+save(vol, meta, chm, file=&quot;output/lupinus_filtered_2017thru2021.rda&quot;)
+write_csv(vol, &quot;output/lupinus_vol.csv&quot;)
+write_csv(meta, &quot;output/lupinus_meta.csv&quot;)
+write_csv(chm, &quot;output/lupinus_chm.csv&quot;)</code></pre>
+</div>
+<div id="heatmap" class="section level1">
+<h1>Heatmap</h1>
+<pre class="r"><code>pheatmap(t(vol^(1/4)), color = mako(512),
+         annotation_col = select(meta, sample_year, population, sample) %&gt;% 
+           column_to_rownames(&quot;sample&quot;) %&gt;% mutate(sample_year=factor(sample_year)))</code></pre>
+<p><img src="plots/heatmap-1.svg" width="1536" /></p>
+</div>
+<div id="nmds-of-filtered-volatiles" class="section level1">
+<h1>NMDS of filtered volatiles</h1>
+<pre class="r"><code>lup.nmds &lt;- metaMDS(sqrt(vol), dist=&quot;bray&quot;, autotransform = FALSE, trace=F)
+lup.nmds.points &lt;-  fortify(lup.nmds) %&gt;% as_tibble()
+lup.nmds.samples &lt;- lup.nmds.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
+lup.nmds.chems &lt;- lup.nmds.points %&gt;% filter(Score==&quot;species&quot;)
+
+nmds.plot &lt;- ggplot(lup.nmds.samples, aes(x=NMDS1, y=NMDS2)) + 
+  geom_text(data=lup.nmds.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
+
+nmds.plot + geom_label(aes(label=paste0(pop, plant), color=pop)) + guides(color=&quot;none&quot;)</code></pre>
+<p><img src="plots/nmds_filtered-1.svg" width="960" /></p>
+<pre class="r"><code>nmds.plot + geom_point(aes(color=sqrt(rowSums(vol)), shape=sample_year), size=2) + scale_color_viridis_c(&quot;Sqrt total peak area&quot;, option=&quot;magma&quot;) </code></pre>
+<p><img src="plots/nmds_filtered-2.svg" width="960" /></p>
+<pre class="r"><code>nmds.plot + geom_point(aes(color=sample_year), size=2)</code></pre>
+<p><img src="plots/nmds_filtered-3.svg" width="960" /></p>
+</div>
+<div id="total-volatiles-by-run-date" class="section level1">
+<h1>Total volatiles by run date</h1>
+<pre class="r"><code>ggplot(meta, aes(x=paste0(&quot;20&quot;, sample_year, &quot; run &quot;, rundate), color=sample_year, y=rowSums(vol))) + 
+  geom_violin(scale=&quot;width&quot;, draw_quantiles=(1:3)/4) + geom_point() +
+  theme(axis.text.x = element_text(angle=90))</code></pre>
+<p><img src="plots/rundate-1.svg" width="960" /></p>
+</div>
+<div id="cap-by-gc-run-year" class="section level1">
+<h1>CAP by GC run year</h1>
+<p>Only look at 2019 vs. 2020 here</p>
+<pre class="r"><code>twoyears &lt;- meta$sample_year %in% c(&quot;19&quot;,&quot;20&quot;)
+lup.cap &lt;- capscale(sqrt(vol[twoyears,]) ~ sample_year, dist=&quot;bray&quot;, data=meta[twoyears,])
+#View(lup.cap$CCA$v)
+lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta[twoyears,])
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
+  geom_point(aes(color=sample_year)) + 
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
+<p><img src="plots/cap_year-1.svg" width="960" /></p>
+</div>
+<div id="permanova-of-populations" class="section level1">
+<h1>PERMANOVA of populations</h1>
+<pre class="r"><code>adonis2(sqrt(vol) ~ sample_year + population, data=meta)</code></pre>
+<pre><code>Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = sqrt(vol) ~ sample_year + population, data = meta)
+             Df SumOfSqs      R2      F Pr(&gt;F)    
+sample_year   3    4.513 0.10879 6.8804  0.001 ***
+population   15    7.892 0.19024 2.4064  0.001 ***
+Residual    133   29.079 0.70097                  
+Total       151   41.484 1.00000                  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="cap-of-populations" class="section level1">
+<h1>CAP of populations</h1>
+<pre class="r"><code>lup.cap &lt;- capscale(sqrt(vol) ~ sample_year + population, dist=&quot;bray&quot;, data=meta)
+lup.cap</code></pre>
+<pre><code>Call: capscale(formula = sqrt(vol) ~ sample_year + population, data =
+meta, distance = &quot;bray&quot;)
+
+              Inertia Proportion Rank
+Total         41.4835     1.0000     
+Constrained   13.3076     0.3208   18
+Unconstrained 36.9250     0.8901   65
+Imaginary     -8.7490    -0.2109   86
+Inertia is squared Bray distance 
+Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
+Some constraints or conditions were aliased because they were redundant
+
+Eigenvalues for constrained axes:
+ CAP1  CAP2  CAP3  CAP4  CAP5  CAP6  CAP7  CAP8  CAP9 CAP10 CAP11 CAP12 CAP13 
+4.068 3.084 1.228 1.012 0.830 0.594 0.480 0.356 0.316 0.273 0.230 0.194 0.164 
+CAP14 CAP15 CAP16 CAP17 CAP18 
+0.149 0.124 0.113 0.073 0.019 
+
+Eigenvalues for unconstrained axes:
+ MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
+4.915 3.649 2.523 2.399 2.031 1.711 1.637 1.424 
+(Showing 8 of 65 unconstrained eigenvalues)</code></pre>
+<pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
+<pre><code>Permutation test for capscale under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta, distance = &quot;bray&quot;)
+             Df SumOfSqs      F Pr(&gt;F)    
+sample_year   1    1.038 3.7380  0.001 ***
+population   15    8.706 2.0906  0.001 ***
+Residual    133   36.925                  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+
+ggplot(lup.cap.samples, aes(x=CAP1, y=CAP2)) + 
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) +
+  geom_label(aes(label=paste0(pop, plant), color=sample_year)) + theme_classic()</code></pre>
+<p><img src="plots/cap_pop-1.svg" width="960" /></p>
+<pre class="r"><code>ggplot(lup.cap.samples, aes(x=CAP1, y=CAP2)) + 
+  geom_point(aes(color=rowSum)) + scale_color_viridis_c(&quot;Total peak area&quot;) + theme_classic()</code></pre>
+<p><img src="plots/cap_pop-2.svg" width="960" /></p>
+</div>
+<div id="boxplot-of-populations" class="section level1">
+<h1>Boxplot of populations</h1>
+<p>Compounds are in order of mean peak area, arranged in columns.</p>
+<pre class="r"><code>topamounts &lt;- sort(colSums(vol), decreasing = T)
+topchems &lt;- head(names(topamounts), 18)
+
+ggplot(enframe(topamounts) %&gt;% mutate(name=fct_reorder(name, value)), aes(y=name, x=value)) + geom_col()</code></pre>
+<p><img src="plots/boxplot-1.svg" width="1536" /></p>
+<pre class="r"><code>vol %&gt;% select(topchems) %&gt;% rownames_to_column(&quot;sample&quot;) %&gt;% 
+  pivot_longer(topchems) %&gt;% mutate(name=fct_relevel(name, topchems)) %&gt;% 
+  left_join(meta) %&gt;% 
+  ggplot(aes(x=population, y=value, color=sample_year)) + facet_wrap(vars(name), ncol=3, scales=&quot;free_y&quot;, dir=&quot;v&quot;)+
+  scale_y_sqrt() + scale_x_discrete(guide=guide_axis(angle=90))+
+  geom_boxplot(position=position_dodge(width=0.9), outlier.shape = NA) + 
+  geom_point(position=position_dodge(width=0.9)) +
+  labs(x=&quot;Population&quot;, y=&quot;Peak area&quot;, color=&quot;Year&quot;)</code></pre>
+<p><img src="plots/boxplot-2.svg" width="1536" /></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
