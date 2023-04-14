@@ -223,7 +223,7 @@ write_csv(chm, "output/lupinus_chm.csv")
 
 # Heatmap
 
-```{r heatmap, fig.width=16}
+```{r heatmap,  dev="png", dev.args=list(), fig.width=19}
 pheatmap(t(vol^(1/4)), color = mako(512),
          annotation_col = select(meta, sample_year, population, sample) %>% 
            column_to_rownames("sample") %>% mutate(sample_year=factor(sample_year)))

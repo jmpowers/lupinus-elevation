@@ -594,7 +594,7 @@ write_csv(chm, &quot;output/lupinus_chm.csv&quot;)</code></pre>
 <pre class="r"><code>pheatmap(t(vol^(1/4)), color = mako(512),
          annotation_col = select(meta, sample_year, population, sample) %&gt;% 
            column_to_rownames(&quot;sample&quot;) %&gt;% mutate(sample_year=factor(sample_year)))</code></pre>
-<p><img src="plots/heatmap-1.svg" width="1536" /></p>
+<p><img src="plots/heatmap-1.png" width="1824" /></p>
 </div>
 <div id="nmds-of-filtered-volatiles" class="section level1">
 <h1>NMDS of filtered volatiles</h1>
