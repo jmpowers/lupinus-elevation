@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jacob Heiling, John Powers" />
 
-<meta name="date" content="2023-04-14" />
+<meta name="date" content="2023-05-04" />
 
 <title>Lupine volatiles</title>
 
@@ -252,7 +252,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Lupine volatiles</h1>
 <h4 class="author">Jacob Heiling, John Powers</h4>
-<h4 class="date">2023-04-14</h4>
+<h4 class="date">2023-05-04</h4>
 
 </div>
 
@@ -414,15 +414,16 @@ lupgc &lt;- sequ.summary %&gt;%
   write_csv(&quot;output/lupinus_all_2017thru2021.csv&quot;)
 
 
-popnames = c(`2017`=&quot;Lupine 2017&quot;,brc=&quot;Brush Creek Trailhead&quot;,
-             lerb=&quot;Lower East River Bridge&quot;, erb=&quot;East River Bridge&quot;, bur=&quot;Burro Park&quot;,
+popnames = c(brc=&quot;Brush Creek Trailhead&quot;,
+             lerb=&quot;East River Bridge&quot;, erb=&quot;East River Bridge&quot;, #merge ERB + Lower ERB
+             gth=&quot;Gothic Parking Lot&quot;, bur=&quot;Burro Park&quot;,
              eml=&quot;Emerald Lake&quot;, mar=&quot;Marmot Mesa&quot;,
-             bvb=&quot;Bellview Bench&quot;, mex=&quot;Mexican Cut Turnoff&quot;,
-             elk=&quot;Elko Park&quot;, `401`=&quot;401&quot;, 
-             npb=&quot;North Pole Basin&quot;, chs=&quot;Currant Hill&quot;, BellN=&quot;BellN 2018&quot;,
+             bvb=&quot;Bellview Bench&quot;, BellN=&quot;Bellview Bench&quot;, #N/S = north + south draws above the bench
+             mex=&quot;Mexican Cut Turnoff&quot;,  elk=&quot;Elko&quot;, `401`=&quot;401&quot;, 
+             npb=&quot;North Pole Basin&quot;, chs=&quot;Currant Hill&quot;, 
              bcn=&quot;Bellview Corner&quot;, bwb=&quot;Bellview Wilderness Boundary&quot;,
              ypo=&quot;Yule Pass Trailhead&quot;, cmn=&quot;Cinnamon&quot;)
-#can&#39;t find Gothic Parking Lot abbreviation, perhaps that is LERB (lower east river bridge?). 2018 samples are all labeled BellN. 
+# 2018 samples are all labeled BellN. 
 
 # Get metadata from filenames in &quot;RMBL GC-MS Data Inventory&quot;
 lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv&quot;, na=&quot;NA&quot;) %&gt;% 
@@ -431,7 +432,7 @@ lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827
   mutate(sample = na_if(sample,&quot;&quot;) %&gt;% coalesce(FileName) %&gt;% str_remove(&quot;.qgd&quot;)) %&gt;% 
   select(index, FileName, batch, sample) %&gt;% 
   mutate(type = ifelse(str_detect(sample,&quot;air&quot;), &quot;ambient&quot;, &quot;floral&quot;),
-         sample_grid = str_remove(sample, &quot;air_&quot;)) %&gt;% 
+         sample_grid = str_remove(sample, &quot;air_&quot;), scented=NA_character_) %&gt;% 
   separate(sample_grid, into=c(&quot;species&quot;,&quot;pop&quot;,&quot;sample_year&quot;,&quot;plant&quot;,&quot;rundate&quot;,&quot;GCn&quot;), remove=F) %&gt;% 
   full_join(lupgc %&gt;% distinct(FileName, .keep_all = T), by=&quot;FileName&quot;) %&gt;% 
   # lupmeta %&gt;% select(index, FileName, sample, rowSum, Cluster, type, pop, sample_year, plant, rundate, GCn) %&gt;% 
@@ -440,35 +441,52 @@ lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827
   #   write_csv(&quot;output/lupmeta.csv&quot;, na=&quot;&quot;) #fill in metadata for old samples (2017-2019)
   rows_update(read_tsv(&quot;data/lupmeta2017thru2021 - lupmeta.tsv&quot;, col_types=&quot;ccccccccccccccccccc&quot;) %&gt;% 
                 filter(is.na(index)) %&gt;% 
-                select(FileName, type, pop, sample_year, plant, rundate), by=&quot;FileName&quot;) %&gt;% 
+                select(FileName, type, pop, sample_year, plant, scented, rundate), by=&quot;FileName&quot;) %&gt;% 
   mutate(index = coalesce(index, 10000 + 1:nrow(.)),
          sample = coalesce(sample, FileName) %&gt;% str_remove(&quot;.qgd&quot;)) %&gt;% #these filled samples were excluded above with na_if(sample,&quot;&quot;)
   drop_na(nameBlank) %&gt;% #drops rows in same batchids but not integrated (other people&#39;s samples)
   filter(!nameBlank) %&gt;% #!kBlank
   filter(type %in% c(&quot;ambient&quot;,&quot;floral&quot;)) %&gt;% #exclude leaf controls and insects
-  mutate(population = factor(recode(pop, !!!popnames), levels=popnames))
+  mutate(population = factor(recode(pop, !!!popnames), levels=unique(popnames)))
 
 with(lupmeta, table(population, sample_year))</code></pre>
 <pre><code>                              sample_year
 population                     17 18 19 20
-  Lupine 2017                   9  0  0  0
   Brush Creek Trailhead         0  0  0  9
-  Lower East River Bridge       0  0  9 10
-  East River Bridge             0  0 10  0
+  East River Bridge             0  0 19 10
+  Gothic Parking Lot            5  0  0  0
   Burro Park                    0  0  0  9
   Emerald Lake                  0  0  0 11
   Marmot Mesa                   0  0 12  0
-  Bellview Bench                0  0  5 10
+  Bellview Bench                0 20  5 10
   Mexican Cut Turnoff           0  0  7  0
-  Elko Park                     0  0  9  0
+  Elko                          0  0  9  0
   401                           0  0  9  0
-  North Pole Basin              0  0  0  9
+  North Pole Basin              4  0  0  9
   Currant Hill                  0  0  0  5
-  BellN 2018                    0 20  0  0
   Bellview Corner               0  0  5  0
   Bellview Wilderness Boundary  0  0 10  0
   Yule Pass Trailhead           0  0  5  0
   Cinnamon                      0  0  8  0</code></pre>
+<pre class="r"><code>with(lupmeta, table(population, scented))</code></pre>
+<pre><code>                              scented
+population                      0  1
+  Brush Creek Trailhead         0  0
+  East River Bridge            15  0
+  Gothic Parking Lot            0  0
+  Burro Park                    0  0
+  Emerald Lake                  0  0
+  Marmot Mesa                  10  0
+  Bellview Bench                2  2
+  Mexican Cut Turnoff           3  3
+  Elko                          0  8
+  401                           4  3
+  North Pole Basin              0  0
+  Currant Hill                  0  0
+  Bellview Corner               1  3
+  Bellview Wilderness Boundary  2  7
+  Yule Pass Trailhead           0  4
+  Cinnamon                      0  7</code></pre>
 <pre class="r"><code>lup &lt;- lup.all[lupmeta$FileName,]
 rownames(lup) &lt;- rownames(lupmeta) &lt;- lupmeta$index
 save(lup, lupmeta, file=&quot;output/lupinus_volatiles_2017thru2021.rda&quot;)</code></pre>
@@ -644,9 +662,9 @@ Number of permutations: 999
 
 adonis2(formula = sqrt(vol) ~ sample_year + population, data = meta)
              Df SumOfSqs      R2      F Pr(&gt;F)    
-sample_year   3    4.513 0.10879 6.8804  0.001 ***
-population   15    7.892 0.19024 2.4064  0.001 ***
-Residual    133   29.079 0.70097                  
+sample_year   3    4.513 0.10879 6.9735  0.001 ***
+population   15    8.280 0.19960 2.5590  0.001 ***
+Residual    133   28.690 0.69161                  
 Total       151   41.484 1.00000                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
@@ -660,22 +678,21 @@ meta, distance = &quot;bray&quot;)
 
               Inertia Proportion Rank
 Total         41.4835     1.0000     
-Constrained   13.3076     0.3208   18
-Unconstrained 36.9250     0.8901   65
+Constrained   13.6891     0.3300   18
+Unconstrained 36.5434     0.8809   65
 Imaginary     -8.7490    -0.2109   86
 Inertia is squared Bray distance 
 Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
-Some constraints or conditions were aliased because they were redundant
 
 Eigenvalues for constrained axes:
  CAP1  CAP2  CAP3  CAP4  CAP5  CAP6  CAP7  CAP8  CAP9 CAP10 CAP11 CAP12 CAP13 
-4.068 3.084 1.228 1.012 0.830 0.594 0.480 0.356 0.316 0.273 0.230 0.194 0.164 
+4.249 3.125 1.378 1.007 0.830 0.653 0.506 0.329 0.304 0.275 0.205 0.178 0.165 
 CAP14 CAP15 CAP16 CAP17 CAP18 
-0.149 0.124 0.113 0.073 0.019 
+0.139 0.127 0.118 0.086 0.017 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-4.915 3.649 2.523 2.399 2.031 1.711 1.637 1.424 
+4.917 3.698 2.535 2.388 1.894 1.695 1.657 1.284 
 (Showing 8 of 65 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
@@ -685,9 +702,9 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta, distance = &quot;bray&quot;)
              Df SumOfSqs      F Pr(&gt;F)    
-sample_year   1    1.038 3.7380  0.001 ***
-population   15    8.706 2.0906  0.001 ***
-Residual    133   36.925                  
+sample_year   3    2.525 3.0635  0.001 ***
+population   15    9.088 2.2050  0.001 ***
+Residual    133   36.543                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
@@ -719,6 +736,56 @@ ggplot(enframe(topamounts) %&gt;% mutate(name=fct_reorder(name, value)), aes(y=n
   geom_point(position=position_dodge(width=0.9)) +
   labs(x=&quot;Population&quot;, y=&quot;Peak area&quot;, color=&quot;Year&quot;)</code></pre>
 <p><img src="plots/boxplot-2.svg" width="1536" /></p>
+</div>
+<div id="cap-of-unscented" class="section level1">
+<h1>CAP of un/scented</h1>
+<pre class="r"><code>meta.scented &lt;- drop_na(meta, scented) #only have scores in 2019 so far
+vol.scented &lt;- vol[!is.na(meta$scented),]
+lup.cap &lt;- capscale(sqrt(vol.scented) ~ scented, dist=&quot;bray&quot;, data=meta.scented)
+lup.cap</code></pre>
+<pre><code>Call: capscale(formula = sqrt(vol.scented) ~ scented, data =
+meta.scented, distance = &quot;bray&quot;)
+
+              Inertia Proportion Rank
+Total         16.6976     1.0000     
+Constrained    2.1864     0.1309    1
+Unconstrained 16.6738     0.9986   38
+Imaginary     -2.1625    -0.1295   35
+Inertia is squared Bray distance 
+Species scores projected from &#39;sqrt&#39; &#39;vol.scented&#39; 
+
+Eigenvalues for constrained axes:
+  CAP1 
+2.1864 
+
+Eigenvalues for unconstrained axes:
+ MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
+3.608 1.839 1.743 1.221 1.049 0.823 0.775 0.678 
+(Showing 8 of 38 unconstrained eigenvalues)</code></pre>
+<pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
+<pre><code>Permutation test for capscale under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = sqrt(vol.scented) ~ scented, data = meta.scented, distance = &quot;bray&quot;)
+         Df SumOfSqs      F Pr(&gt;F)    
+scented   1   2.1864 9.4411  0.001 ***
+Residual 72  16.6738                  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta.scented)
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+  geom_text(aes(label=paste0(pop, plant), color=scented)) +
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
+<p><img src="plots/cap_scented-1.svg" width="960" /></p>
+<pre class="r"><code>ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+  geom_point(aes(color=rowSum, shape=scented), size=3) +
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral))+ scale_color_viridis_c(&quot;Total peak area&quot;) + theme_classic()</code></pre>
+<p><img src="plots/cap_scented-2.svg" width="960" /></p>
 </div>
 
 

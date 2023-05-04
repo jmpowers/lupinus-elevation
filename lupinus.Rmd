@@ -88,15 +88,16 @@ lupgc <- sequ.summary %>%
   write_csv("output/lupinus_all_2017thru2021.csv")
 
 
-popnames = c(`2017`="Lupine 2017",brc="Brush Creek Trailhead",
-             lerb="Lower East River Bridge", erb="East River Bridge", bur="Burro Park",
+popnames = c(brc="Brush Creek Trailhead",
+             lerb="East River Bridge", erb="East River Bridge", #merge ERB + Lower ERB
+             gth="Gothic Parking Lot", bur="Burro Park",
              eml="Emerald Lake", mar="Marmot Mesa",
-             bvb="Bellview Bench", mex="Mexican Cut Turnoff",
-             elk="Elko Park", `401`="401", 
-             npb="North Pole Basin", chs="Currant Hill", BellN="BellN 2018",
+             bvb="Bellview Bench", BellN="Bellview Bench", #N/S = north + south draws above the bench
+             mex="Mexican Cut Turnoff",  elk="Elko", `401`="401", 
+             npb="North Pole Basin", chs="Currant Hill", 
              bcn="Bellview Corner", bwb="Bellview Wilderness Boundary",
              ypo="Yule Pass Trailhead", cmn="Cinnamon")
-#can't find Gothic Parking Lot abbreviation, perhaps that is LERB (lower east river bridge?). 2018 samples are all labeled BellN. 
+# 2018 samples are all labeled BellN. 
 
 # Get metadata from filenames in "RMBL GC-MS Data Inventory"
 lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv", na="NA") %>% 
@@ -105,7 +106,7 @@ lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.ts
   mutate(sample = na_if(sample,"") %>% coalesce(FileName) %>% str_remove(".qgd")) %>% 
   select(index, FileName, batch, sample) %>% 
   mutate(type = ifelse(str_detect(sample,"air"), "ambient", "floral"),
-         sample_grid = str_remove(sample, "air_")) %>% 
+         sample_grid = str_remove(sample, "air_"), scented=NA_character_) %>% 
   separate(sample_grid, into=c("species","pop","sample_year","plant","rundate","GCn"), remove=F) %>% 
   full_join(lupgc %>% distinct(FileName, .keep_all = T), by="FileName") %>% 
   # lupmeta %>% select(index, FileName, sample, rowSum, Cluster, type, pop, sample_year, plant, rundate, GCn) %>% 
@@ -114,15 +115,16 @@ lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.ts
   #   write_csv("output/lupmeta.csv", na="") #fill in metadata for old samples (2017-2019)
   rows_update(read_tsv("data/lupmeta2017thru2021 - lupmeta.tsv", col_types="ccccccccccccccccccc") %>% 
                 filter(is.na(index)) %>% 
-                select(FileName, type, pop, sample_year, plant, rundate), by="FileName") %>% 
+                select(FileName, type, pop, sample_year, plant, scented, rundate), by="FileName") %>% 
   mutate(index = coalesce(index, 10000 + 1:nrow(.)),
          sample = coalesce(sample, FileName) %>% str_remove(".qgd")) %>% #these filled samples were excluded above with na_if(sample,"")
   drop_na(nameBlank) %>% #drops rows in same batchids but not integrated (other people's samples)
   filter(!nameBlank) %>% #!kBlank
   filter(type %in% c("ambient","floral")) %>% #exclude leaf controls and insects
-  mutate(population = factor(recode(pop, !!!popnames), levels=popnames))
+  mutate(population = factor(recode(pop, !!!popnames), levels=unique(popnames)))
 
 with(lupmeta, table(population, sample_year))
+with(lupmeta, table(population, scented))
 
 lup <- lup.all[lupmeta$FileName,]
 rownames(lup) <- rownames(lupmeta) <- lupmeta$index
@@ -312,3 +314,23 @@ vol %>% select(topchems) %>% rownames_to_column("sample") %>%
   labs(x="Population", y="Peak area", color="Year")
 ```
 
+
+# CAP of un/scented
+```{r cap_scented}
+meta.scented <- drop_na(meta, scented) #only have scores in 2019 so far
+vol.scented <- vol[!is.na(meta$scented),]
+lup.cap <- capscale(sqrt(vol.scented) ~ scented, dist="bray", data=meta.scented)
+lup.cap
+anova(lup.cap, by="margin")
+lup.cap.points <-  fortify(lup.cap) %>% as_tibble()
+lup.cap.samples <- lup.cap.points %>% filter(Score=="sites") %>% bind_cols(meta.scented)
+lup.cap.chems <- lup.cap.points %>% filter(Score=="species")
+
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+  geom_text(aes(label=paste0(pop, plant), color=scented)) +
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
+
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+  geom_point(aes(color=rowSum, shape=scented), size=3) +
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral))+ scale_color_viridis_c("Total peak area") + theme_classic()
+```
