@@ -62,15 +62,15 @@ index	FileName	scented	fn1	fn2	fn3	fn4	fn5	fn6	fn7	fn8	sample	rowSum	Cluster	typ
 1250	Lupinus_brc_20_3_8142021_05.qgd		Lupinus	brc	20	3	8142021	5	qgd		Lupinus_brc_20_3_8142021_05	203403596	6	floral	brc	20	3	8142021	5
 1251	Lupinus_brc_20_4_8142021_06.qgd		Lupinus	brc	20	4	8142021	6	qgd		Lupinus_brc_20_4_8142021_06	166855402	6	floral	brc	20	4	8142021	6
 1560	Lupinus_npb_20_6_8112021_19.qgd		Lupinus	npb	20	6	8112021	19	qgd		Lupinus_npb_20_6_8112021_19	784295020	5	floral	npb	20	6	8112021	19
-	Lupine1Aug3L_08252017.qgd		Lupine1Aug3L	8252017	qgd							407340100	4	floral	gth	17	1	8252017	
-	Lupine2Aug3L_08252017.qgd		Lupine2Aug3L	8252017	qgd							534248886	4	floral	gth	17	2	8252017	
-	LupineR1Aug20_08252017.qgd		LupineR1Aug20	8252017	qgd							309655604	4	floral	npb	17	1	8252017	
-	LupineR2Aug20redo_08252017.qgd		LupineR2Aug20redo	8252017	qgd							262082968	4	floral	npb	17	2	8252017	
-	LupineR3Aug20_08252017.qgd		LupineR3Aug20	8252017	qgd							255559175	4	floral	npb	17	3	8252017	
-	LupineR4Aug20_08252017.qgd		LupineR4Aug20	8252017	qgd							299516729	4	floral	npb	17	4	8252017	
-	Lupine3Aug3_08252017.qgd		Lupine3Aug3	8252017	qgd							320152258	4	floral	gth	17	3	8252017	
-	Lupine4Aug3_08252017.qgd		Lupine4Aug3	8252017	qgd							363002139	4	floral	gth	17	4	8252017	
-	Lupine5Aug3L_08262017.qgd		Lupine5Aug3L	8262017	qgd							246343902	4	floral	gth	17	5	8262017	
+	Lupine1Aug3L_08252017.qgd	0	Lupine1Aug3L	8252017	qgd							407340100	4	floral	gth	17	1	8252017	
+	Lupine2Aug3L_08252017.qgd	0	Lupine2Aug3L	8252017	qgd							534248886	4	floral	gth	17	2	8252017	
+	LupineR1Aug20_08252017.qgd	1	LupineR1Aug20	8252017	qgd							309655604	4	floral	npb	17	1	8252017	
+	LupineR2Aug20redo_08252017.qgd	1	LupineR2Aug20redo	8252017	qgd							262082968	4	floral	npb	17	2	8252017	
+	LupineR3Aug20_08252017.qgd	1	LupineR3Aug20	8252017	qgd							255559175	4	floral	npb	17	3	8252017	
+	LupineR4Aug20_08252017.qgd	1	LupineR4Aug20	8252017	qgd							299516729	4	floral	npb	17	4	8252017	
+	Lupine3Aug3_08252017.qgd	0	Lupine3Aug3	8252017	qgd							320152258	4	floral	gth	17	3	8252017	
+	Lupine4Aug3_08252017.qgd	0	Lupine4Aug3	8252017	qgd							363002139	4	floral	gth	17	4	8252017	
+	Lupine5Aug3L_08262017.qgd	0	Lupine5Aug3L	8262017	qgd							246343902	4	floral	gth	17	5	8262017	
 	Blank_08202018.qgd		Blank	8202018	qgd							323974268	7	blank	BellN	18		8202018	
 	AirBellNAug16_08202018.qgd		AirBellNAug16	8202018	qgd							69893678	3	ambient	BellN	18		8202018	
 	BellNLeaf38Aug16_08202018.qgd		BellNLeaf38Aug16	8202018	qgd							76209750	3	leaf	BellN	18		8202018	
@@ -94,7 +94,7 @@ index	FileName	scented	fn1	fn2	fn3	fn4	fn5	fn6	fn7	fn8	sample	rowSum	Cluster	typ
 	BellNFlr45Aug18retry_08212018.qgd		BellNFlr45Aug18retry	8212018	qgd							118894078	3	floral	BellN	18	45	8212018	
 	BellNFlr46Aug18_08212018.qgd		BellNFlr46Aug18	8212018	qgd							90780177	3	floral	BellN	18	46	8212018	
 	BellNFlr48Aug18_08212018.qgd		BellNFlr48Aug18	8212018	qgd							86904735	3	floral	BellN	18	48	8212018	
-	BellNBeetleAug18_08212018.qgd		BellNBeetleAug18	8212018	qgd							99748572	3	floral	BellN	18		8212018	
+	BellNBeetleAug18_08212018.qgd		BellNBeetleAug18	8212018	qgd							99748572	3	insect	BellN	18		8212018	
 	Blank_08282019.qgd		Blank	8282019	qgd							227880126	2	blank		19		8282019	
 	ERB1_08282019.qgd	0	ERB1	8282019	qgd							295391244	2	floral	erb	19	1	8282019	
 	ERB2_08282019.qgd	0	ERB2	8282019	qgd							317139516	2	floral	erb	19	2	8282019	
@@ -192,4 +192,4 @@ index	FileName	scented	fn1	fn2	fn3	fn4	fn5	fn6	fn7	fn8	sample	rowSum	Cluster	typ
 	cm2forreal_08312019.qgd	1	cm2forreal	8312019	qgd							308491685	1	floral	cmn	19	2	8312019	
 	Blank1_8112021_01.qgd		Blank1	8112021	1	qgd						70161904	7	blank		21		8112021	
 	Blank1_8122021_01.qgd		Blank1	8122021	1	qgd						92199993	7	blank		21		8122021	
-	BellNFlr45Aug18_08202018.qgd		BellNFlr45Aug18	8202018	qgd							31353899	7	floral	BellN	18	45	8202018	
+	BellNFlr45Aug18_08202018.qgd		BellNFlr45Aug18	8202018	qgd							31353899	7	blank	BellN	18	45	8202018	

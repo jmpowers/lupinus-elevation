@@ -46,6 +46,20 @@ knitr::opts_chunk$set(comment="", cache=T, warning=F, message=F,
 # save(lup.data, file="data/lupinus_gc_2017thru2021.rda")
 
 load("data/lupinus_gc_2017thru2021.rda")
+
+# load short names and standard regressions
+lupchems <- read_tsv("data/lupmeta2017thru2021 - lupchem.tsv") %>% 
+  select(name, shortname, standard) %>% 
+  mutate(class = fct_recode(standard, Aliphatic="Hexenol", Benzenoid="Methyl_salicylate", Benzenoid="Indole", 
+                            Sesquiterpene="Caryophyllene", Monoterpene="alpha_Pinene", Monoterpene="Linalool")) %>%  
+  left_join(read_csv("data/regressions_181921_filtered_slopes.csv") %>% filter(year=="2019"))
+class_pal <- set_names(c("#BC0060","#027B8C","#E56E00","#86D400"), levels(lupchems$class))
+
+#shorten chemical names and merge compounds with multiple names
+shortnames <- lupchems %>% select(name, shortname) %>% filter(shortname!="") %>% deframe()
+#shortnames[shortnames %in% shortnames[duplicated(shortnames)]]
+lup.data$Name <- recode(lup.data$Name, !!!shortnames)
+
 sort(unique(lup.data$Filename))
 lup.all <- lup.data %>% 
   #filter(str_detect(Filename, "Lupinus|Blank")) %>% 
@@ -87,17 +101,8 @@ lupgc <- sequ.summary %>%
   left_join(lup.km %>% select(FileName, rowSum, nameBlank, Mixup, kBlank, Cluster), by="FileName") %>% 
   write_csv("output/lupinus_all_2017thru2021.csv")
 
-
-popnames = c(brc="Brush Creek Trailhead",
-             lerb="East River Bridge", erb="East River Bridge", #merge ERB + Lower ERB
-             gth="Gothic Parking Lot", bur="Burro Park",
-             eml="Emerald Lake", mar="Marmot Mesa",
-             bvb="Bellview Bench", BellN="Bellview Bench", #N/S = north + south draws above the bench
-             mex="Mexican Cut Turnoff",  elk="Elko", `401`="401", 
-             npb="North Pole Basin", chs="Currant Hill", 
-             bcn="Bellview Corner", bwb="Bellview Wilderness Boundary",
-             ypo="Yule Pass Trailhead", cmn="Cinnamon")
-# 2018 samples are all labeled BellN. 
+pops <- read_tsv("data/lupmeta2017thru2021 - pops.tsv") %>% mutate(population=factor(population, levels=unique(population)))
+popnames <- pops %>% select(pop,population) %>% deframe()
 
 # Get metadata from filenames in "RMBL GC-MS Data Inventory"
 lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv", na="NA") %>% 
@@ -121,7 +126,7 @@ lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.ts
   drop_na(nameBlank) %>% #drops rows in same batchids but not integrated (other people's samples)
   filter(!nameBlank) %>% #!kBlank
   filter(type %in% c("ambient","floral")) %>% #exclude leaf controls and insects
-  mutate(population = factor(recode(pop, !!!popnames), levels=unique(popnames)))
+  left_join(pops) %>% mutate(pop = factor(pop, levels=pops$pop))
 
 with(lupmeta, table(population, sample_year))
 with(lupmeta, table(population, scented))
@@ -217,6 +222,12 @@ meta <- metadata[metadata$type == "floral",][rowSums(vol)>0,]
 vol <- vol[rowSums(vol)>0,]
 chm <- chemsf[match(colnames(vol), chemsf$name),]
 
+#Convert peak areas to nanograms
+lupchems2 <- lupchems[match(colnames(vol), lupchems$shortname),]
+vol <- sweep(vol, 2, lupchems2$area_per_ng, FUN = '/')
+vol <- vol / (40/60 + 20/60) # divide by equilibration + pumping time in hours (40+20 min)
+meta$Total <- rowSums(vol)
+
 save(vol, meta, chm, file="output/lupinus_filtered_2017thru2021.rda")
 write_csv(vol, "output/lupinus_vol.csv")
 write_csv(meta, "output/lupinus_meta.csv")
@@ -225,10 +236,11 @@ write_csv(chm, "output/lupinus_chm.csv")
 
 # Heatmap
 
-```{r heatmap,  dev="png", dev.args=list(), fig.width=19}
-pheatmap(t(vol^(1/4)), color = mako(512),
+```{r heatmap,  dev="png", dev.args=list(), fig.width=16}
+pheatmap(t(vol^(1/5)), color = mako(512),
          annotation_col = select(meta, sample_year, population, sample) %>% 
-           column_to_rownames("sample") %>% mutate(sample_year=factor(sample_year)))
+           column_to_rownames("sample") %>% mutate(sample_year=factor(sample_year)),
+         annotation_row = select(lupchems, class, shortname) %>% distinct(shortname, .keep_all=TRUE) %>% column_to_rownames("shortname"))
 ```
 
 # NMDS of filtered volatiles
@@ -240,7 +252,7 @@ lup.nmds.samples <- lup.nmds.points %>% filter(Score=="sites") %>% bind_cols(met
 lup.nmds.chems <- lup.nmds.points %>% filter(Score=="species")
 
 nmds.plot <- ggplot(lup.nmds.samples, aes(x=NMDS1, y=NMDS2)) + 
-  geom_text(data=lup.nmds.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
+  geom_text(data=lup.nmds.chems, aes(label=Label)) + theme_classic() #alpha=chm$freq.floral
 
 nmds.plot + geom_label(aes(label=paste0(pop, plant), color=pop)) + guides(color="none")
 nmds.plot + geom_point(aes(color=sqrt(rowSums(vol)), shape=sample_year), size=2) + scale_color_viridis_c("Sqrt total peak area", option="magma") 
@@ -250,9 +262,16 @@ nmds.plot + geom_point(aes(color=sample_year), size=2)
 # Total volatiles by run date
 
 ```{r rundate}
-ggplot(meta, aes(x=paste0("20", sample_year, " run ", rundate), color=sample_year, y=rowSums(vol))) + 
+ggplot(meta, aes(x=paste0("20", sample_year, " run ", rundate), color=sample_year, y=Total)) + 
   geom_violin(scale="width", draw_quantiles=(1:3)/4) + geom_point() +
   theme(axis.text.x = element_text(angle=90))
+```
+
+# Correlated volatiles
+
+```{r corr}
+ggplot(cbind(vol,meta), aes(x=`(E)-b-ocimene`, y=`(Z)-b-ocimene`, color=sample_year)) + geom_point() + geom_smooth(se=F) + scale_y_sqrt() + scale_x_sqrt()
+ggplot(cbind(vol,meta), aes(x=`(E)-b-ocimene`, y=`b-myrcene`, color=sample_year)) + geom_point() + geom_smooth(se=F) + scale_y_sqrt() + scale_x_sqrt()
 ```
 
 # CAP by GC run year
@@ -333,4 +352,34 @@ ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) +
 ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
   geom_point(aes(color=rowSum, shape=scented), size=3) +
   geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral))+ scale_color_viridis_c("Total peak area") + theme_classic()
+
+ggplot(cbind(meta.scented, vol.scented), aes(x=pop, y=`(E)-b-ocimene`, color=scented)) + 
+  geom_point(position=position_jitter(width=0.2), size=3) +  scale_y_sqrt() + theme_minimal()
+
+ggplot(cbind(meta.scented, vol.scented), aes(x=pop, y=rowSums(vol.scented), color=scented)) + 
+  geom_point(position=position_jitter(width=0.2), size=3) +  scale_y_sqrt("Total emissions (ng/hr)") + theme_minimal()
+```
+
+# CAP of elevation
+```{r cap_elevation}
+lup.cap <- capscale(sqrt(vol) ~ elev, dist="bray", data=meta)
+lup.cap
+anova(lup.cap, by="margin")
+lup.cap.points <-  fortify(lup.cap) %>% as_tibble()
+lup.cap.samples <- lup.cap.points %>% filter(Score=="sites") %>% bind_cols(meta)
+lup.cap.chems <- lup.cap.points %>% filter(Score=="species")
+
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+  geom_text(aes(label=paste0(pop, plant), color=elev)) + scale_color_viridis_c()+ 
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
+
+ggplot(cbind(meta, vol), aes(x=elev, y=`(E)-b-ocimene`, color=sample_year, shape=scented, linetype=scented)) + geom_point() + 
+  stat_summary(fun=mean, geom="line")+ stat_summary(fun=mean, geom="point", size=4)+
+  scale_shape_manual(values=c(4,15), na.value=1) + scale_linetype_manual(values=c(2,1), na.value=1) +  scale_y_sqrt() + theme_minimal()+
+  geom_text(data=distinct(pops,population,.keep_all = T), aes(x=elev,y=0,label=pop), nudge_y = -2, angle=90, inherit.aes = F)
+
+ggplot(cbind(meta, vol), aes(x=elev, y=Total, color=sample_year, shape=scented, linetype=scented)) + geom_point() + 
+  stat_summary(fun=mean, geom="line")+ stat_summary(fun=mean, geom="point", size=4)+ 
+  scale_shape_manual(values=c(4,15), na.value=1) + scale_linetype_manual(values=c(2,1), na.value=1) +  scale_y_sqrt("Total emissions (ng/hr)") + theme_minimal()+
+  geom_text(data=distinct(pops,population,.keep_all = T), aes(x=elev,y=0,label=pop), nudge_y = -2, angle=90, inherit.aes = F)
 ```

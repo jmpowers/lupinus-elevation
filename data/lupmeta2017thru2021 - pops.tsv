@@ -1,0 +1,19 @@
+elev_rank	pop	population	lat	lon	elev	note
+1	brc	Brush Creek Trailhead			2730	inferring elevations for the non-2019 sites (without lat/lon)
+2	lerb	East River Bridge	38.95225	-106.98946	2863	Lower ERB, merge with ERB
+3	erb	East River Bridge	38.95409	-106.98832	2873	
+4	gth	Gothic Parking Lot			2893	elev approximate
+5	bur	Burro Park			3000	elev unknown
+6	eml	Emerald Lake			3190	elev approximate
+7	mar	Marmot Mesa	39.00485	-107.03181	3128	
+8	bvb	Bellview Bench	39.00648	-107.02795	3200	
+9	BellN	Bellview Bench			3200	north draw above BVB in 2018, merge with BVB
+10	mex	Mexican Cut Turnoff	39.01546	-107.04955	3258	
+11	elk	Elko	39.00726	-107.05486	3294	
+12	401	401	39.00822	-107.02701	3338	
+13	npb	North Pole Basin			3380	elev unknown
+14	chs	Currant Hill			3420	elev unknown
+15	bcn	Bellview Corner	39.01218	-107.035	3433	
+16	bwb	Bellview Wilderness Boundary	39.01529	-107.03471	3477	
+17	ypo	Yule Pass Trailhead	38.99218	-107.06788	3500	
+18	cmn	Cinnamon	38.99747	-107.06794	3660	

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jacob Heiling, John Powers" />
 
-<meta name="date" content="2023-05-04" />
+<meta name="date" content="2023-05-09" />
 
 <title>Lupine volatiles</title>
 
@@ -252,7 +252,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Lupine volatiles</h1>
 <h4 class="author">Jacob Heiling, John Powers</h4>
-<h4 class="date">2023-05-04</h4>
+<h4 class="date">2023-05-09</h4>
 
 </div>
 
@@ -273,6 +273,20 @@ td, th { padding : 6px }
 # save(lup.data, file=&quot;data/lupinus_gc_2017thru2021.rda&quot;)
 
 load(&quot;data/lupinus_gc_2017thru2021.rda&quot;)
+
+# load short names and standard regressions
+lupchems &lt;- read_tsv(&quot;data/lupmeta2017thru2021 - lupchem.tsv&quot;) %&gt;% 
+  select(name, shortname, standard) %&gt;% 
+  mutate(class = fct_recode(standard, Aliphatic=&quot;Hexenol&quot;, Benzenoid=&quot;Methyl_salicylate&quot;, Benzenoid=&quot;Indole&quot;, 
+                            Sesquiterpene=&quot;Caryophyllene&quot;, Monoterpene=&quot;alpha_Pinene&quot;, Monoterpene=&quot;Linalool&quot;)) %&gt;%  
+  left_join(read_csv(&quot;data/regressions_181921_filtered_slopes.csv&quot;) %&gt;% filter(year==&quot;2019&quot;))
+class_pal &lt;- set_names(c(&quot;#BC0060&quot;,&quot;#027B8C&quot;,&quot;#E56E00&quot;,&quot;#86D400&quot;), levels(lupchems$class))
+
+#shorten chemical names and merge compounds with multiple names
+shortnames &lt;- lupchems %&gt;% select(name, shortname) %&gt;% filter(shortname!=&quot;&quot;) %&gt;% deframe()
+#shortnames[shortnames %in% shortnames[duplicated(shortnames)]]
+lup.data$Name &lt;- recode(lup.data$Name, !!!shortnames)
+
 sort(unique(lup.data$Filename))</code></pre>
 <pre><code>  [1] 4011_08282019.qgd                    4012_08282019.qgd                   
   [3] 4013_08282019.qgd                    4014_08282019.qgd                   
@@ -413,17 +427,8 @@ lupgc &lt;- sequ.summary %&gt;%
   left_join(lup.km %&gt;% select(FileName, rowSum, nameBlank, Mixup, kBlank, Cluster), by=&quot;FileName&quot;) %&gt;% 
   write_csv(&quot;output/lupinus_all_2017thru2021.csv&quot;)
 
-
-popnames = c(brc=&quot;Brush Creek Trailhead&quot;,
-             lerb=&quot;East River Bridge&quot;, erb=&quot;East River Bridge&quot;, #merge ERB + Lower ERB
-             gth=&quot;Gothic Parking Lot&quot;, bur=&quot;Burro Park&quot;,
-             eml=&quot;Emerald Lake&quot;, mar=&quot;Marmot Mesa&quot;,
-             bvb=&quot;Bellview Bench&quot;, BellN=&quot;Bellview Bench&quot;, #N/S = north + south draws above the bench
-             mex=&quot;Mexican Cut Turnoff&quot;,  elk=&quot;Elko&quot;, `401`=&quot;401&quot;, 
-             npb=&quot;North Pole Basin&quot;, chs=&quot;Currant Hill&quot;, 
-             bcn=&quot;Bellview Corner&quot;, bwb=&quot;Bellview Wilderness Boundary&quot;,
-             ypo=&quot;Yule Pass Trailhead&quot;, cmn=&quot;Cinnamon&quot;)
-# 2018 samples are all labeled BellN. 
+pops &lt;- read_tsv(&quot;data/lupmeta2017thru2021 - pops.tsv&quot;) %&gt;% mutate(population=factor(population, levels=unique(population)))
+popnames &lt;- pops %&gt;% select(pop,population) %&gt;% deframe()
 
 # Get metadata from filenames in &quot;RMBL GC-MS Data Inventory&quot;
 lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv&quot;, na=&quot;NA&quot;) %&gt;% 
@@ -447,7 +452,7 @@ lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827
   drop_na(nameBlank) %&gt;% #drops rows in same batchids but not integrated (other people&#39;s samples)
   filter(!nameBlank) %&gt;% #!kBlank
   filter(type %in% c(&quot;ambient&quot;,&quot;floral&quot;)) %&gt;% #exclude leaf controls and insects
-  mutate(population = factor(recode(pop, !!!popnames), levels=unique(popnames)))
+  left_join(pops) %&gt;% mutate(pop = factor(pop, levels=pops$pop))
 
 with(lupmeta, table(population, sample_year))</code></pre>
 <pre><code>                              sample_year
@@ -458,7 +463,7 @@ population                     17 18 19 20
   Burro Park                    0  0  0  9
   Emerald Lake                  0  0  0 11
   Marmot Mesa                   0  0 12  0
-  Bellview Bench                0 20  5 10
+  Bellview Bench                0 18  5 10
   Mexican Cut Turnoff           0  0  7  0
   Elko                          0  0  9  0
   401                           0  0  9  0
@@ -473,7 +478,7 @@ population                     17 18 19 20
 population                      0  1
   Brush Creek Trailhead         0  0
   East River Bridge            15  0
-  Gothic Parking Lot            0  0
+  Gothic Parking Lot            5  0
   Burro Park                    0  0
   Emerald Lake                  0  0
   Marmot Mesa                  10  0
@@ -481,7 +486,7 @@ population                      0  1
   Mexican Cut Turnoff           3  3
   Elko                          0  8
   401                           4  3
-  North Pole Basin              0  0
+  North Pole Basin              0  4
   Currant Hill                  0  0
   Bellview Corner               1  3
   Bellview Wilderness Boundary  2  7
@@ -531,7 +536,7 @@ ggplot(lup.cap.points, aes(x=CAP1, y=MDS1, alpha=nameBlank)) + geom_point() +
 <pre><code>         sample_year
 type      17 18 19 20
   ambient  0  2 15  9
-  floral   9 18 74 54</code></pre>
+  floral   9 16 74 54</code></pre>
 <pre class="r"><code>lup.nmds.noblanks &lt;- metaMDS(lup[,colSums(lup)&gt;1e8], distance=&quot;bray&quot;, autotransform=F, trace=F)
 lup.nmds.points &lt;-  as_tibble(fortify(lup.nmds.noblanks))
 lup.nmds.points %&gt;% filter(Score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
@@ -548,8 +553,8 @@ Number of permutations: 999
 
 Model: capscale(formula = lup[, colSums(lup) &gt; 1e+08] ~ type, data = lupmeta, distance = &quot;bray&quot;, metaMDSdist = F)
           Df SumOfSqs      F Pr(&gt;F)
-type       1    0.406 1.3312   0.23
-Residual 179   54.645              </code></pre>
+type       1    0.405 1.3329  0.217
+Residual 177   53.847              </code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  as_tibble(fortify(lup.cap.noblanks))
 lup.cap.points %&gt;% filter(Score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
   ggplot(aes(x=CAP1, y=MDS1)) + 
@@ -602,6 +607,12 @@ meta &lt;- metadata[metadata$type == &quot;floral&quot;,][rowSums(vol)&gt;0,]
 vol &lt;- vol[rowSums(vol)&gt;0,]
 chm &lt;- chemsf[match(colnames(vol), chemsf$name),]
 
+#Convert peak areas to nanograms
+lupchems2 &lt;- lupchems[match(colnames(vol), lupchems$shortname),]
+vol &lt;- sweep(vol, 2, lupchems2$area_per_ng, FUN = &#39;/&#39;)
+vol &lt;- vol / (40/60 + 20/60) # divide by equilibration + pumping time in hours (40+20 min)
+meta$Total &lt;- rowSums(vol)
+
 save(vol, meta, chm, file=&quot;output/lupinus_filtered_2017thru2021.rda&quot;)
 write_csv(vol, &quot;output/lupinus_vol.csv&quot;)
 write_csv(meta, &quot;output/lupinus_meta.csv&quot;)
@@ -609,10 +620,11 @@ write_csv(chm, &quot;output/lupinus_chm.csv&quot;)</code></pre>
 </div>
 <div id="heatmap" class="section level1">
 <h1>Heatmap</h1>
-<pre class="r"><code>pheatmap(t(vol^(1/4)), color = mako(512),
+<pre class="r"><code>pheatmap(t(vol^(1/5)), color = mako(512),
          annotation_col = select(meta, sample_year, population, sample) %&gt;% 
-           column_to_rownames(&quot;sample&quot;) %&gt;% mutate(sample_year=factor(sample_year)))</code></pre>
-<p><img src="plots/heatmap-1.png" width="1824" /></p>
+           column_to_rownames(&quot;sample&quot;) %&gt;% mutate(sample_year=factor(sample_year)),
+         annotation_row = select(lupchems, class, shortname) %&gt;% distinct(shortname, .keep_all=TRUE) %&gt;% column_to_rownames(&quot;shortname&quot;))</code></pre>
+<p><img src="plots/heatmap-1.png" width="1536" /></p>
 </div>
 <div id="nmds-of-filtered-volatiles" class="section level1">
 <h1>NMDS of filtered volatiles</h1>
@@ -622,7 +634,7 @@ lup.nmds.samples &lt;- lup.nmds.points %&gt;% filter(Score==&quot;sites&quot;) %
 lup.nmds.chems &lt;- lup.nmds.points %&gt;% filter(Score==&quot;species&quot;)
 
 nmds.plot &lt;- ggplot(lup.nmds.samples, aes(x=NMDS1, y=NMDS2)) + 
-  geom_text(data=lup.nmds.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
+  geom_text(data=lup.nmds.chems, aes(label=Label)) + theme_classic() #alpha=chm$freq.floral
 
 nmds.plot + geom_label(aes(label=paste0(pop, plant), color=pop)) + guides(color=&quot;none&quot;)</code></pre>
 <p><img src="plots/nmds_filtered-1.svg" width="960" /></p>
@@ -633,10 +645,17 @@ nmds.plot + geom_label(aes(label=paste0(pop, plant), color=pop)) + guides(color=
 </div>
 <div id="total-volatiles-by-run-date" class="section level1">
 <h1>Total volatiles by run date</h1>
-<pre class="r"><code>ggplot(meta, aes(x=paste0(&quot;20&quot;, sample_year, &quot; run &quot;, rundate), color=sample_year, y=rowSums(vol))) + 
+<pre class="r"><code>ggplot(meta, aes(x=paste0(&quot;20&quot;, sample_year, &quot; run &quot;, rundate), color=sample_year, y=Total)) + 
   geom_violin(scale=&quot;width&quot;, draw_quantiles=(1:3)/4) + geom_point() +
   theme(axis.text.x = element_text(angle=90))</code></pre>
 <p><img src="plots/rundate-1.svg" width="960" /></p>
+</div>
+<div id="correlated-volatiles" class="section level1">
+<h1>Correlated volatiles</h1>
+<pre class="r"><code>ggplot(cbind(vol,meta), aes(x=`(E)-b-ocimene`, y=`(Z)-b-ocimene`, color=sample_year)) + geom_point() + geom_smooth(se=F) + scale_y_sqrt() + scale_x_sqrt()</code></pre>
+<p><img src="plots/corr-1.svg" width="960" /></p>
+<pre class="r"><code>ggplot(cbind(vol,meta), aes(x=`(E)-b-ocimene`, y=`b-myrcene`, color=sample_year)) + geom_point() + geom_smooth(se=F) + scale_y_sqrt() + scale_x_sqrt()</code></pre>
+<p><img src="plots/corr-2.svg" width="960" /></p>
 </div>
 <div id="cap-by-gc-run-year" class="section level1">
 <h1>CAP by GC run year</h1>
@@ -662,10 +681,10 @@ Number of permutations: 999
 
 adonis2(formula = sqrt(vol) ~ sample_year + population, data = meta)
              Df SumOfSqs      R2      F Pr(&gt;F)    
-sample_year   3    4.513 0.10879 6.9735  0.001 ***
-population   15    8.280 0.19960 2.5590  0.001 ***
-Residual    133   28.690 0.69161                  
-Total       151   41.484 1.00000                  
+sample_year   3    4.069 0.10812 6.9435  0.001 ***
+population   15    7.782 0.20677 2.6559  0.001 ***
+Residual    132   25.784 0.68511                  
+Total       150   37.635 1.00000                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -677,23 +696,23 @@ lup.cap</code></pre>
 meta, distance = &quot;bray&quot;)
 
               Inertia Proportion Rank
-Total         41.4835     1.0000     
-Constrained   13.6891     0.3300   18
-Unconstrained 36.5434     0.8809   65
-Imaginary     -8.7490    -0.2109   86
+Total         37.6354     1.0000     
+Constrained   12.6527     0.3362   18
+Unconstrained 32.8545     0.8730   63
+Imaginary     -7.8718    -0.2092   87
 Inertia is squared Bray distance 
 Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
 
 Eigenvalues for constrained axes:
  CAP1  CAP2  CAP3  CAP4  CAP5  CAP6  CAP7  CAP8  CAP9 CAP10 CAP11 CAP12 CAP13 
-4.249 3.125 1.378 1.007 0.830 0.653 0.506 0.329 0.304 0.275 0.205 0.178 0.165 
+4.381 2.693 1.272 0.823 0.744 0.662 0.431 0.288 0.245 0.229 0.198 0.148 0.134 
 CAP14 CAP15 CAP16 CAP17 CAP18 
-0.139 0.127 0.118 0.086 0.017 
+0.126 0.104 0.091 0.069 0.015 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-4.917 3.698 2.535 2.388 1.894 1.695 1.657 1.284 
-(Showing 8 of 65 unconstrained eigenvalues)</code></pre>
+4.842 3.703 2.626 2.287 1.836 1.586 1.411 1.184 
+(Showing 8 of 63 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -702,9 +721,9 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta, distance = &quot;bray&quot;)
              Df SumOfSqs      F Pr(&gt;F)    
-sample_year   3    2.525 3.0635  0.001 ***
-population   15    9.088 2.2050  0.001 ***
-Residual    133   36.543                  
+sample_year   3    2.473 3.3124  0.001 ***
+population   15    8.499 2.2763  0.001 ***
+Residual    132   32.855                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
@@ -747,21 +766,21 @@ lup.cap</code></pre>
 meta.scented, distance = &quot;bray&quot;)
 
               Inertia Proportion Rank
-Total         16.6976     1.0000     
-Constrained    2.1864     0.1309    1
-Unconstrained 16.6738     0.9986   38
-Imaginary     -2.1625    -0.1295   35
+Total         18.3260     1.0000     
+Constrained    2.3497     0.1282    1
+Unconstrained 18.4659     1.0076   42
+Imaginary     -2.4895    -0.1358   40
 Inertia is squared Bray distance 
 Species scores projected from &#39;sqrt&#39; &#39;vol.scented&#39; 
 
 Eigenvalues for constrained axes:
   CAP1 
-2.1864 
+2.3497 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-3.608 1.839 1.743 1.221 1.049 0.823 0.775 0.678 
-(Showing 8 of 38 unconstrained eigenvalues)</code></pre>
+3.761 2.148 1.722 1.315 1.062 0.955 0.858 0.697 
+(Showing 8 of 42 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -770,8 +789,8 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol.scented) ~ scented, data = meta.scented, distance = &quot;bray&quot;)
          Df SumOfSqs      F Pr(&gt;F)    
-scented   1   2.1864 9.4411  0.001 ***
-Residual 72  16.6738                  
+scented   1   2.3497 10.307  0.001 ***
+Residual 81  18.4659                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
@@ -786,6 +805,66 @@ ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) +
   geom_point(aes(color=rowSum, shape=scented), size=3) +
   geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral))+ scale_color_viridis_c(&quot;Total peak area&quot;) + theme_classic()</code></pre>
 <p><img src="plots/cap_scented-2.svg" width="960" /></p>
+<pre class="r"><code>ggplot(cbind(meta.scented, vol.scented), aes(x=pop, y=`(E)-b-ocimene`, color=scented)) + 
+  geom_point(position=position_jitter(width=0.2), size=3) +  scale_y_sqrt() + theme_minimal()</code></pre>
+<p><img src="plots/cap_scented-3.svg" width="960" /></p>
+<pre class="r"><code>ggplot(cbind(meta.scented, vol.scented), aes(x=pop, y=rowSums(vol.scented), color=scented)) + 
+  geom_point(position=position_jitter(width=0.2), size=3) +  scale_y_sqrt(&quot;Total emissions (ng/hr)&quot;) + theme_minimal()</code></pre>
+<p><img src="plots/cap_scented-4.svg" width="960" /></p>
+</div>
+<div id="cap-of-elevation" class="section level1">
+<h1>CAP of elevation</h1>
+<pre class="r"><code>lup.cap &lt;- capscale(sqrt(vol) ~ elev, dist=&quot;bray&quot;, data=meta)
+lup.cap</code></pre>
+<pre><code>Call: capscale(formula = sqrt(vol) ~ elev, data = meta, distance =
+&quot;bray&quot;)
+
+               Inertia Proportion Rank
+Total         37.63542    1.00000     
+Constrained    2.30308    0.06119    1
+Unconstrained 43.20411    1.14796   63
+Imaginary     -7.87177   -0.20916   87
+Inertia is squared Bray distance 
+Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
+
+Eigenvalues for constrained axes:
+  CAP1 
+2.3031 
+
+Eigenvalues for unconstrained axes:
+ MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
+7.130 5.388 3.143 2.701 2.174 1.879 1.818 1.744 
+(Showing 8 of 63 unconstrained eigenvalues)</code></pre>
+<pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
+<pre><code>Permutation test for capscale under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 999
+
+Model: capscale(formula = sqrt(vol) ~ elev, data = meta, distance = &quot;bray&quot;)
+          Df SumOfSqs      F Pr(&gt;F)    
+elev       1    2.303 7.9427  0.001 ***
+Residual 149   43.204                  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+  geom_text(aes(label=paste0(pop, plant), color=elev)) + scale_color_viridis_c()+ 
+  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
+<p><img src="plots/cap_elevation-1.svg" width="960" /></p>
+<pre class="r"><code>ggplot(cbind(meta, vol), aes(x=elev, y=`(E)-b-ocimene`, color=sample_year, shape=scented, linetype=scented)) + geom_point() + 
+  stat_summary(fun=mean, geom=&quot;line&quot;)+ stat_summary(fun=mean, geom=&quot;point&quot;, size=4)+
+  scale_shape_manual(values=c(4,15), na.value=1) + scale_linetype_manual(values=c(2,1), na.value=1) +  scale_y_sqrt() + theme_minimal()+
+  geom_text(data=distinct(pops,population,.keep_all = T), aes(x=elev,y=0,label=pop), nudge_y = -2, angle=90, inherit.aes = F)</code></pre>
+<p><img src="plots/cap_elevation-2.svg" width="960" /></p>
+<pre class="r"><code>ggplot(cbind(meta, vol), aes(x=elev, y=Total, color=sample_year, shape=scented, linetype=scented)) + geom_point() + 
+  stat_summary(fun=mean, geom=&quot;line&quot;)+ stat_summary(fun=mean, geom=&quot;point&quot;, size=4)+ 
+  scale_shape_manual(values=c(4,15), na.value=1) + scale_linetype_manual(values=c(2,1), na.value=1) +  scale_y_sqrt(&quot;Total emissions (ng/hr)&quot;) + theme_minimal()+
+  geom_text(data=distinct(pops,population,.keep_all = T), aes(x=elev,y=0,label=pop), nudge_y = -2, angle=90, inherit.aes = F)</code></pre>
+<p><img src="plots/cap_elevation-3.svg" width="960" /></p>
 </div>
 
 
