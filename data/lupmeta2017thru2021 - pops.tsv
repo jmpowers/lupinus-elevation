@@ -1,19 +1,19 @@
-elev_rank	pop	population	lat	lon	elev	note
-1	brc	Brush Creek Trailhead			2730	inferring elevations for the non-2019 sites (without lat/lon)
-2	lerb	East River Bridge	38.95225	-106.98946	2863	Lower ERB, merge with ERB
-3	erb	East River Bridge	38.95409	-106.98832	2873	
-4	gth	Gothic Parking Lot			2893	elev approximate
-5	bur	Burro Park			3000	elev unknown
-6	eml	Emerald Lake			3190	elev approximate
-7	mar	Marmot Mesa	39.00485	-107.03181	3128	
-8	bvb	Bellview Bench	39.00648	-107.02795	3200	
-9	BellN	Bellview Bench			3200	north draw above BVB in 2018, merge with BVB
-10	mex	Mexican Cut Turnoff	39.01546	-107.04955	3258	
-11	elk	Elko	39.00726	-107.05486	3294	
-12	401	401	39.00822	-107.02701	3338	
-13	npb	North Pole Basin			3380	elev unknown
-14	chs	Currant Hill			3420	elev unknown
-15	bcn	Bellview Corner	39.01218	-107.035	3433	
-16	bwb	Bellview Wilderness Boundary	39.01529	-107.03471	3477	
-17	ypo	Yule Pass Trailhead	38.99218	-107.06788	3500	
-18	cmn	Cinnamon	38.99747	-107.06794	3660	
+elev_rank	pop	population	lat	lon	elev	year_added	month_added	note
+1	brc	Brush Creek Trailhead	38.86367	-106.91402	2724	2020	8	
+2	lerb	East River Bridge	38.95225	-106.98946	2863	2019	8	Lower ERB, merge with ERB
+3	erb	East River Bridge	38.95409	-106.98832	2873	2019	8	
+4	gth	Gothic Parking Lot	38.95750	-106.98861	2886	2017	8	
+5	bur	Burro Park	38.13358	-106.81015	3082	2020	9	
+6	eml	Emerald Lake	39.00840	-107.04099	3127	2020	8	
+7	mar	Marmot Mesa	39.00485	-107.03181	3128	2019	8	
+8	bvb	Bellview Bench	39.00648	-107.02795	3200	2018	8	
+8	BellN	Bellview Bench	39.00648	-107.02795	3200	2018	8	north draw above BVB in 2018, merge with BVB
+9	mex	Mexican Cut Turnoff	39.01546	-107.04955	3258	2019	8	
+10	elk	Elko Park	39.00726	-107.05486	3294	2019	8	
+11	401	401	39.00822	-107.02701	3338	2019	8	
+12	npb	North Pole Basin	39.02944	-107.08167	3378	2017	8	
+13	chs	Currant Hill	39.01166	-107.03412	3429	2020	8	
+14	bcn	Bellview Corner	39.01218	-107.03500	3433	2019	8	
+15	bwb	Bellview Wilderness Boundary	39.01529	-107.03471	3477	2019	8	
+16	ypo	Yule Pass Trailhead	38.99218	-107.06788	3500	2019	8	
+17	cmn	Cinnamon	38.99747	-107.06794	3660	2019	8	

@@ -118,8 +118,8 @@ lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.ts
   #   drop_na(Cluster) %>% 
   #   separate(FileName, into=paste0("fn",1:8), remove=F, fill="right") %>% 
   #   write_csv("output/lupmeta.csv", na="") #fill in metadata for old samples (2017-2019)
-  rows_update(read_tsv("data/lupmeta2017thru2021 - lupmeta.tsv", col_types="ccccccccccccccccccc") %>% 
-                filter(is.na(index)) %>% 
+  rows_update(read_tsv("data/lupmeta2017thru2021 - lupmeta.tsv", col_types="cccccccccccccccccccc") %>% 
+                #filter(is.na(index)) %>% #just dropped this-restricts to 2017-2019
                 select(FileName, type, pop, sample_year, plant, scented, rundate), by="FileName") %>% 
   mutate(index = coalesce(index, 10000 + 1:nrow(.)),
          sample = coalesce(sample, FileName) %>% str_remove(".qgd")) %>% #these filled samples were excluded above with na_if(sample,"")
@@ -129,7 +129,7 @@ lupmeta <- read_tsv("data/RMBL GC-MS Data Inventory - maxfield_all210827annot.ts
   left_join(pops) %>% mutate(pop = factor(pop, levels=pops$pop))
 
 with(lupmeta, table(population, sample_year))
-with(lupmeta, table(population, scented))
+lupmeta %>% filter(type=="floral") %>% count(population, sample_year, scented) %>% pivot_wider(names_from=scented,values_from=n)
 
 lup <- lup.all[lupmeta$FileName,]
 rownames(lup) <- rownames(lupmeta) <- lupmeta$index
@@ -336,28 +336,27 @@ vol %>% select(topchems) %>% rownames_to_column("sample") %>%
 
 # CAP of un/scented
 ```{r cap_scented}
-meta.scented <- drop_na(meta, scented) #only have scores in 2019 so far
-vol.scented <- vol[!is.na(meta$scented),]
-lup.cap <- capscale(sqrt(vol.scented) ~ scented, dist="bray", data=meta.scented)
+lup.cap <- capscale(sqrt(vol) ~ scented, dist="bray", data=meta)
 lup.cap
 anova(lup.cap, by="margin")
 lup.cap.points <-  fortify(lup.cap) %>% as_tibble()
-lup.cap.samples <- lup.cap.points %>% filter(Score=="sites") %>% bind_cols(meta.scented)
+lup.cap.samples <- lup.cap.points %>% filter(Score=="sites") %>% bind_cols(meta)
 lup.cap.chems <- lup.cap.points %>% filter(Score=="species")
 
-ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_text(aes(label=paste0(pop, plant), color=scented)) +
   geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
 
-ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_point(aes(color=rowSum, shape=scented), size=3) +
   geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral))+ scale_color_viridis_c("Total peak area") + theme_classic()
 
-ggplot(cbind(meta.scented, vol.scented), aes(x=pop, y=`(E)-b-ocimene`, color=scented)) + 
-  geom_point(position=position_jitter(width=0.2), size=3) +  scale_y_sqrt() + theme_minimal()
+ggplot(cbind(meta, vol), aes(x=pop, y=`(E)-b-ocimene`, color=scented)) + 
+  geom_boxplot(position=position_dodge(width=0.9))+
+  geom_point(position=position_dodge(width=0.9), size=3) +  scale_y_sqrt() + theme_minimal()
 
-ggplot(cbind(meta.scented, vol.scented), aes(x=pop, y=rowSums(vol.scented), color=scented)) + 
-  geom_point(position=position_jitter(width=0.2), size=3) +  scale_y_sqrt("Total emissions (ng/hr)") + theme_minimal()
+ggplot(cbind(meta, vol), aes(x=pop, y=rowSums(vol), color=scented)) +   geom_boxplot(position=position_dodge(width=0.9))+
+  geom_point(position=position_dodge(width=0.9), size=3)+  scale_y_sqrt("Total emissions (ng/hr)") + theme_minimal() 
 ```
 
 # CAP of elevation
@@ -369,7 +368,7 @@ lup.cap.points <-  fortify(lup.cap) %>% as_tibble()
 lup.cap.samples <- lup.cap.points %>% filter(Score=="sites") %>% bind_cols(meta)
 lup.cap.chems <- lup.cap.points %>% filter(Score=="species")
 
-ggplot(lup.cap.samples, aes(x=CAP1, y=MDS2)) + 
+ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_text(aes(label=paste0(pop, plant), color=elev)) + scale_color_viridis_c()+ 
   geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()
 

@@ -30,222 +30,222 @@
 </defs>
 <g clip-path='url(#cpMzIuMzZ8NjE5Ljk3fDUuNDh8Njg4LjAx)'>
 <rect x='32.36' y='5.48' width='587.61' height='682.53' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<text x='308.51' y='386.87' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4011</text>
-<text x='246.67' y='403.26' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4012</text>
-<text x='195.75' y='392.12' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4013</text>
-<text x='343.78' y='301.63' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4014</text>
-<text x='267.54' y='355.46' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4015</text>
-<text x='474.67' y='328.19' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4016</text>
-<text x='277.07' y='384.05' text-anchor='middle' style='font-size: 11.04px;fill: #46B378; font-family: "Arial";'>4017</text>
-<text x='91.87' y='363.63' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn1</text>
-<text x='71.50' y='365.45' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn2</text>
-<text x='303.62' y='356.84' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn3</text>
-<text x='183.07' y='362.16' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn4</text>
-<text x='152.76' y='327.33' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN27</text>
-<text x='344.68' y='373.93' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN29</text>
-<text x='196.03' y='336.26' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN30</text>
-<text x='327.61' y='294.70' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN31</text>
-<text x='329.45' y='391.78' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN32</text>
-<text x='302.10' y='366.90' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN33</text>
-<text x='419.98' y='344.75' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN34</text>
-<text x='153.94' y='359.82' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN35</text>
-<text x='285.24' y='395.19' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN38</text>
-<text x='275.85' y='372.32' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN39</text>
-<text x='295.18' y='437.00' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN40</text>
-<text x='266.47' y='371.70' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN42</text>
-<text x='323.64' y='375.52' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN44</text>
-<text x='401.17' y='407.51' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN45</text>
-<text x='362.51' y='368.74' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN46</text>
-<text x='435.62' y='305.99' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>BellN48</text>
-<text x='524.53' y='301.73' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb1</text>
-<text x='180.79' y='367.60' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb2</text>
-<text x='497.04' y='338.28' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb3</text>
-<text x='376.20' y='385.20' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb4</text>
-<text x='99.78' y='331.76' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb1</text>
-<text x='115.80' y='367.07' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb2</text>
-<text x='165.58' y='318.68' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb3</text>
-<text x='133.22' y='312.73' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb4</text>
-<text x='134.48' y='404.88' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb5</text>
-<text x='151.71' y='316.88' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb6</text>
-<text x='111.79' y='332.06' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb7</text>
-<text x='88.45' y='353.73' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb8</text>
-<text x='86.76' y='348.75' text-anchor='middle' style='font-size: 11.04px;fill: #7DD151; font-family: "Arial";'>bwb9</text>
-<text x='192.33' y='277.71' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn2</text>
-<text x='181.79' y='358.31' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn1</text>
-<text x='274.46' y='249.78' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn3</text>
-<text x='255.40' y='291.19' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn4</text>
-<text x='69.84' y='315.88' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn5</text>
-<text x='105.49' y='310.99' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn6</text>
-<text x='126.52' y='324.10' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn7</text>
-<text x='88.32' y='289.82' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk1</text>
-<text x='105.26' y='377.68' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk2</text>
-<text x='133.97' y='344.64' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk3</text>
-<text x='143.92' y='321.69' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk4</text>
-<text x='69.93' y='313.28' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk5</text>
-<text x='85.25' y='323.02' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk6</text>
-<text x='169.44' y='325.67' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk7</text>
-<text x='226.08' y='290.27' text-anchor='middle' style='font-size: 11.04px;fill: #28A983; font-family: "Arial";'>elk8</text>
-<text x='500.26' y='228.92' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb1</text>
-<text x='535.89' y='241.19' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb2</text>
-<text x='295.59' y='375.79' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb3</text>
-<text x='542.66' y='242.14' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb4</text>
-<text x='449.53' y='442.22' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb5</text>
-<text x='541.43' y='341.55' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb6</text>
-<text x='441.65' y='381.16' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb7</text>
-<text x='562.86' y='319.67' text-anchor='middle' style='font-size: 11.04px;fill: #44377B; font-family: "Arial";'>erb8</text>
-<text x='519.67' y='285.31' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb9</text>
-<text x='550.67' y='372.20' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb1</text>
-<text x='525.63' y='366.02' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb2</text>
-<text x='512.96' y='368.64' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb3</text>
-<text x='345.08' y='401.35' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb4</text>
-<text x='479.05' y='346.73' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb5</text>
-<text x='355.57' y='411.77' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb6</text>
-<text x='479.12' y='458.09' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth1</text>
-<text x='524.85' y='328.12' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth2</text>
-<text x='547.31' y='383.68' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth3</text>
-<text x='593.26' y='225.66' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth4</text>
-<text x='555.19' y='160.41' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth5</text>
-<text x='338.73' y='167.71' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb1</text>
-<text x='178.32' y='290.33' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb2</text>
-<text x='321.21' y='195.08' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb3</text>
-<text x='181.78' y='254.60' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb4</text>
-<text x='499.51' y='196.36' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc1</text>
-<text x='455.24' y='327.34' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc2</text>
-<text x='388.69' y='392.28' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc3</text>
-<text x='308.36' y='418.80' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc4</text>
-<text x='341.30' y='413.81' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc5</text>
-<text x='459.21' y='70.15' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc6</text>
-<text x='390.60' y='408.76' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc7</text>
-<text x='332.24' y='191.43' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc8</text>
-<text x='213.11' y='355.46' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur1</text>
-<text x='254.47' y='309.62' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur2</text>
-<text x='348.18' y='279.20' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur3</text>
-<text x='218.53' y='367.32' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur4</text>
-<text x='216.35' y='324.00' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur5</text>
-<text x='270.89' y='333.65' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur6</text>
-<text x='239.74' y='326.41' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur7</text>
-<text x='332.83' y='122.14' text-anchor='middle' style='font-size: 11.04px;fill: #3C5C8A; font-family: "Arial";'>bur8</text>
-<text x='178.68' y='312.12' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb1</text>
-<text x='204.43' y='313.51' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb2</text>
-<text x='321.13' y='74.12' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb3</text>
-<text x='458.13' y='72.93' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb4</text>
-<text x='429.40' y='342.89' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb5</text>
-<text x='194.38' y='332.17' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb6</text>
-<text x='309.52' y='113.44' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb7</text>
-<text x='263.17' y='397.20' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb8</text>
-<text x='451.39' y='40.52' text-anchor='middle' style='font-size: 11.04px;fill: #2B9189; font-family: "Arial";'>bvb9</text>
-<text x='349.39' y='98.46' text-anchor='middle' style='font-size: 11.04px;fill: #68C562; font-family: "Arial";'>chs1</text>
-<text x='320.37' y='69.07' text-anchor='middle' style='font-size: 11.04px;fill: #68C562; font-family: "Arial";'>chs2</text>
-<text x='202.88' y='385.82' text-anchor='middle' style='font-size: 11.04px;fill: #68C562; font-family: "Arial";'>chs3</text>
-<text x='170.18' y='156.66' text-anchor='middle' style='font-size: 11.04px;fill: #68C562; font-family: "Arial";'>chs4</text>
-<text x='191.24' y='311.86' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml1</text>
-<text x='391.14' y='58.65' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml2</text>
-<text x='298.71' y='353.97' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml3</text>
-<text x='424.21' y='95.86' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml4</text>
-<text x='253.95' y='198.79' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml5</text>
-<text x='555.23' y='111.94' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml6</text>
-<text x='172.25' y='270.47' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml7</text>
-<text x='304.26' y='247.52' text-anchor='middle' style='font-size: 11.04px;fill: #2B8E8A; font-family: "Arial";'>eml8</text>
-<text x='517.16' y='193.35' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb2</text>
-<text x='538.20' y='213.17' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb3</text>
-<text x='491.15' y='336.67' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb4</text>
-<text x='464.53' y='97.58' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb5</text>
-<text x='408.35' y='263.14' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb6</text>
-<text x='513.52' y='353.49' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb7</text>
-<text x='453.01' y='175.02' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb8</text>
-<text x='449.11' y='104.54' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb8</text>
-<text x='374.94' y='383.73' text-anchor='middle' style='font-size: 11.04px;fill: #453478; font-family: "Arial";'>lerb9</text>
-<text x='79.21' y='224.00' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb1</text>
-<text x='118.30' y='346.48' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb2</text>
-<text x='119.19' y='354.68' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb3</text>
-<text x='139.80' y='323.80' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb4</text>
-<text x='302.31' y='148.96' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb5</text>
-<text x='323.27' y='48.65' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb6</text>
-<text x='314.44' y='390.49' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar1</text>
-<text x='398.59' y='371.14' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar10</text>
-<text x='490.48' y='355.98' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar2</text>
-<text x='259.70' y='351.81' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar3</text>
-<text x='203.49' y='367.52' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar4</text>
-<text x='504.63' y='307.54' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar5</text>
-<text x='490.09' y='272.14' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar6</text>
-<text x='211.90' y='409.09' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar7</text>
-<text x='542.58' y='219.01' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar8</text>
-<text x='437.45' y='295.67' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar9</text>
-<text x='147.33' y='340.85' text-anchor='middle' style='font-size: 11.04px;fill: #26A086; font-family: "Arial";'>mex1</text>
-<text x='328.83' y='311.02' text-anchor='middle' style='font-size: 11.04px;fill: #26A086; font-family: "Arial";'>mex2</text>
-<text x='476.01' y='289.99' text-anchor='middle' style='font-size: 11.04px;fill: #26A086; font-family: "Arial";'>mex3</text>
-<text x='141.10' y='356.50' text-anchor='middle' style='font-size: 11.04px;fill: #26A086; font-family: "Arial";'>mex4</text>
-<text x='286.22' y='343.85' text-anchor='middle' style='font-size: 11.04px;fill: #26A086; font-family: "Arial";'>mex5</text>
-<text x='139.10' y='353.50' text-anchor='middle' style='font-size: 11.04px;fill: #26A086; font-family: "Arial";'>mex6</text>
-<text x='59.07' y='286.15' text-anchor='middle' style='font-size: 11.04px;fill: #90D44D; font-family: "Arial";'>ypo1</text>
-<text x='69.56' y='305.62' text-anchor='middle' style='font-size: 11.04px;fill: #90D44D; font-family: "Arial";'>ypo2</text>
-<text x='346.49' y='297.71' text-anchor='middle' style='font-size: 11.04px;fill: #90D44D; font-family: "Arial";'>ypo3</text>
-<text x='312.37' y='319.20' text-anchor='middle' style='font-size: 11.04px;fill: #90D44D; font-family: "Arial";'>ypo4</text>
-<text x='273.99' y='328.72' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.41; font-family: "Arial";'>a-guaiene</text>
-<text x='298.26' y='313.63' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.10; font-family: "Arial";'>b-copaene</text>
-<text x='286.59' y='661.01' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.80; font-family: "Arial";'>b-myrcene</text>
-<text x='98.69' y='361.83' text-anchor='middle' style='font-size: 11.04px; font-family: "Arial";'>(E)-b-ocimene</text>
-<text x='291.54' y='315.69' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.22; font-family: "Arial";'>a-panasinsene</text>
-<text x='251.46' y='345.23' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.47; font-family: "Arial";'>guaia-6,9-diene</text>
-<text x='308.42' y='313.11' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.13; font-family: "Arial";'>2,6-dimethylocta-3,5,7-trien-2-ol</text>
-<text x='275.92' y='338.57' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.33; font-family: "Arial";'>g-selinene</text>
-<text x='306.64' y='327.84' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.56; font-family: "Arial";'>(E)-4-oxohex-2-enal</text>
-<text x='308.79' y='375.94' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.62; font-family: "Arial";'>2-cyclopentylcyclopentan-1-one</text>
-<text x='316.02' y='298.20' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.10; font-family: "Arial";'>5-methyl-2-propan-2-ylhexan-1-ol</text>
-<text x='294.73' y='325.75' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.81; font-family: "Arial";'>pentan-1-ol</text>
-<text x='293.08' y='331.53' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>pent-1-en-3-ol</text>
-<text x='302.74' y='330.13' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.17; font-family: "Arial";'>3-ethenyl-1,2-dimethylcyclohexa-1,4-diene</text>
-<text x='281.61' y='321.64' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.27; font-family: "Arial";'>germacrene B</text>
-<text x='333.29' y='338.62' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.15; font-family: "Arial";'>2-methyl-6-methylideneocta-1,7-dien-3-one</text>
-<text x='260.79' y='329.38' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.41; font-family: "Arial";'>a-gurjunene</text>
-<text x='311.08' y='281.63' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.14; font-family: "Arial";'>(E)-pent-2-enal</text>
-<text x='270.84' y='339.39' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.54; font-family: "Arial";'>allo-ocimene</text>
-<text x='267.16' y='341.00' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.30; font-family: "Arial";'>cosmene</text>
-<text x='290.28' y='308.37' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>(E)-hex-3-en-1-ol</text>
-<text x='273.17' y='403.95' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>pentan-3-one</text>
-<text x='287.44' y='329.82' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.55; font-family: "Arial";'>anisole</text>
-<text x='207.34' y='323.49' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.48; font-family: "Arial";'>2-methoxyethylbenzene</text>
-<text x='301.43' y='317.41' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.25; font-family: "Arial";'>2,3-dihydro-1-benzofuran</text>
-<text x='307.82' y='312.82' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.16; font-family: "Arial";'>phenylmethanol</text>
-<text x='311.47' y='310.04' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.12; font-family: "Arial";'>carveol</text>
-<text x='334.69' y='306.97' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.20; font-family: "Arial";'>caryophyllene</text>
-<text x='292.39' y='318.66' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.20; font-family: "Arial";'>b-elemene</text>
-<text x='280.45' y='327.63' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.35; font-family: "Arial";'>cyclopentanol</text>
-<text x='201.25' y='377.23' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>cyclopentanone</text>
-<text x='313.65' y='302.12' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.32; font-family: "Arial";'>decyl formate</text>
-<text x='295.89' y='386.91' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.30; font-family: "Arial";'>hexyl formate</text>
-<text x='290.39' y='315.92' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.10; font-family: "Arial";'>germacrene D</text>
-<text x='284.13' y='304.39' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.13; font-family: "Arial";'>indole</text>
-<text x='287.38' y='342.18' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.46; font-family: "Arial";'>linalool</text>
-<text x='303.36' y='337.40' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>methyl 2-hydroxybenzoate</text>
-<text x='282.73' y='318.04' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.21; font-family: "Arial";'>2-phenylethanol</text>
-<text x='305.99' y='313.12' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.20; font-family: "Arial";'>3-methylbut-2-en-1-ol</text>
-<text x='254.64' y='410.83' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.62; font-family: "Arial";'>(Z)-b-ocimene</text>
-<text x='293.11' y='305.81' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.45; font-family: "Arial";'>ylangene</text>
+<text x='310.03' y='522.38' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4011</text>
+<text x='247.70' y='494.52' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4012</text>
+<text x='196.69' y='447.62' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4013</text>
+<text x='344.66' y='575.95' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4014</text>
+<text x='270.88' y='535.41' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4015</text>
+<text x='473.74' y='650.89' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4016</text>
+<text x='285.20' y='610.52' text-anchor='middle' style='font-size: 11.04px;fill: #47B378; font-family: "Arial";'>4017</text>
+<text x='88.77' y='349.70' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn1</text>
+<text x='67.89' y='351.95' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn2</text>
+<text x='309.58' y='585.57' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn3</text>
+<text x='191.62' y='559.30' text-anchor='middle' style='font-size: 11.04px;fill: #6DC85E; font-family: "Arial";'>bcn4</text>
+<text x='155.78' y='441.79' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN27</text>
+<text x='351.25' y='603.18' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN29</text>
+<text x='192.90' y='421.87' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN30</text>
+<text x='333.89' y='566.87' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN31</text>
+<text x='332.66' y='518.08' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN32</text>
+<text x='307.80' y='558.64' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN33</text>
+<text x='425.65' y='618.72' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN34</text>
+<text x='146.51' y='348.51' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN35</text>
+<text x='287.83' y='545.84' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN38</text>
+<text x='276.15' y='491.08' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN39</text>
+<text x='299.91' y='535.34' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN40</text>
+<text x='273.00' y='563.13' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN42</text>
+<text x='329.43' y='588.04' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN44</text>
+<text x='400.68' y='527.49' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN45</text>
+<text x='369.53' y='608.78' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN46</text>
+<text x='438.68' y='630.80' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>BellN48</text>
+<text x='524.55' y='644.04' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb1</text>
+<text x='189.29' y='479.97' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb2</text>
+<text x='495.37' y='625.00' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb3</text>
+<text x='380.28' y='590.32' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb4</text>
+<text x='102.64' y='437.55' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb1</text>
+<text x='112.21' y='415.97' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb2</text>
+<text x='175.50' y='551.01' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb3</text>
+<text x='130.74' y='435.76' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb4</text>
+<text x='141.38' y='454.21' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb5</text>
+<text x='155.28' y='501.09' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb6</text>
+<text x='119.00' y='486.63' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb7</text>
+<text x='83.04' y='380.57' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb8</text>
+<text x='81.71' y='339.62' text-anchor='middle' style='font-size: 11.04px;fill: #7ED250; font-family: "Arial";'>bwb9</text>
+<text x='200.75' y='566.47' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn2</text>
+<text x='190.65' y='516.43' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn1</text>
+<text x='281.33' y='600.58' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn3</text>
+<text x='262.26' y='582.77' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn4</text>
+<text x='72.63' y='445.90' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn5</text>
+<text x='113.14' y='513.35' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn6</text>
+<text x='122.91' y='435.99' text-anchor='middle' style='font-size: 11.04px;fill: #FDE725; font-family: "Arial";'>cmn7</text>
+<text x='82.23' y='303.85' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk1</text>
+<text x='102.20' y='341.84' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk2</text>
+<text x='125.95' y='328.52' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk3</text>
+<text x='143.66' y='441.54' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk4</text>
+<text x='78.06' y='399.81' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk5</text>
+<text x='88.22' y='406.26' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk6</text>
+<text x='165.25' y='420.08' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk7</text>
+<text x='235.64' y='558.62' text-anchor='middle' style='font-size: 11.04px;fill: #2AAA82; font-family: "Arial";'>elk8</text>
+<text x='503.73' y='546.55' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb1</text>
+<text x='533.04' y='483.42' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb2</text>
+<text x='298.23' y='459.25' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb3</text>
+<text x='545.71' y='545.49' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb4</text>
+<text x='445.57' y='508.36' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb5</text>
+<text x='539.23' y='582.71' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb6</text>
+<text x='441.07' y='509.98' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb7</text>
+<text x='562.13' y='584.11' text-anchor='middle' style='font-size: 11.04px;fill: #44397C; font-family: "Arial";'>erb8</text>
+<text x='522.32' y='543.63' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb9</text>
+<text x='547.25' y='560.46' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb1</text>
+<text x='525.25' y='617.64' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb2</text>
+<text x='512.49' y='614.72' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb3</text>
+<text x='338.66' y='399.12' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb4</text>
+<text x='479.44' y='614.46' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb5</text>
+<text x='352.75' y='461.15' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb6</text>
+<text x='476.30' y='523.55' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth1</text>
+<text x='519.20' y='548.53' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth2</text>
+<text x='543.76' y='543.66' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth3</text>
+<text x='593.26' y='549.28' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth4</text>
+<text x='559.58' y='452.09' text-anchor='middle' style='font-size: 11.04px;fill: #433D80; font-family: "Arial";'>gth5</text>
+<text x='352.81' y='591.60' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb1</text>
+<text x='188.21' y='513.63' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb2</text>
+<text x='331.92' y='581.31' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb3</text>
+<text x='189.94' y='496.13' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb4</text>
+<text x='501.74' y='438.43' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc1</text>
+<text x='444.32' y='368.42' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc2</text>
+<text x='387.72' y='463.46' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc3</text>
+<text x='305.23' y='411.17' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc4</text>
+<text x='337.25' y='395.88' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc5</text>
+<text x='465.98' y='454.99' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc6</text>
+<text x='389.69' y='465.63' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc7</text>
+<text x='327.72' y='369.99' text-anchor='middle' style='font-size: 11.04px;fill: #440154; font-family: "Arial";'>brc8</text>
+<text x='196.71' y='299.10' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur1</text>
+<text x='237.20' y='338.87' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur2</text>
+<text x='339.20' y='413.87' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur3</text>
+<text x='203.06' y='308.92' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur4</text>
+<text x='198.86' y='320.68' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur5</text>
+<text x='249.76' y='299.88' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur6</text>
+<text x='221.46' y='299.18' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur7</text>
+<text x='322.45' y='365.06' text-anchor='middle' style='font-size: 11.04px;fill: #2E748D; font-family: "Arial";'>bur8</text>
+<text x='181.63' y='407.21' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb1</text>
+<text x='204.18' y='444.94' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb2</text>
+<text x='331.68' y='464.84' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb3</text>
+<text x='459.97' y='525.49' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb4</text>
+<text x='432.39' y='612.75' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb5</text>
+<text x='187.42' y='356.30' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb6</text>
+<text x='305.01' y='394.89' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb7</text>
+<text x='267.61' y='507.20' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb8</text>
+<text x='457.18' y='505.79' text-anchor='middle' style='font-size: 11.04px;fill: #2B9289; font-family: "Arial";'>bvb9</text>
+<text x='348.85' y='475.86' text-anchor='middle' style='font-size: 11.04px;fill: #6CC75F; font-family: "Arial";'>chs1</text>
+<text x='325.66' y='485.55' text-anchor='middle' style='font-size: 11.04px;fill: #6CC75F; font-family: "Arial";'>chs2</text>
+<text x='210.50' y='533.28' text-anchor='middle' style='font-size: 11.04px;fill: #6CC75F; font-family: "Arial";'>chs3</text>
+<text x='166.45' y='377.42' text-anchor='middle' style='font-size: 11.04px;fill: #6CC75F; font-family: "Arial";'>chs4</text>
+<text x='180.30' y='288.41' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml1</text>
+<text x='392.13' y='472.94' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml2</text>
+<text x='309.37' y='568.98' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml3</text>
+<text x='439.46' y='501.92' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml4</text>
+<text x='259.79' y='458.56' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml5</text>
+<text x='562.53' y='496.59' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml6</text>
+<text x='173.14' y='412.15' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml7</text>
+<text x='313.55' y='501.97' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>eml8</text>
+<text x='519.12' y='464.40' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb2</text>
+<text x='532.68' y='444.57' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb3</text>
+<text x='492.64' y='573.88' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb4</text>
+<text x='465.23' y='445.80' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb5</text>
+<text x='417.07' y='528.33' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb6</text>
+<text x='509.04' y='545.57' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb7</text>
+<text x='454.89' y='449.82' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb8</text>
+<text x='447.50' y='450.24' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb8</text>
+<text x='372.37' y='455.48' text-anchor='middle' style='font-size: 11.04px;fill: #443679; font-family: "Arial";'>lerb9</text>
+<text x='73.73' y='317.74' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb1</text>
+<text x='109.82' y='356.59' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb2</text>
+<text x='108.78' y='334.40' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb3</text>
+<text x='132.23' y='329.94' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb4</text>
+<text x='314.51' y='564.80' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb5</text>
+<text x='331.89' y='528.45' text-anchor='middle' style='font-size: 11.04px;fill: #59BC6D; font-family: "Arial";'>npb6</text>
+<text x='313.69' y='483.22' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar1</text>
+<text x='399.04' y='562.63' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar10</text>
+<text x='490.64' y='616.57' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar2</text>
+<text x='259.28' y='460.26' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar3</text>
+<text x='202.65' y='424.99' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar4</text>
+<text x='504.03' y='647.25' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar5</text>
+<text x='492.32' y='625.85' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar6</text>
+<text x='219.86' y='518.21' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar7</text>
+<text x='540.18' y='536.32' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar8</text>
+<text x='440.46' y='617.06' text-anchor='middle' style='font-size: 11.04px;fill: #2B7F8D; font-family: "Arial";'>mar9</text>
+<text x='136.46' y='298.41' text-anchor='middle' style='font-size: 11.04px;fill: #26A186; font-family: "Arial";'>mex1</text>
+<text x='335.87' y='605.34' text-anchor='middle' style='font-size: 11.04px;fill: #26A186; font-family: "Arial";'>mex2</text>
+<text x='480.90' y='661.01' text-anchor='middle' style='font-size: 11.04px;fill: #26A186; font-family: "Arial";'>mex3</text>
+<text x='146.67' y='439.76' text-anchor='middle' style='font-size: 11.04px;fill: #26A186; font-family: "Arial";'>mex4</text>
+<text x='295.45' y='609.32' text-anchor='middle' style='font-size: 11.04px;fill: #26A186; font-family: "Arial";'>mex5</text>
+<text x='132.24' y='352.76' text-anchor='middle' style='font-size: 11.04px;fill: #26A186; font-family: "Arial";'>mex6</text>
+<text x='59.07' y='346.15' text-anchor='middle' style='font-size: 11.04px;fill: #90D54C; font-family: "Arial";'>ypo1</text>
+<text x='72.70' y='366.26' text-anchor='middle' style='font-size: 11.04px;fill: #90D54C; font-family: "Arial";'>ypo2</text>
+<text x='354.12' y='639.22' text-anchor='middle' style='font-size: 11.04px;fill: #90D54C; font-family: "Arial";'>ypo3</text>
+<text x='319.92' y='616.17' text-anchor='middle' style='font-size: 11.04px;fill: #90D54C; font-family: "Arial";'>ypo4</text>
+<text x='277.96' y='466.86' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.41; font-family: "Arial";'>a-guaiene</text>
+<text x='299.84' y='477.38' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.10; font-family: "Arial";'>b-copaene</text>
+<text x='280.08' y='356.70' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.80; font-family: "Arial";'>b-myrcene</text>
+<text x='80.26' y='40.52' text-anchor='middle' style='font-size: 11.04px; font-family: "Arial";'>(E)-b-ocimene</text>
+<text x='293.59' y='477.36' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.22; font-family: "Arial";'>a-panasinsene</text>
+<text x='257.27' y='455.68' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.47; font-family: "Arial";'>guaia-6,9-diene</text>
+<text x='306.90' y='469.13' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.13; font-family: "Arial";'>2,6-dimethylocta-3,5,7-trien-2-ol</text>
+<text x='279.37' y='466.21' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.33; font-family: "Arial";'>g-selinene</text>
+<text x='306.24' y='472.04' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.56; font-family: "Arial";'>(E)-4-oxohex-2-enal</text>
+<text x='310.27' y='464.62' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.62; font-family: "Arial";'>2-cyclopentylcyclopentan-1-one</text>
+<text x='315.83' y='482.39' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.10; font-family: "Arial";'>5-methyl-2-propan-2-ylhexan-1-ol</text>
+<text x='295.25' y='474.25' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.81; font-family: "Arial";'>pentan-1-ol</text>
+<text x='295.27' y='481.13' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>pent-1-en-3-ol</text>
+<text x='298.93' y='447.55' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.17; font-family: "Arial";'>3-ethenyl-1,2-dimethylcyclohexa-1,4-diene</text>
+<text x='284.88' y='466.88' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.27; font-family: "Arial";'>germacrene B</text>
+<text x='332.40' y='479.04' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.15; font-family: "Arial";'>2-methyl-6-methylideneocta-1,7-dien-3-one</text>
+<text x='266.23' y='460.91' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.41; font-family: "Arial";'>a-gurjunene</text>
+<text x='312.13' y='478.72' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.14; font-family: "Arial";'>(E)-pent-2-enal</text>
+<text x='273.82' y='440.42' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.54; font-family: "Arial";'>allo-ocimene</text>
+<text x='265.71' y='434.57' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.30; font-family: "Arial";'>cosmene</text>
+<text x='289.66' y='438.95' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>(E)-hex-3-en-1-ol</text>
+<text x='273.75' y='447.47' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>pentan-3-one</text>
+<text x='288.92' y='478.96' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.55; font-family: "Arial";'>anisole</text>
+<text x='218.89' y='429.69' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.48; font-family: "Arial";'>2-methoxyethylbenzene</text>
+<text x='301.92' y='476.07' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.25; font-family: "Arial";'>2,3-dihydro-1-benzofuran</text>
+<text x='308.64' y='482.35' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.16; font-family: "Arial";'>phenylmethanol</text>
+<text x='313.31' y='472.01' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.12; font-family: "Arial";'>carveol</text>
+<text x='331.81' y='474.36' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.20; font-family: "Arial";'>caryophyllene</text>
+<text x='294.42' y='473.09' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.20; font-family: "Arial";'>b-elemene</text>
+<text x='282.14' y='484.89' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.35; font-family: "Arial";'>cyclopentanol</text>
+<text x='210.13' y='437.77' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>cyclopentanone</text>
+<text x='313.88' y='487.39' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.32; font-family: "Arial";'>decyl formate</text>
+<text x='294.40' y='440.14' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.30; font-family: "Arial";'>hexyl formate</text>
+<text x='292.53' y='472.86' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.10; font-family: "Arial";'>germacrene D</text>
+<text x='285.29' y='454.10' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.13; font-family: "Arial";'>indole</text>
+<text x='289.71' y='472.74' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.46; font-family: "Arial";'>linalool</text>
+<text x='303.80' y='487.70' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.38; font-family: "Arial";'>methyl 2-hydroxybenzoate</text>
+<text x='286.40' y='459.18' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.21; font-family: "Arial";'>2-phenylethanol</text>
+<text x='305.15' y='474.51' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.20; font-family: "Arial";'>3-methylbut-2-en-1-ol</text>
+<text x='246.39' y='347.34' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.62; font-family: "Arial";'>(Z)-b-ocimene</text>
+<text x='295.91' y='468.22' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.45; font-family: "Arial";'>ylangene</text>
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw3MjAuMDA=)'>
 <polyline points='32.36,688.01 32.36,5.48 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='27.43' y='566.34' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>-2</text>
-<text x='27.43' y='434.81' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>-1</text>
-<text x='27.43' y='303.28' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>0</text>
-<text x='27.43' y='171.74' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>1</text>
-<text x='27.43' y='40.21' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>2</text>
-<polyline points='29.62,563.14 32.36,563.14 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='29.62,431.60 32.36,431.60 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='29.62,300.07 32.36,300.07 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='29.62,168.53 32.36,168.53 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='29.62,37.00 32.36,37.00 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text x='27.43' y='620.31' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>-1</text>
+<text x='27.43' y='484.68' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>0</text>
+<text x='27.43' y='349.06' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>1</text>
+<text x='27.43' y='213.43' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>2</text>
+<text x='27.43' y='77.80' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>3</text>
+<polyline points='29.62,617.10 32.36,617.10 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='29.62,481.48 32.36,481.48 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='29.62,345.85 32.36,345.85 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='29.62,210.22 32.36,210.22 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='29.62,74.60 32.36,74.60 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='32.36,688.01 619.97,688.01 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='169.72,690.75 169.72,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='308.43,690.75 308.43,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='447.15,690.75 447.15,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<polyline points='585.86,690.75 585.86,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
-<text x='169.72' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>-1</text>
-<text x='308.43' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>0</text>
-<text x='447.15' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>1</text>
-<text x='585.86' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>2</text>
+<polyline points='170.32,690.75 170.32,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='309.14,690.75 309.14,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='447.96,690.75 447.96,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='586.78,690.75 586.78,688.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text x='170.32' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>-1</text>
+<text x='309.14' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>0</text>
+<text x='447.96' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>1</text>
+<text x='586.78' y='699.36' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";'>2</text>
 <text x='326.17' y='712.10' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";'>CAP1</text>
-<text transform='translate(13.50,346.75) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";'>MDS2</text>
+<text transform='translate(13.50,346.75) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";'>MDS1</text>
 <rect x='630.93' y='245.39' width='83.59' height='78.60' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 <text x='636.41' y='260.04' style='font-size: 11.00px; font-family: "Arial";'>chm$freq.floral</text>
 <text x='645.05' y='279.33' text-anchor='middle' style='font-size: 11.04px;fill: #000000; fill-opacity: 0.26; font-family: "Arial";'>a</text>
@@ -256,18 +256,18 @@
 <text x='659.17' y='313.08' style='font-size: 8.80px; font-family: "Arial";'>0.75</text>
 <rect x='630.93' y='334.95' width='53.73' height='113.16' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 <image width='17.28' height='86.40' x='636.41' y='356.22' preserveAspectRatio='none' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAEsCAYAAAACUNnVAAAA2ElEQVQ4jZWRyRVDIQhFL/SS/stKFUIWOSoomp8NR3gDg7T3y9UQ1FxQQ0mpPEz5G+21FsgkbZa11WUxIALtahCtiAZzllYCoO7SA/JHeqVYqeAnZRxs+tkJtUDpe1iwJ6f5P5ZPmWca2jbSeStxUBxUXPqLWQOlABZFheLSDQqgVgy0BEAFqYGoSBQ/NT/2gP61cdWuEF+CR8p2ukTG/UJZGn3JBWU7ne9oseCc4M4jr3W8c+UXBxoAnmt7iN0yumoLShm4dHvkMijWa76glhUztaydBrahH9ZJlv7ajQdXAAAAAElFTkSuQmCC'/>
-<text x='657.99' y='443.83' style='font-size: 8.80px; font-family: "Arial";'>2750</text>
-<text x='657.99' y='420.69' style='font-size: 8.80px; font-family: "Arial";'>3000</text>
-<text x='657.99' y='397.54' style='font-size: 8.80px; font-family: "Arial";'>3250</text>
-<text x='657.99' y='374.39' style='font-size: 8.80px; font-family: "Arial";'>3500</text>
+<text x='657.99' y='443.29' style='font-size: 8.80px; font-family: "Arial";'>2750</text>
+<text x='657.99' y='420.29' style='font-size: 8.80px; font-family: "Arial";'>3000</text>
+<text x='657.99' y='397.29' style='font-size: 8.80px; font-family: "Arial";'>3250</text>
+<text x='657.99' y='374.29' style='font-size: 8.80px; font-family: "Arial";'>3500</text>
 <text x='636.41' y='349.59' style='font-size: 11.00px; font-family: "Arial";'>elev</text>
-<line x1='636.41' y1='440.63' x2='639.86' y2='440.63' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='636.41' y1='417.48' x2='639.86' y2='417.48' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='636.41' y1='394.33' x2='639.86' y2='394.33' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='636.41' y1='371.18' x2='639.86' y2='371.18' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='650.23' y1='440.63' x2='653.69' y2='440.63' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='650.23' y1='417.48' x2='653.69' y2='417.48' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='650.23' y1='394.33' x2='653.69' y2='394.33' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<line x1='650.23' y1='371.18' x2='653.69' y2='371.18' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='636.41' y1='440.09' x2='639.86' y2='440.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='636.41' y1='417.09' x2='639.86' y2='417.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='636.41' y1='394.09' x2='639.86' y2='394.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='636.41' y1='371.09' x2='639.86' y2='371.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='650.23' y1='440.09' x2='653.69' y2='440.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='650.23' y1='417.09' x2='653.69' y2='417.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='650.23' y1='394.09' x2='653.69' y2='394.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<line x1='650.23' y1='371.09' x2='653.69' y2='371.09' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
 </g>
 </svg>
