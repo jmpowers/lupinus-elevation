@@ -11,11 +11,11 @@
 
 <meta name="author" content="Jacob Heiling, John Powers" />
 
-<meta name="date" content="2023-05-17" />
+<meta name="date" content="2026-07-29" />
 
 <title>Lupine volatiles</title>
 
-<script src="libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -31,7 +31,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="libs/navigation-1.1/tabsets.js"></script>
@@ -252,7 +252,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Lupine volatiles</h1>
 <h4 class="author">Jacob Heiling, John Powers</h4>
-<h4 class="date">2023-05-17</h4>
+<h4 class="date">2026-07-29</h4>
 
 </div>
 
@@ -264,18 +264,32 @@ td, th { padding : 6px }
 </style>
 <div id="read-scent-data" class="section level1">
 <h1>Read scent data</h1>
-<pre class="r"><code>#reading in the Shimadzu search output is slow, skip it
-#source(&quot;../read_shimadzu.R&quot;)
-#setwd(&quot;../Maxfield/data&quot;)
-#datafiles &lt;- list.files(pattern=&quot;Lupinus&quot;); datafiles %&gt;% set_names() %&gt;% map(read.shimadzu) %&gt;% bind_rows(.id=&quot;batch&quot;)
+<pre class="r"><code># 2017-2021 data
+
+#reading in the Shimadzu search output is slow, skip it
+# source(&quot;read_shimadzu.R&quot;)
+# setwd(&quot;../Maxfield/data&quot;)
+# datafiles &lt;- list.files(pattern=&quot;Lupinus&quot;); datafiles %&gt;% set_names() %&gt;% map(read.shimadzu) %&gt;% bind_rows(.id=&quot;batch&quot;)
 # lup.data &lt;-  read.shimadzu(&quot;Lupinus_2017thru2021.txt&quot;) 
 # setwd(path)
 # save(lup.data, file=&quot;data/lupinus_gc_2017thru2021.rda&quot;)
 
 load(&quot;data/lupinus_gc_2017thru2021.rda&quot;)
+lup.data1721 &lt;- lup.data; remove(lup.data)
+
+# 2023 and 2025 (sampled 2024) data
+# source(&quot;read_shimadzu.R&quot;)
+# setwd(&quot;./data/2023_2025/&quot;)
+# datafiles &lt;- list.files(pattern=&quot;.txt&quot;)
+# lup.data2325 &lt;- datafiles %&gt;% set_names() %&gt;% map(read.shimadzu) %&gt;% bind_rows()
+# setwd(&quot;../..&quot;)
+#save(lup.data2325, file=&quot;data/lupinus_gc_2023_2025.rda&quot;)
+
+load(&quot;data/lupinus_gc_2023_2025.rda&quot;)
+lup.data &lt;- bind_rows(lup.data1721, lup.data2325)
 
 # load short names and standard regressions
-lupchems &lt;- read_tsv(&quot;data/lupmeta2017thru2021 - lupchem.tsv&quot;) %&gt;% 
+lupchems &lt;- read_tsv(&quot;data/lupmeta2017thru2025 - lupchem.tsv&quot;) %&gt;% 
   select(name, shortname, standard) %&gt;% 
   mutate(class = fct_recode(standard, Aliphatic=&quot;Hexenol&quot;, Benzenoid=&quot;Methyl_salicylate&quot;, Benzenoid=&quot;Indole&quot;, 
                             Sesquiterpene=&quot;Caryophyllene&quot;, Monoterpene=&quot;alpha_Pinene&quot;, Monoterpene=&quot;Linalool&quot;)) %&gt;%  
@@ -288,104 +302,368 @@ shortnames &lt;- lupchems %&gt;% select(name, shortname) %&gt;% filter(shortname
 lup.data$Name &lt;- recode(lup.data$Name, !!!shortnames)
 
 sort(unique(lup.data$Filename))</code></pre>
-<pre><code>  [1] 4011_08282019.qgd                    4012_08282019.qgd                   
-  [3] 4013_08282019.qgd                    4014_08282019.qgd                   
-  [5] 4015_08282019.qgd                    4016_08282019.qgd                   
-  [7] 4017_08292019am.qgd                  401air1_08292019am.qgd              
-  [9] 401air2_08292019am.qgd               AirBellNAug16_08202018.qgd          
- [11] AirBellNAug18_08202018.qgd           bbair1_08282019.qgd                 
- [13] bcn1_08302019am.qgd                  bcn2_08302019am.qgd                 
- [15] bcn3_08302019am.qgd                  bcn4_08302019am.qgd                 
- [17] bcnair1_08302019am.qgd               beetles_lerb_08292019am.qgd         
- [19] BellNBeetleAug16_08202018.qgd        BellNBeetleAug18_08212018.qgd       
- [21] BellNFlr27Aug18_08202018.qgd         BellNFlr29Aug18_08202018.qgd        
- [23] BellNFlr30Aug16_08202018.qgd         BellNFlr31Aug16_08202018.qgd        
- [25] BellNFlr32Aug16_08202018.qgd         BellNFlr33Aug16_08202018.qgd        
- [27] BellNFlr34Aug16_08202018.qgd         BellNFlr35Aug16_08202018.qgd        
- [29] BellNFlr38Aug16_08202018.qgd         BellNFlr39Aug16_08202018.qgd        
- [31] BellNFlr40Aug16_08202018.qgd         BellNFlr42Aug16_08202018.qgd        
- [33] BellNFlr44Aug18_08202018.qgd         BellNFlr45Aug18_08202018.qgd        
- [35] BellNFlr45Aug18retry_08212018.qgd    BellNFlr46Aug18_08212018.qgd        
- [37] BellNFlr48Aug18_08212018.qgd         BellNLeaf38Aug16_08202018.qgd       
- [39] BellNLeaf40Aug16_08202018.qgd        Blank_08202018.qgd                  
- [41] Blank_08212018.qgd                   Blank_08282019.qgd                  
- [43] Blank_08292019am.qgd                 Blank_08292019pm.qgd                
- [45] Blank_08302019am.qgd                 Blank1_8112021_01.qgd               
- [47] Blank1_8122021_01.qgd                BVB1_08282019.qgd                   
- [49] BVB2_08282019.qgd                    BVB3_08282019.qgd                   
- [51] BVB4_08282019.qgd                    bwb1_08292019pm.qgd                 
- [53] bwb2_08292019pm.qgd                  bwb3_08292019pm.qgd                 
- [55] bwb4_08292019pm.qgd                  bwb5_08292019pm.qgd                 
- [57] bwb6_08292019pm.qgd                  bwb7_08292019pm.qgd                 
- [59] bwb8_08292019pm.qgd                  bwb9_08292019pm.qgd                 
- [61] bwbair1_08292019pm.qgd               cm2forreal_08312019.qgd             
- [63] cmn1_08302019am.qgd                  cmn2reallycm3_08302019am.qgd        
- [65] cmn3reallycm4_08302019am.qgd         cmn4reallycm5_08302019am.qgd        
- [67] cmn5reallycm6_08302019am.qgd         cmn6reallycm7_08302019am.qgd        
- [69] cmnair1_08302019am.qgd               elk1_08292019am.qgd                 
- [71] elk2_08292019am.qgd                  elk3_08292019am.qgd                 
- [73] elk4_08292019am.qgd                  elk5_08292019am.qgd                 
- [75] elk6_08292019am.qgd                  elk7_08292019am.qgd                 
- [77] elk8_08292019am.qgd                  elkair1_08292019am.qgd              
- [79] ERB1_08282019.qgd                    ERB2_08282019.qgd                   
- [81] ERB3_08282019.qgd                    ERB4_08282019.qgd                   
- [83] ERB5_08282019.qgd                    ERB6_08282019.qgd                   
- [85] ERB7_08282019.qgd                    ERB8_08282019.qgd                   
- [87] ERB9_08282019.qgd                    ERBAIR1_08282019.qgd                
- [89] ERBAIR2_08282019.qgd                 LERB1_08282019.qgd                  
- [91] LERB2_08282019.qgd                   LERB3_08282019.qgd                  
- [93] lerb4_08292019pm.qgd                 lerb5_08292019pm.qgd                
- [95] lerb6_08292019pm.qgd                 LERBAIR1_08282019.qgd               
- [97] lerbair2_08292019pm.qgd              Lupine1Aug3L_08252017.qgd           
- [99] Lupine2Aug3L_08252017.qgd            Lupine3Aug3_08252017.qgd            
-[101] Lupine4Aug3_08252017.qgd             Lupine5Aug3L_08262017.qgd           
-[103] LupineR1Aug20_08252017.qgd           LupineR2Aug20redo_08252017.qgd      
-[105] LupineR3Aug20_08252017.qgd           LupineR4Aug20_08252017.qgd          
-[107] Lupinus_brc_20_1_8122021_11.qgd      Lupinus_brc_20_2_8122021_20.qgd     
-[109] Lupinus_brc_20_2_8132021_20.qgd      Lupinus_brc_20_3_8142021_05.qgd     
-[111] Lupinus_brc_20_4_8142021_06.qgd      Lupinus_brc_20_5_8122021_17.qgd     
-[113] Lupinus_brc_20_6_8122021_15.qgd      Lupinus_brc_20_7_8122021_13.qgd     
-[115] Lupinus_brc_20_8_8132021_17.qgd      Lupinus_brc_20_air_1_8132021_19.qgd 
-[117] Lupinus_bur_20_1_8112021_04.qgd      Lupinus_bur_20_2_8112021_06.qgd     
-[119] Lupinus_bur_20_3_8112021_10.qgd      Lupinus_bur_20_4_8112021_08.qgd     
-[121] Lupinus_bur_20_5_8112021_07.qgd      Lupinus_bur_20_6_8112021_02.qgd     
-[123] Lupinus_bur_20_7_8112021_05.qgd      Lupinus_bur_20_8_8112021_09.qgd     
-[125] Lupinus_bur_20_air_1_8112021_03.qgd  Lupinus_bvb_20_1_8122021_07.qgd     
-[127] Lupinus_bvb_20_2_8122021_08.qgd      Lupinus_bvb_20_3_8122021_06.qgd     
-[129] Lupinus_bvb_20_4_8132021_11.qgd      Lupinus_bvb_20_5_8132021_10.qgd     
-[131] Lupinus_bvb_20_6_8122021_09.qgd      Lupinus_bvb_20_7_8132021_14.qgd     
-[133] Lupinus_bvb_20_8_8132021_13.qgd      Lupinus_bvb_20_9_8132021_12.qgd     
-[135] Lupinus_bvb_20_air_1_8122021_10.qgd  Lupinus_chs_20_1_8132021_08.qgd     
-[137] Lupinus_chs_20_2_8132021_05.qgd      Lupinus_chs_20_3_8132021_09.qgd     
-[139] Lupinus_chs_20_4_8132021_07.qgd      Lupinus_chs_20_air_1_8132021_06.qgd 
-[141] Lupinus_eml_20_1_8132021_03.qgd      Lupinus_eml_20_2_8132021_04.qgd     
-[143] Lupinus_eml_20_3_8112021_11.qgd      Lupinus_eml_20_4_8112021_14.qgd     
-[145] Lupinus_eml_20_5_8112021_13.qgd      Lupinus_eml_20_6_8112021_16.qgd     
-[147] Lupinus_eml_20_7_8112021_17.qgd      Lupinus_eml_20_8_8112021_15.qgd     
-[149] Lupinus_eml_20_air_1_8132021_01.qgd  Lupinus_eml_20_air_2_8112021_12.qgd 
-[151] Lupinus_lerb_20_2_8132021_18.qgd     Lupinus_lerb_20_3_8122021_12.qgd    
-[153] Lupinus_lerb_20_4_8142021_02.qgd     Lupinus_lerb_20_5_8142021_04.qgd    
-[155] Lupinus_lerb_20_6_8122021_16.qgd     Lupinus_lerb_20_7_8122021_14.qgd    
-[157] Lupinus_lerb_20_8_8122021_18.qgd     Lupinus_lerb_20_8_8132021_16.qgd    
-[159] Lupinus_lerb_20_9_8132021_15.qgd     Lupinus_lerb_20_air_1_8122021_19.qgd
-[161] Lupinus_npb_20_1_8122021_03.qgd      Lupinus_npb_20_1_8132021_02.qgd     
-[163] Lupinus_npb_20_1_8142021_03.qgd      Lupinus_npb_20_2_8122021_05.qgd     
-[165] Lupinus_npb_20_3_8122021_02.qgd      Lupinus_npb_20_4_8112021_20.qgd     
-[167] Lupinus_npb_20_5_8112021_18.qgd      Lupinus_npb_20_6_8112021_19.qgd     
-[169] Lupinus_npb_20_air_1_8122021_04.qgd  mar1_08282019.qgd                   
-[171] mar10_08282019.qgd                   mar2_08282019.qgd                   
-[173] mar3_08282019.qgd                    mar4_08282019.qgd                   
-[175] mar5_08282019.qgd                    mar6_08282019.qgd                   
-[177] mar7_08282019.qgd                    mar8_08282019.qgd                   
-[179] mar9_08282019.qgd                    marair1_08282019.qgd                
-[181] marair2_08282019.qgd                 mex1_08292019am.qgd                 
-[183] mex2_08292019am.qgd                  mex3_08292019am.qgd                 
-[185] mex4_08292019am.qgd                  mex5_08292019am.qgd                 
-[187] mex6_08292019pm.qgd                  mexair1_08292019pm.qgd              
-[189] thrips_elk_08292019am.qgd            ypo1_08292019pm.qgd                 
-[191] ypo2_08292019pm.qgd                  ypo3_08302019am.qgd                 
-[193] ypo4_08302019am.qgd                  ypoair1_08292019pm.qgd              
-194 Levels: 4011_08282019.qgd 4012_08282019.qgd ... ypoair1_08292019pm.qgd</code></pre>
+<pre><code>  [1] 4011_08282019.qgd                          
+  [2] 4012_08282019.qgd                          
+  [3] 4013_08282019.qgd                          
+  [4] 4014_08282019.qgd                          
+  [5] 4015_08282019.qgd                          
+  [6] 4016_08282019.qgd                          
+  [7] 4017_08292019am.qgd                        
+  [8] 401air1_08292019am.qgd                     
+  [9] 401air2_08292019am.qgd                     
+ [10] AirBellNAug16_08202018.qgd                 
+ [11] AirBellNAug18_08202018.qgd                 
+ [12] bbair1_08282019.qgd                        
+ [13] bcn1_08302019am.qgd                        
+ [14] bcn2_08302019am.qgd                        
+ [15] bcn3_08302019am.qgd                        
+ [16] bcn4_08302019am.qgd                        
+ [17] bcnair1_08302019am.qgd                     
+ [18] beetles_lerb_08292019am.qgd                
+ [19] BellNBeetleAug16_08202018.qgd              
+ [20] BellNBeetleAug18_08212018.qgd              
+ [21] BellNFlr27Aug18_08202018.qgd               
+ [22] BellNFlr29Aug18_08202018.qgd               
+ [23] BellNFlr30Aug16_08202018.qgd               
+ [24] BellNFlr31Aug16_08202018.qgd               
+ [25] BellNFlr32Aug16_08202018.qgd               
+ [26] BellNFlr33Aug16_08202018.qgd               
+ [27] BellNFlr34Aug16_08202018.qgd               
+ [28] BellNFlr35Aug16_08202018.qgd               
+ [29] BellNFlr38Aug16_08202018.qgd               
+ [30] BellNFlr39Aug16_08202018.qgd               
+ [31] BellNFlr40Aug16_08202018.qgd               
+ [32] BellNFlr42Aug16_08202018.qgd               
+ [33] BellNFlr44Aug18_08202018.qgd               
+ [34] BellNFlr45Aug18_08202018.qgd               
+ [35] BellNFlr45Aug18retry_08212018.qgd          
+ [36] BellNFlr46Aug18_08212018.qgd               
+ [37] BellNFlr48Aug18_08212018.qgd               
+ [38] BellNLeaf38Aug16_08202018.qgd              
+ [39] BellNLeaf40Aug16_08202018.qgd              
+ [40] Blank_08202018.qgd                         
+ [41] Blank_08212018.qgd                         
+ [42] Blank_08282019.qgd                         
+ [43] Blank_08292019am.qgd                       
+ [44] Blank_08292019pm.qgd                       
+ [45] Blank_08302019am.qgd                       
+ [46] Blank1_8112021_01.qgd                      
+ [47] Blank1_8122021_01.qgd                      
+ [48] BVB1_08282019.qgd                          
+ [49] BVB2_08282019.qgd                          
+ [50] BVB3_08282019.qgd                          
+ [51] BVB4_08282019.qgd                          
+ [52] bwb1_08292019pm.qgd                        
+ [53] bwb2_08292019pm.qgd                        
+ [54] bwb3_08292019pm.qgd                        
+ [55] bwb4_08292019pm.qgd                        
+ [56] bwb5_08292019pm.qgd                        
+ [57] bwb6_08292019pm.qgd                        
+ [58] bwb7_08292019pm.qgd                        
+ [59] bwb8_08292019pm.qgd                        
+ [60] bwb9_08292019pm.qgd                        
+ [61] bwbair1_08292019pm.qgd                     
+ [62] cm2forreal_08312019.qgd                    
+ [63] cmn1_08302019am.qgd                        
+ [64] cmn2reallycm3_08302019am.qgd               
+ [65] cmn3reallycm4_08302019am.qgd               
+ [66] cmn4reallycm5_08302019am.qgd               
+ [67] cmn5reallycm6_08302019am.qgd               
+ [68] cmn6reallycm7_08302019am.qgd               
+ [69] cmnair1_08302019am.qgd                     
+ [70] elk1_08292019am.qgd                        
+ [71] elk2_08292019am.qgd                        
+ [72] elk3_08292019am.qgd                        
+ [73] elk4_08292019am.qgd                        
+ [74] elk5_08292019am.qgd                        
+ [75] elk6_08292019am.qgd                        
+ [76] elk7_08292019am.qgd                        
+ [77] elk8_08292019am.qgd                        
+ [78] elkair1_08292019am.qgd                     
+ [79] ERB1_08282019.qgd                          
+ [80] ERB2_08282019.qgd                          
+ [81] ERB3_08282019.qgd                          
+ [82] ERB4_08282019.qgd                          
+ [83] ERB5_08282019.qgd                          
+ [84] ERB6_08282019.qgd                          
+ [85] ERB7_08282019.qgd                          
+ [86] ERB8_08282019.qgd                          
+ [87] ERB9_08282019.qgd                          
+ [88] ERBAIR1_08282019.qgd                       
+ [89] ERBAIR2_08282019.qgd                       
+ [90] LERB1_08282019.qgd                         
+ [91] LERB2_08282019.qgd                         
+ [92] LERB3_08282019.qgd                         
+ [93] lerb4_08292019pm.qgd                       
+ [94] lerb5_08292019pm.qgd                       
+ [95] lerb6_08292019pm.qgd                       
+ [96] LERBAIR1_08282019.qgd                      
+ [97] lerbair2_08292019pm.qgd                    
+ [98] Lupine1Aug3L_08252017.qgd                  
+ [99] Lupine2Aug3L_08252017.qgd                  
+[100] Lupine3Aug3_08252017.qgd                   
+[101] Lupine4Aug3_08252017.qgd                   
+[102] Lupine5Aug3L_08262017.qgd                  
+[103] LupineR1Aug20_08252017.qgd                 
+[104] LupineR2Aug20redo_08252017.qgd             
+[105] LupineR3Aug20_08252017.qgd                 
+[106] LupineR4Aug20_08252017.qgd                 
+[107] Lupinus_brc_20_1_8122021_11.qgd            
+[108] Lupinus_brc_20_2_8122021_20.qgd            
+[109] Lupinus_brc_20_2_8132021_20.qgd            
+[110] Lupinus_brc_20_3_8142021_05.qgd            
+[111] Lupinus_brc_20_4_8142021_06.qgd            
+[112] Lupinus_brc_20_5_8122021_17.qgd            
+[113] Lupinus_brc_20_6_8122021_15.qgd            
+[114] Lupinus_brc_20_7_8122021_13.qgd            
+[115] Lupinus_brc_20_8_8132021_17.qgd            
+[116] Lupinus_brc_20_air_1_8132021_19.qgd        
+[117] Lupinus_bur_20_1_8112021_04.qgd            
+[118] Lupinus_bur_20_2_8112021_06.qgd            
+[119] Lupinus_bur_20_3_8112021_10.qgd            
+[120] Lupinus_bur_20_4_8112021_08.qgd            
+[121] Lupinus_bur_20_5_8112021_07.qgd            
+[122] Lupinus_bur_20_6_8112021_02.qgd            
+[123] Lupinus_bur_20_7_8112021_05.qgd            
+[124] Lupinus_bur_20_8_8112021_09.qgd            
+[125] Lupinus_bur_20_air_1_8112021_03.qgd        
+[126] Lupinus_bvb_20_1_8122021_07.qgd            
+[127] Lupinus_bvb_20_2_8122021_08.qgd            
+[128] Lupinus_bvb_20_3_8122021_06.qgd            
+[129] Lupinus_bvb_20_4_8132021_11.qgd            
+[130] Lupinus_bvb_20_5_8132021_10.qgd            
+[131] Lupinus_bvb_20_6_8122021_09.qgd            
+[132] Lupinus_bvb_20_7_8132021_14.qgd            
+[133] Lupinus_bvb_20_8_8132021_13.qgd            
+[134] Lupinus_bvb_20_9_8132021_12.qgd            
+[135] Lupinus_bvb_20_air_1_8122021_10.qgd        
+[136] Lupinus_chs_20_1_8132021_08.qgd            
+[137] Lupinus_chs_20_2_8132021_05.qgd            
+[138] Lupinus_chs_20_3_8132021_09.qgd            
+[139] Lupinus_chs_20_4_8132021_07.qgd            
+[140] Lupinus_chs_20_air_1_8132021_06.qgd        
+[141] Lupinus_eml_20_1_8132021_03.qgd            
+[142] Lupinus_eml_20_2_8132021_04.qgd            
+[143] Lupinus_eml_20_3_8112021_11.qgd            
+[144] Lupinus_eml_20_4_8112021_14.qgd            
+[145] Lupinus_eml_20_5_8112021_13.qgd            
+[146] Lupinus_eml_20_6_8112021_16.qgd            
+[147] Lupinus_eml_20_7_8112021_17.qgd            
+[148] Lupinus_eml_20_8_8112021_15.qgd            
+[149] Lupinus_eml_20_air_1_8132021_01.qgd        
+[150] Lupinus_eml_20_air_2_8112021_12.qgd        
+[151] Lupinus_lerb_20_2_8132021_18.qgd           
+[152] Lupinus_lerb_20_3_8122021_12.qgd           
+[153] Lupinus_lerb_20_4_8142021_02.qgd           
+[154] Lupinus_lerb_20_5_8142021_04.qgd           
+[155] Lupinus_lerb_20_6_8122021_16.qgd           
+[156] Lupinus_lerb_20_7_8122021_14.qgd           
+[157] Lupinus_lerb_20_8_8122021_18.qgd           
+[158] Lupinus_lerb_20_8_8132021_16.qgd           
+[159] Lupinus_lerb_20_9_8132021_15.qgd           
+[160] Lupinus_lerb_20_air_1_8122021_19.qgd       
+[161] Lupinus_npb_20_1_8122021_03.qgd            
+[162] Lupinus_npb_20_1_8132021_02.qgd            
+[163] Lupinus_npb_20_1_8142021_03.qgd            
+[164] Lupinus_npb_20_2_8122021_05.qgd            
+[165] Lupinus_npb_20_3_8122021_02.qgd            
+[166] Lupinus_npb_20_4_8112021_20.qgd            
+[167] Lupinus_npb_20_5_8112021_18.qgd            
+[168] Lupinus_npb_20_6_8112021_19.qgd            
+[169] Lupinus_npb_20_air_1_8122021_04.qgd        
+[170] mar1_08282019.qgd                          
+[171] mar10_08282019.qgd                         
+[172] mar2_08282019.qgd                          
+[173] mar3_08282019.qgd                          
+[174] mar4_08282019.qgd                          
+[175] mar5_08282019.qgd                          
+[176] mar6_08282019.qgd                          
+[177] mar7_08282019.qgd                          
+[178] mar8_08282019.qgd                          
+[179] mar9_08282019.qgd                          
+[180] marair1_08282019.qgd                       
+[181] marair2_08282019.qgd                       
+[182] mex1_08292019am.qgd                        
+[183] mex2_08292019am.qgd                        
+[184] mex3_08292019am.qgd                        
+[185] mex4_08292019am.qgd                        
+[186] mex5_08292019am.qgd                        
+[187] mex6_08292019pm.qgd                        
+[188] mexair1_08292019pm.qgd                     
+[189] thrips_elk_08292019am.qgd                  
+[190] ypo1_08292019pm.qgd                        
+[191] ypo2_08292019pm.qgd                        
+[192] ypo3_08302019am.qgd                        
+[193] ypo4_08302019am.qgd                        
+[194] ypoair1_08292019pm.qgd                     
+[195] JH_Lup_arg_ELK_23-5_912023_01.qgd          
+[196] JH_Lup_arg_ELK_23-6_912023_02.qgd          
+[197] JH_Lup_arg_ELK_23-7_912023_03.qgd          
+[198] JH_Lup_arg_ELK_23-8_912023_04.qgd          
+[199] JH_Lup_arg_ELK_23-9_912023_05.qgd          
+[200] JH_Lup_arg_ELK_23Air1_912023_07.qgd        
+[201] JH_Lup_arg_ELK_23Air2_912023_06.qgd        
+[202] JH_Lup_arg_ELK_ARNICA1_912023_08.qgd       
+[203] Nayeli_102_912023_23.qgd                   
+[204] Nayeli_15_912023_25.qgd                    
+[205] Nayeli_17_912023_13.qgd                    
+[206] Nayeli_19_912023_18.qgd                    
+[207] Nayeli_2_912023_12.qgd                     
+[208] Nayeli_35_912023_19.qgd                    
+[209] Nayeli_39_912023_22.qgd                    
+[210] Nayeli_42_912023_16.qgd                    
+[211] Nayeli_5_912023_09.qgd                     
+[212] Nayeli_59_912023_20.qgd                    
+[213] Nayeli_66_912023_21.qgd                    
+[214] Nayeli_85_912023_15.qgd                    
+[215] Nayeli_92_912023_24.qgd                    
+[216] Nayeli_94_912023_17.qgd                    
+[217] Nayeli_98_912023_11.qgd                    
+[218] Nayeli_99_912023_10.qgd                    
+[219] Nayeli_Amb1_912023_14.qgd                  
+[220] Blank1_8312023_21.qgd                      
+[221] JH_Lup_arg_CIN_23-10_8312023_04.qgd        
+[222] JH_Lup_arg_CIN_23-11_8312023_05.qgd        
+[223] JH_Lup_arg_CIN_23-12_8312023_06.qgd        
+[224] JH_Lup_arg_CIN_23-13_8312023_07.qgd        
+[225] JH_Lup_arg_CIN_23-14_8312023_08.qgd        
+[226] JH_Lup_arg_CIN_23-15_8312023_09.qgd        
+[227] JH_Lup_arg_CIN_23-6_8312023_01.qgd         
+[228] JH_Lup_arg_CIN_23-7_8312023_02.qgd         
+[229] JH_Lup_arg_CIN_23-8_8312023_03.qgd         
+[230] JH_Lup_arg_CIN_23Air1_8312023_10.qgd       
+[231] JH_Lup_arg_CIN_23Air2_8312023_11.qgd       
+[232] JH_Lup_arg_ERB_23-1_8312023_12.qgd         
+[233] JH_Lup_arg_ERB_23-2_8312023_13.qgd         
+[234] JH_Lup_arg_ERB_23-3_8312023_14.qgd         
+[235] JH_Lup_arg_ERB_23-4_8312023_15.qgd         
+[236] JH_Lup_arg_ERB_23-5_8312023_16.qgd         
+[237] JH_Lup_arg_ERB_23-6_8312023_17.qgd         
+[238] JH_Lup_arg_ERB_23-7_8312023_18.qgd         
+[239] JH_Lup_arg_ERB_23-8_8312023_19.qgd         
+[240] JH_Lup_arg_ERB_23-9_8312023_20.qgd         
+[241] JH_Lup_arg_ELK_23-1_912023_07.qgd          
+[242] JH_Lup_arg_ELK_23-2_912023_08.qgd          
+[243] JH_Lup_arg_ELK_23-3_912023_09.qgd          
+[244] JH_Lup_arg_ELK_23-4_912023_10.qgd          
+[245] JH_Lup_arg_ERB_23-10_912023_01.qgd         
+[246] JH_Lup_arg_ERB_23-11_912023_02.qgd         
+[247] JH_Lup_arg_ERB_23-12_912023_03.qgd         
+[248] JH_Lup_arg_ERB_23-13_912023_04.qgd         
+[249] JH_Lup_arg_ERB_23Air1_912023_06.qgd        
+[250] JH_Lup_arg_ERB_23Air2_912023_05.qgd        
+[251] Blank11_772025_10.qgd                      
+[252] JH_Lup_arg_BVB_24-10_772025_01.qgd         
+[253] JH_Lup_arg_BVB_24-11_772025_07.qgd         
+[254] JH_Lup_arg_BVB_24-13_772025_04.qgd         
+[255] JH_Lup_arg_BVB_24-15_772025_03.qgd         
+[256] JH_Lup_arg_BVB_24-19_772025_02.qgd         
+[257] JH_Lup_arg_BVB_24-5_772025_08.qgd          
+[258] JH_Lup_arg_BVB_24-7_772025_06.qgd          
+[259] JH_Lup_arg_BVB_24-8_772025_05.qgd          
+[260] JH_Lup_arg_BVB_24-8tube2_772025_09.qgd     
+[261] blank1_792025_01.qgd                       
+[262] DC_trapblank_145-25_792025_02.qgd          
+[263] DC_trapblank_234-25_792025_03.qgd          
+[264] JH_Lup_arg_BVB_24-11redo_792025_04.qgd     
+[265] JH_Lup_arg_BVB_24-26_792025_06.qgd         
+[266] JH_Lup_arg_BVB_24-Air2_792025_05.qgd       
+[267] blank1_792025_02.qgd                       
+[268] DC_trapblank_195_25_792025_26.qgd          
+[269] DC_trapblank_196_25_792025_27.qgd          
+[270] JH_Lup_arg_BVB_24-12_792025_02.qgd         
+[271] JH_Lup_arg_BVB_24-18_792025_07.qgd         
+[272] JH_Lup_arg_BVB_24-21_792025_11.qgd         
+[273] JH_Lup_arg_BVB_24-22_792025_08.qgd         
+[274] JH_Lup_arg_BVB_24-23_792025_05.qgd         
+[275] JH_Lup_arg_BVB_24-27_792025_13.qgd         
+[276] JH_Lup_arg_BVB_24-29_792025_12.qgd         
+[277] JH_Lup_arg_BVB_24-30_792025_03.qgd         
+[278] JH_Lup_arg_BVB_24-Air1_792025_10.qgd       
+[279] JH_Lup_arg_BVB_24-Air3_792025_06.qgd       
+[280] JH_Lup_arg_BVB_24-Air4_792025_04.qgd       
+[281] JH_Lup_arg_BVB_24-Air5_792025_09.qgd       
+[282] JH_Lup_arg_CIN23_23-14_792025_23.qgd       
+[283] JH_Lup_arg_CIN23_23-2_792025_14.qgd        
+[284] JH_Lup_arg_CIN23_23-6_792025_25.qgd        
+[285] JH_Lup_arg_CIN23_23-9_792025_19.qgd        
+[286] JH_Lup_arg_CIN23_24-13_792025_15.qgd       
+[287] JH_Lup_arg_CIN23_24-17_792025_21.qgd       
+[288] JH_Lup_arg_CIN23_24-18_792025_24.qgd       
+[289] JH_Lup_arg_CIN23_24-20_792025_18.qgd       
+[290] JH_Lup_arg_CIN23_24-4_792025_16.qgd        
+[291] JH_Lup_arg_CIN23_24-5_792025_20.qgd        
+[292] JH_Lup_arg_CIN23_24-9_792025_17.qgd        
+[293] JH_Lup_arg_CIN23_24-Air2_792025_22.qgd     
+[294] blank1_7102025_01.qgd                      
+[295] JH_Lup_arg_BVB_24-23redo_7102025_03.qgd    
+[296] JH_Lup_arg_BVB_24-27redo_7102025_04.qgd    
+[297] JH_Lup_arg_BVB_24-30redo_7102025_02.qgd    
+[298] JH_Lup_arg_CIN23_23-14redo_7102025_05.qgd  
+[299] JH_Lup_arg_CIN23_24-12_7102025_10.qgd      
+[300] JH_Lup_arg_CIN23_24-14_7102025_06.qgd      
+[301] JH_Lup_arg_CIN23_24-15_7102025_08.qgd      
+[302] JH_Lup_arg_CIN23_24-19_7102025_09.qgd      
+[303] JH_Lup_arg_CIN23_24-Air2_7102025_11.qgd    
+[304] JH_Lup_arg_CIN23_24-Pinflag_7102025_07.qgd 
+[305] blank1_7112025_01.qgd                      
+[306] JH_Lup_arg_BVB_24-23redo2_7112025_02.qgd   
+[307] JH_Lup_arg_LERB_24_23-1_7112025_04.qgd     
+[308] JH_Lup_arg_LERB_24_23-7_7112025_10.qgd     
+[309] JH_Lup_arg_LERB_24_23-9_7112025_14.qgd     
+[310] JH_Lup_arg_LERB_24_Air2_7112025_03.qgd     
+[311] JH_Lup_arg_LERB_24_Air4_7112025_05.qgd     
+[312] JH_Lup_arg_LERB_24-1_7112025_15.qgd        
+[313] JH_Lup_arg_LERB_24-18_7112025_17.qgd       
+[314] JH_Lup_arg_LERB_24-20_7112025_06.qgd       
+[315] JH_Lup_arg_LERB_24-21_7112025_12.qgd       
+[316] JH_Lup_arg_LERB_24-23_7112025_09.qgd       
+[317] JH_Lup_arg_LERB_24-31_7112025_07.qgd       
+[318] JH_Lup_arg_LERB_24-32_7112025_16.qgd       
+[319] JH_Lup_arg_LERB_24-5_7112025_08.qgd        
+[320] JH_Lup_arg_LERB_24-8_7112025_13.qgd        
+[321] JH_Lup_arg_LERB_24-9_7112025_11.qgd        
+[322] blank1_7122025_01.qgd                      
+[323] JH_Lup_arg_BVB_24-23redo3_7122025_02.qgd   
+[324] JH_Lup_arg_LERB_24_17_7122025_05.qgd       
+[325] JH_Lup_arg_LERB_24_19_7122025_04.qgd       
+[326] JH_Lup_arg_LERB_24_33_7122025_10.qgd       
+[327] JH_Lup_arg_LERB_24-11_7122025_08.qgd       
+[328] JH_Lup_arg_LERB_24-16_7122025_06.qgd       
+[329] JH_Lup_arg_LERB_24-25_7122025_09.qgd       
+[330] JH_Lup_arg_LERB_24-27_7122025_11.qgd       
+[331] JH_Lup_arg_LERB_24-Air1_7122025_07.qgd     
+[332] JH_Lup_arg_LERB_24-Air3redo2_7122025_03.qgd
+[333] JH_Lup_arg_LERB_24-Air5_7122025_12.qgd     
+[334] JH_Lup_arg_ELK_23-9redo_922023_05.qgd      
+[335] JH_Lup_arg_ELK_23Air1redo_922023_07.qgd    
+[336] Nayeli_100_922023_21.qgd                   
+[337] Nayeli_103_922023_23.qgd                   
+[338] Nayeli_111_922023_09.qgd                   
+[339] Nayeli_117_922023_16.qgd                   
+[340] Nayeli_15redo_922023_25.qgd                
+[341] Nayeli_22_922023_17.qgd                    
+[342] Nayeli_23_922023_26.qgd                    
+[343] Nayeli_28_922023_11.qgd                    
+[344] Nayeli_33_922023_04.qgd                    
+[345] Nayeli_38_922023_01.qgd                    
+[346] Nayeli_39redo_922023_22.qgd                
+[347] Nayeli_43_922023_19.qgd                    
+[348] Nayeli_49_922023_24.qgd                    
+[349] Nayeli_52_922023_15.qgd                    
+[350] Nayeli_6_922023_14.qgd                     
+[351] Nayeli_65_922023_28.qgd                    
+[352] Nayeli_68_922023_12.qgd                    
+[353] Nayeli_70_922023_18.qgd                    
+[354] Nayeli_74_922023_03.qgd                    
+[355] Nayeli_82_922023_08.qgd                    
+[356] Nayeli_86_922023_13.qgd                    
+[357] Nayeli_88_922023_06.qgd                    
+[358] Nayeli_91_922023_27.qgd                    
+[359] Nayeli_96_922023_20.qgd                    
+[360] Nayeli_99redo_922023_10.qgd                
+[361] Nayeli_blank_922023_02.qgd                 
+361 Levels: 4011_08282019.qgd 4012_08282019.qgd ... Nayeli_blank_922023_02.qgd</code></pre>
 <pre class="r"><code>lup.all &lt;- lup.data %&gt;% 
   #filter(str_detect(Filename, &quot;Lupinus|Blank&quot;)) %&gt;% 
   dcast(Filename~Name, sum, value.var=&quot;Area&quot;)
@@ -401,50 +679,54 @@ lup.km &lt;- tibble(FileName=rownames(lup.all)) %&gt;%
          Type =  str_detect(FileName, &quot;Blank&quot;) %&gt;% if_else(&quot;blank&quot;,&quot;sample&quot;) %&gt;% factor,
          #str_extract(FileName, &quot;Blank|Lupinus&quot;) %&gt;% fct_recode(blank=&quot;Blank&quot;,sample=&quot;Lupinus&quot;)
          nameBlank = Type==&quot;blank&quot;,
-         runYear = str_extract(FileName, &quot;2017|2018|2019|2020|2021&quot;) %&gt;%factor,#replace_na(&quot;2018&quot;) %&gt;%
+         runYear = str_extract(FileName, &quot;20[0-9][0-9]&quot;) %&gt;%factor,#replace_na(&quot;2018&quot;) %&gt;%
          Cluster = km$cluster) %&gt;% # Figure out which k-means clusters are the blanks
   mutate(kBlank = Cluster %in% (count(., nameBlank, Cluster) %&gt;% filter(nameBlank, n&gt;2) %&gt;% pull(Cluster)),
          Mixup = nameBlank != kBlank)
 
 lup.km %&gt;% count(kBlank, nameBlank)</code></pre>
-<pre><code># A tibble: 3 × 3
+<pre><code># A tibble: 4 × 3
   kBlank nameBlank     n
   &lt;lgl&gt;  &lt;lgl&gt;     &lt;int&gt;
-1 FALSE  FALSE       144
-2 TRUE   FALSE        42
-3 TRUE   TRUE          8</code></pre>
+1 FALSE  FALSE       213
+2 FALSE  TRUE          1
+3 TRUE   FALSE       138
+4 TRUE   TRUE          9</code></pre>
 <pre class="r"><code>#Blanks are in two clusters near other samples, so kmeans not working very well to distinguish them (unless high n)</code></pre>
 </div>
 <div id="read-metadata" class="section level1">
 <h1>Read metadata</h1>
 <pre class="r"><code># Moved this section from markes_sequence.R, code above that section outputs this Rdata:
-load(&quot;data/markes_sequence.rda&quot;)#../Inventory/
+#load(&quot;data/markes_sequence.rda&quot;)#../Inventory/ #old format for skips
+#now gcYEAR.csv files from the RMBL-GCMS project have the unannotated skip info 
+sequ.summary &lt;- list.files(&quot;./data/markes_sequence/&quot;, pattern=&quot;.csv&quot;, full.names=T) %&gt;% read_csv()
 
 lupinus &lt;- sequ.summary$FileName %in% lup.km$FileName # #str_detect(sequ.summary$FullName, &quot;Lupinus|lupinus|Lupine&quot;)
 lupinus.batchids &lt;- sequ.summary %&gt;% filter(lupinus) %&gt;% select(id) %&gt;% unique() %&gt;% na.omit() 
 lupgc &lt;- sequ.summary %&gt;% 
   filter(id %in% lupinus.batchids$id | lupinus) %&gt;% #get entire batch if it had a sample that matches 
   left_join(lup.km %&gt;% select(FileName, rowSum, nameBlank, Mixup, kBlank, Cluster), by=&quot;FileName&quot;) %&gt;% 
-  write_csv(&quot;output/lupinus_all_2017thru2021.csv&quot;)
+  write_csv(&quot;output/lupinus_all_2017thru2025.csv&quot;)
 
-pops &lt;- read_tsv(&quot;data/lupmeta2017thru2021 - pops.tsv&quot;) %&gt;% mutate(population=factor(population, levels=unique(population)))
+pops &lt;- read_tsv(&quot;data/lupmeta2017thru2025 - pops.tsv&quot;) %&gt;% mutate(population=factor(population, levels=unique(population)))
 popnames &lt;- pops %&gt;% select(pop,population) %&gt;% deframe()
 
-# Get metadata from filenames in &quot;RMBL GC-MS Data Inventory&quot;
-lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv&quot;, na=&quot;NA&quot;) %&gt;% 
-  filter(user==&quot;J Heiling : Lupinus&quot;) %&gt;% 
+# Get metadata from filenames in &quot;RMBL GCMS Data Inventory&quot;
+lupmeta &lt;- list.files(&quot;./data/markes_sequence/annotated&quot;, patter=&quot;.csv&quot;, full.names=T) %&gt;% map_dfr(~read_csv(.x, na=&quot;NA&quot;)) %&gt;% 
+#read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827annot.tsv&quot;, na=&quot;NA&quot;) %&gt;% 
+  filter(user==&quot;J Heiling : Lupinus&quot;) %&gt;% #TODO not going to work since user is based on filename, not sample
   distinct(FileName, .keep_all = TRUE) %&gt;% 
   mutate(sample = na_if(sample,&quot;&quot;) %&gt;% coalesce(FileName) %&gt;% str_remove(&quot;.qgd&quot;)) %&gt;% 
   select(index, FileName, batch, sample) %&gt;% 
   mutate(type = ifelse(str_detect(sample,&quot;air&quot;), &quot;ambient&quot;, &quot;floral&quot;),
          sample_grid = str_remove(sample, &quot;air_&quot;), scented=NA_character_) %&gt;% 
   separate(sample_grid, into=c(&quot;species&quot;,&quot;pop&quot;,&quot;sample_year&quot;,&quot;plant&quot;,&quot;rundate&quot;,&quot;GCn&quot;), remove=F) %&gt;% 
-  full_join(lupgc %&gt;% distinct(FileName, .keep_all = T), by=&quot;FileName&quot;) %&gt;% 
+  full_join(lupgc %&gt;% distinct(FileName, .keep_all = T) %&gt;% select(-sample), by=&quot;FileName&quot;) %&gt;% #was creating sample.x, sample.y so drop that column
   # lupmeta %&gt;% select(index, FileName, sample, rowSum, Cluster, type, pop, sample_year, plant, rundate, GCn) %&gt;% 
   #   drop_na(Cluster) %&gt;% 
   #   separate(FileName, into=paste0(&quot;fn&quot;,1:8), remove=F, fill=&quot;right&quot;) %&gt;% 
   #   write_csv(&quot;output/lupmeta.csv&quot;, na=&quot;&quot;) #fill in metadata for old samples (2017-2019)
-  rows_update(read_tsv(&quot;data/lupmeta2017thru2021 - lupmeta.tsv&quot;, col_types=&quot;cccccccccccccccccccc&quot;) %&gt;% 
+  rows_update(read_tsv(&quot;data/lupmeta2017thru2025 - lupmeta.tsv&quot;, col_types=&quot;cccccccccccccccccccc&quot;) %&gt;% 
                 #filter(is.na(index)) %&gt;% #just dropped this-restricts to 2017-2019
                 select(FileName, type, pop, sample_year, plant, scented, rundate), by=&quot;FileName&quot;) %&gt;% 
   mutate(index = coalesce(index, 10000 + 1:nrow(.)),
@@ -454,58 +736,49 @@ lupmeta &lt;- read_tsv(&quot;data/RMBL GC-MS Data Inventory - maxfield_all210827
   filter(type %in% c(&quot;ambient&quot;,&quot;floral&quot;)) %&gt;% #exclude leaf controls and insects
   left_join(pops) %&gt;% mutate(pop = factor(pop, levels=pops$pop))
 
-with(lupmeta, table(population, sample_year))</code></pre>
+with(lupmeta, table(population, sample_year))#sample_years are rough - split from filename</code></pre>
 <pre><code>                              sample_year
-population                     17 18 19 20
-  Brush Creek Trailhead         0  0  0  9
-  East River Bridge             0  0 19 10
-  Gothic Parking Lot            5  0  0  0
-  Burro Park                    0  0  0  9
-  Emerald Lake                  0  0  0 11
-  Marmot Mesa                   0  0 12  0
-  Bellview Bench                0 18  5 10
-  Mexican Cut Turnoff           0  0  7  0
-  Elko Park                     0  0  9  0
-  401                           0  0  9  0
-  North Pole Basin              4  0  0  9
-  Currant Hill                  0  0  0  5
-  Bellview Corner               0  0  5  0
-  Bellview Wilderness Boundary  0  0 10  0
-  Yule Pass Trailhead           0  0  5  0
-  Cinnamon                      0  0  8  0</code></pre>
+population                     17 18 19 20 23 24
+  Brush Creek Trailhead         0  0  0  9  0  0
+  East River Bridge             0  0 19 10 14 26
+  Gothic Parking Lot            5  0  0  0  0  0
+  Burro Park                    0  0  0  9  0  0
+  Emerald Lake                  0  0  0 10  0  0
+  Marmot Mesa                   0  0 12  0  0  0
+  Bellview Bench                0 18  4 10  0 24
+  Mexican Cut Turnoff           0  0  7  0  0  0
+  Elko Park                     0  0  9  0 10  0
+  401                           0  0  9  0  0  0
+  North Pole Basin              4  0  0  7  0  0
+  Currant Hill                  0  0  0  5  0  0
+  Bellview Corner               0  0  5  0  0  0
+  Bellview Wilderness Boundary  0  0 10  0  0  0
+  Yule Pass Trailhead           0  0  5  0  0  0
+  Cinnamon                      0  0  8  0 11 17</code></pre>
 <pre class="r"><code>lupmeta %&gt;% filter(type==&quot;floral&quot;) %&gt;% count(population, sample_year, scented) %&gt;% pivot_wider(names_from=scented,values_from=n)</code></pre>
-<pre><code># A tibble: 20 × 4
-   population                   sample_year   `0`   `1`
-   &lt;fct&gt;                        &lt;chr&gt;       &lt;int&gt; &lt;int&gt;
- 1 Brush Creek Trailhead        20              7     1
- 2 East River Bridge            19             15    NA
- 3 East River Bridge            20              9    NA
- 4 Gothic Parking Lot           17              5    NA
- 5 Burro Park                   20              4     4
- 6 Emerald Lake                 20              3     5
- 7 Marmot Mesa                  19             10    NA
- 8 Bellview Bench               18              9     7
- 9 Bellview Bench               19              2     2
-10 Bellview Bench               20              4     5
-11 Mexican Cut Turnoff          19              3     3
-12 Elko Park                    19             NA     8
-13 401                          19              4     3
-14 North Pole Basin             17             NA     4
-15 North Pole Basin             20             NA     8
-16 Currant Hill                 20              2     2
-17 Bellview Corner              19              1     3
-18 Bellview Wilderness Boundary 19              2     7
-19 Yule Pass Trailhead          19             NA     4
-20 Cinnamon                     19             NA     7</code></pre>
+<pre><code># A tibble: 26 × 5
+   population            sample_year   `0`   `1`  `NA`
+   &lt;fct&gt;                 &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 Brush Creek Trailhead 20              7     1    NA
+ 2 East River Bridge     19             15    NA    NA
+ 3 East River Bridge     20              9    NA    NA
+ 4 East River Bridge     23             11     1    NA
+ 5 East River Bridge     24             NA    NA    21
+ 6 Gothic Parking Lot    17              5    NA    NA
+ 7 Burro Park            20              4     4    NA
+ 8 Emerald Lake          20              3     5    NA
+ 9 Marmot Mesa           19             10    NA    NA
+10 Bellview Bench        18              9     7    NA
+# ℹ 16 more rows</code></pre>
 <pre class="r"><code>lup &lt;- lup.all[lupmeta$FileName,]
 rownames(lup) &lt;- rownames(lupmeta) &lt;- lupmeta$index
-save(lup, lupmeta, file=&quot;output/lupinus_volatiles_2017thru2021.rda&quot;)</code></pre>
+save(lup, lupmeta, file=&quot;output/lupinus_volatiles_2017thru2025.rda&quot;)</code></pre>
 </div>
 <div id="compare-all-samples-and-blanks" class="section level1">
 <h1>Compare all samples and blanks</h1>
 <pre class="r"><code>lup.nmds &lt;- metaMDS(sqrt(lup.cut), dist=&quot;bray&quot;, autotransform = FALSE, trace=F)
 lup.nmds.points &lt;- fortify(lup.nmds) %&gt;% as_tibble() %&gt;% 
-  filter(Score==&quot;sites&quot;) %&gt;% left_join(lup.km, by=c(&quot;Label&quot;=&quot;FileName&quot;))
+  filter(score==&quot;sites&quot;) %&gt;% left_join(lup.km, by=c(&quot;label&quot;=&quot;FileName&quot;))
 
 nmds.plot &lt;- ggplot(lup.nmds.points, aes(x=NMDS1, y=NMDS2, shape=Type)) + theme_classic()
 nmds.plot + geom_point(aes(color=log(rowSum)), size=2) + scale_color_viridis_c()</code></pre>
@@ -523,31 +796,31 @@ Permutation: free
 Number of permutations: 999
 
 Model: capscale(formula = lup.cut ~ nameBlank, data = lup.km, distance = &quot;bray&quot;, metaMDSdist = F)
-          Df SumOfSqs      F Pr(&gt;F)  
-Model      1    0.580 1.8799  0.056 .
-Residual 192   59.201                
+          Df SumOfSqs      F Pr(&gt;F)   
+Model      1    0.773 2.3049  0.004 **
+Residual 359  120.430                 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble() %&gt;% 
-  filter(Score==&quot;sites&quot;) %&gt;% left_join(lup.km, by=c(&quot;Label&quot;=&quot;FileName&quot;))
+  filter(score==&quot;sites&quot;) %&gt;% left_join(lup.km, by=c(&quot;label&quot;=&quot;FileName&quot;))
 ggplot(lup.cap.points, aes(x=CAP1, y=MDS1, alpha=nameBlank)) + geom_point() +
   scale_alpha_manual(values=c(0.2,1))</code></pre>
 <p><img src="plots/blanks-5.svg" width="960" /></p>
-<pre class="r"><code>cap.chems &lt;- fortify(lup.cap) %&gt;% as_tibble() %&gt;% filter(Score==&quot;species&quot;) %&gt;% arrange(desc(CAP1))</code></pre>
+<pre class="r"><code>cap.chems &lt;- fortify(lup.cap) %&gt;% as_tibble() %&gt;% filter(score==&quot;species&quot;) %&gt;% arrange(desc(CAP1))</code></pre>
 </div>
 <div id="compare-flowers-and-ambient-controls" class="section level1">
 <h1>Compare flowers and ambient controls</h1>
 <pre class="r"><code>with(lupmeta, table(type, sample_year))</code></pre>
 <pre><code>         sample_year
-type      17 18 19 20
-  ambient  0  2 15  9
-  floral   9 16 74 54</code></pre>
+type      17 18 19 20 23 24
+  ambient  0  2 15  8  5 12
+  floral   9 16 73 52 30 55</code></pre>
 <pre class="r"><code>lup.nmds.noblanks &lt;- metaMDS(lup[,colSums(lup)&gt;1e8], distance=&quot;bray&quot;, autotransform=F, trace=F)
 lup.nmds.points &lt;-  as_tibble(fortify(lup.nmds.noblanks))
-lup.nmds.points %&gt;% filter(Score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
+lup.nmds.points %&gt;% filter(score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
 ggplot(aes(x=NMDS1, y=NMDS2)) + 
   geom_label(aes(label=sample, color=type)) +
-  geom_text(data= lup.nmds.points %&gt;% filter(Score==&quot;species&quot;), aes(label=Label))</code></pre>
+  geom_text(data= lup.nmds.points %&gt;% filter(score==&quot;species&quot;), aes(label=label))</code></pre>
 <p><img src="plots/ambients-1.svg" width="960" /></p>
 <pre class="r"><code>lup.cap.noblanks &lt;- capscale(lup[,colSums(lup)&gt;1e8] ~ type, distance=&quot;bray&quot;, metaMDSdist = F, data=lupmeta)
 anova(lup.cap.noblanks, by=&quot;term&quot;)</code></pre>
@@ -558,13 +831,13 @@ Number of permutations: 999
 
 Model: capscale(formula = lup[, colSums(lup) &gt; 1e+08] ~ type, data = lupmeta, distance = &quot;bray&quot;, metaMDSdist = F)
           Df SumOfSqs      F Pr(&gt;F)
-type       1    0.405 1.3329  0.217
-Residual 177   53.847              </code></pre>
+type       1    0.477 1.5226  0.112
+Residual 275   86.232              </code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  as_tibble(fortify(lup.cap.noblanks))
-lup.cap.points %&gt;% filter(Score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
+lup.cap.points %&gt;% filter(score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) %&gt;% 
   ggplot(aes(x=CAP1, y=MDS1)) + 
   geom_label(aes(label=sample, color=paste(type, sample_year))) +
-  geom_text(data= lup.cap.points %&gt;% filter(Score==&quot;species&quot;), aes(label=Label))</code></pre>
+  geom_text(data= lup.cap.points %&gt;% filter(score==&quot;species&quot;), aes(label=label))</code></pre>
 <p><img src="plots/ambients-2.svg" width="960" /></p>
 </div>
 <div id="filtering" class="section level1">
@@ -584,13 +857,10 @@ chemsf &lt;- chems %&gt;%
   filter_RT(2, 17) %&gt;% 
   filter_match(0.8) %&gt;% 
   filter_freq(0.1, group = FALSE) %&gt;% 
-  filter_contaminant(cont.list = c(&quot;Decanoic acid, silver(1+) salt&quot;,
-                                   &quot;1,1,1,3,5,7,9,11,11,11-Decamethyl-5-(trimethylsiloxy)hexasiloxane&quot;,
-                                   &quot;Oxirane, decyl-&quot;,&quot;Tetradecane, 4-methyl-&quot;, &quot;Octadecane, 1-chloro-&quot;,
-                                   &quot;Cyclobutane, 1,2-bis(1-methylethenyl)-, trans-&quot;, 
-                                   &quot;Hexyl chloroformate&quot;, &quot;Trifluoroacetic acid,n-tridecyl ester&quot;,
-                                   &quot;Hexadecane, 2,6,11,15-tetramethyl-&quot;,&quot;Decane, 2,3,5,8-tetramethyl-&quot;,
-                                   &quot;2-Pentanol, 3-chloro-4-methyl-, (R*,R*)-(.+/-.)-&quot;)) %&gt;% 
+  filter_contaminant(cont.list = c(&quot;Acetic acid, trichloro-, nonyl ester&quot;,
+                                   &quot;2-Pentanol, 3-chloro-4-methyl-, (R*,R*)-(.+/-.)-&quot;,
+                                   &quot;Hexyl chloroformate&quot;,
+                                   &quot;Oxirane, decyl-&quot;)) %&gt;% 
   filter_area(min_maximum = 1e6) %&gt;% 
   filter_ambient_ratio(vol.all, metadata, ratio = 4) %&gt;%
   filter_ambient_ttest(vol.all, metadata, alpha = 0.05, adjust = &quot;fdr&quot;) %&gt;%
@@ -618,7 +888,7 @@ vol &lt;- sweep(vol, 2, lupchems2$area_per_ng, FUN = &#39;/&#39;)
 vol &lt;- vol / (40/60 + 20/60) # divide by equilibration + pumping time in hours (40+20 min)
 meta$Total &lt;- rowSums(vol)
 
-save(vol, meta, chm, file=&quot;output/lupinus_filtered_2017thru2021.rda&quot;)
+save(vol, meta, chm, file=&quot;output/lupinus_filtered_2017thru2025.rda&quot;)
 write_csv(vol, &quot;output/lupinus_vol.csv&quot;)
 write_csv(meta, &quot;output/lupinus_meta.csv&quot;)
 write_csv(chm, &quot;output/lupinus_chm.csv&quot;)</code></pre>
@@ -635,11 +905,11 @@ write_csv(chm, &quot;output/lupinus_chm.csv&quot;)</code></pre>
 <h1>NMDS of filtered volatiles</h1>
 <pre class="r"><code>lup.nmds &lt;- metaMDS(sqrt(vol), dist=&quot;bray&quot;, autotransform = FALSE, trace=F)
 lup.nmds.points &lt;-  fortify(lup.nmds) %&gt;% as_tibble()
-lup.nmds.samples &lt;- lup.nmds.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
-lup.nmds.chems &lt;- lup.nmds.points %&gt;% filter(Score==&quot;species&quot;)
+lup.nmds.samples &lt;- lup.nmds.points %&gt;% filter(score==&quot;sites&quot;) %&gt;% bind_cols(meta)
+lup.nmds.chems &lt;- lup.nmds.points %&gt;% filter(score==&quot;species&quot;)
 
 nmds.plot &lt;- ggplot(lup.nmds.samples, aes(x=NMDS1, y=NMDS2)) + 
-  geom_text(data=lup.nmds.chems, aes(label=Label)) + theme_classic() #alpha=chm$freq.floral
+  geom_text(data=lup.nmds.chems, aes(label=label)) + theme_classic() #alpha=chm$freq.floral
 
 nmds.plot + geom_label(aes(label=paste0(pop, plant), color=pop)) + guides(color=&quot;none&quot;)</code></pre>
 <p><img src="plots/nmds_filtered-1.svg" width="960" /></p>
@@ -669,27 +939,25 @@ nmds.plot + geom_label(aes(label=paste0(pop, plant), color=pop)) + guides(color=
 lup.cap &lt;- capscale(sqrt(vol[twoyears,]) ~ sample_year, dist=&quot;bray&quot;, data=meta[twoyears,])
 #View(lup.cap$CCA$v)
 lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
-lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta[twoyears,])
-lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(score==&quot;sites&quot;) %&gt;% bind_cols(meta[twoyears,])
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(score==&quot;species&quot;)
 ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_point(aes(color=sample_year)) + 
-  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
+  geom_text(data=lup.cap.chems, aes(label=label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
 <p><img src="plots/cap_year-1.svg" width="960" /></p>
 </div>
 <div id="permanova-of-populations" class="section level1">
 <h1>PERMANOVA of populations</h1>
 <pre class="r"><code>adonis2(sqrt(vol) ~ sample_year + population, data=meta)</code></pre>
 <pre><code>Permutation test for adonis under reduced model
-Terms added sequentially (first to last)
 Permutation: free
 Number of permutations: 999
 
 adonis2(formula = sqrt(vol) ~ sample_year + population, data = meta)
-             Df SumOfSqs      R2      F Pr(&gt;F)    
-sample_year   3    4.069 0.10812 6.9435  0.001 ***
-population   15    7.782 0.20677 2.6559  0.001 ***
-Residual    132   25.784 0.68511                  
-Total       150   37.635 1.00000                  
+          Df SumOfSqs      R2      F Pr(&gt;F)    
+Model     20   19.401 0.28584 4.2226  0.001 ***
+Residual 211   48.473 0.71416                  
+Total    231   67.874 1.00000                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -697,27 +965,33 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <h1>CAP of populations</h1>
 <pre class="r"><code>lup.cap &lt;- capscale(sqrt(vol) ~ sample_year + population, dist=&quot;bray&quot;, data=meta)
 lup.cap</code></pre>
-<pre><code>Call: capscale(formula = sqrt(vol) ~ sample_year + population, data =
-meta, distance = &quot;bray&quot;)
+<pre><code>
+Call: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta,
+distance = &quot;bray&quot;)
 
-              Inertia Proportion Rank
-Total         37.6354     1.0000     
-Constrained   12.6527     0.3362   18
-Unconstrained 32.8545     0.8730   63
-Imaginary     -7.8718    -0.2092   87
-Inertia is squared Bray distance 
-Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
+               Inertia Proportion Rank
+Total          67.8742                
+RealTotal      86.9148     1.0000     
+Constrained    20.8664     0.2401   20
+Unconstrained  66.0484     0.7599   83
+Imaginary     -19.0406                
+
+Inertia is squared Bray distance
+
+-- NOTE:
+Species scores projected from &#39;sqrt&#39;
+Species scores projected from &#39;vol&#39;
 
 Eigenvalues for constrained axes:
  CAP1  CAP2  CAP3  CAP4  CAP5  CAP6  CAP7  CAP8  CAP9 CAP10 CAP11 CAP12 CAP13 
-4.381 2.693 1.272 0.823 0.744 0.662 0.431 0.288 0.245 0.229 0.198 0.148 0.134 
-CAP14 CAP15 CAP16 CAP17 CAP18 
-0.126 0.104 0.091 0.069 0.015 
+7.248 4.463 1.636 1.540 1.197 1.016 0.767 0.682 0.474 0.392 0.309 0.249 0.182 
+CAP14 CAP15 CAP16 CAP17 CAP18 CAP19 CAP20 
+0.171 0.138 0.120 0.089 0.083 0.069 0.040 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-4.842 3.703 2.626 2.287 1.836 1.586 1.411 1.184 
-(Showing 8 of 63 unconstrained eigenvalues)</code></pre>
+7.271 5.844 4.934 4.227 3.821 3.052 2.667 2.391 
+(Showing 8 of 83 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -726,17 +1000,17 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta, distance = &quot;bray&quot;)
              Df SumOfSqs      F Pr(&gt;F)    
-sample_year   3    2.473 3.3124  0.001 ***
-population   15    8.499 2.2763  0.001 ***
-Residual    132   32.855                  
+sample_year   5    8.169 5.2196  0.001 ***
+population   15    8.901 1.8957  0.001 ***
+Residual    211   66.048                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
-lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
-lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(score==&quot;sites&quot;) %&gt;% bind_cols(meta)
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(score==&quot;species&quot;)
 
 ggplot(lup.cap.samples, aes(x=CAP1, y=CAP2)) + 
-  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) +
+  geom_text(data=lup.cap.chems, aes(label=label, alpha=chm$freq.floral)) +
   geom_label(aes(label=paste0(pop, plant), color=sample_year)) + theme_classic()</code></pre>
 <p><img src="plots/cap_pop-1.svg" width="960" /></p>
 <pre class="r"><code>ggplot(lup.cap.samples, aes(x=CAP1, y=CAP2)) + 
@@ -763,56 +1037,64 @@ ggplot(enframe(topamounts) %&gt;% mutate(name=fct_reorder(name, value)), aes(y=n
 </div>
 <div id="cap-of-unscented" class="section level1">
 <h1>CAP of un/scented</h1>
-<pre class="r"><code>lup.cap &lt;- capscale(sqrt(vol) ~ scented, dist=&quot;bray&quot;, data=meta)
+<pre class="r"><code>vol.sniff &lt;- vol[!is.na(meta$scented),]
+meta.sniff &lt;- meta[!is.na(meta$scented),]
+lup.cap &lt;- capscale(sqrt(vol.sniff) ~ scented, dist=&quot;bray&quot;, data=meta.sniff)
 lup.cap</code></pre>
-<pre><code>Call: capscale(formula = sqrt(vol) ~ scented, data = meta, distance =
-&quot;bray&quot;)
+<pre><code>
+Call: capscale(formula = sqrt(vol.sniff) ~ scented, data = meta.sniff,
+distance = &quot;bray&quot;)
 
-               Inertia Proportion Rank
-Total         37.63542    1.00000     
-Constrained    2.69343    0.07157    1
-Unconstrained 42.81376    1.13759   63
-Imaginary     -7.87177   -0.20916   87
-Inertia is squared Bray distance 
-Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
+                Inertia Proportion Rank
+Total          45.81861                
+RealTotal      57.25024    1.00000     
+Constrained     2.46808    0.04311    1
+Unconstrained  54.78217    0.95689   69
+Imaginary     -11.43164                
+
+Inertia is squared Bray distance
+
+-- NOTE:
+Species scores projected from &#39;sqrt&#39;
+Species scores projected from &#39;vol.sniff&#39;
 
 Eigenvalues for constrained axes:
   CAP1 
-2.6934 
+2.4681 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-6.357 5.435 3.249 2.698 2.155 1.955 1.818 1.759 
-(Showing 8 of 63 unconstrained eigenvalues)</code></pre>
+7.520 6.635 3.739 3.185 2.898 2.686 2.506 1.929 
+(Showing 8 of 69 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
 Permutation: free
 Number of permutations: 999
 
-Model: capscale(formula = sqrt(vol) ~ scented, data = meta, distance = &quot;bray&quot;)
+Model: capscale(formula = sqrt(vol.sniff) ~ scented, data = meta.sniff, distance = &quot;bray&quot;)
           Df SumOfSqs      F Pr(&gt;F)    
-scented    1    2.693 9.3736  0.001 ***
-Residual 149   42.814                  
+scented    1    2.468 7.9292  0.001 ***
+Residual 176   54.782                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
-lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
-lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(score==&quot;sites&quot;) %&gt;% bind_cols(meta.sniff)
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(score==&quot;species&quot;)
 
 ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_text(aes(label=paste0(pop, plant), color=scented)) +
-  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
+  geom_text(data=lup.cap.chems, aes(label=label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
 <p><img src="plots/cap_scented-1.svg" width="960" /></p>
 <pre class="r"><code>ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_point(aes(color=rowSum, shape=scented), size=3) +
-  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral))+ scale_color_viridis_c(&quot;Total peak area&quot;) + theme_classic()</code></pre>
+  geom_text(data=lup.cap.chems, aes(label=label, alpha=chm$freq.floral))+ scale_color_viridis_c(&quot;Total peak area&quot;) + theme_classic()</code></pre>
 <p><img src="plots/cap_scented-2.svg" width="960" /></p>
-<pre class="r"><code>ggplot(cbind(meta, vol), aes(x=pop, y=`(E)-b-ocimene`, color=scented)) + 
+<pre class="r"><code>ggplot(cbind(meta.sniff, vol.sniff), aes(x=pop, y=`(E)-b-ocimene`, color=scented)) + 
   geom_boxplot(position=position_dodge(width=0.9))+
   geom_point(position=position_dodge(width=0.9), size=3) +  scale_y_sqrt() + theme_minimal()</code></pre>
 <p><img src="plots/cap_scented-3.svg" width="960" /></p>
-<pre class="r"><code>ggplot(cbind(meta, vol), aes(x=pop, y=rowSums(vol), color=scented)) +   geom_boxplot(position=position_dodge(width=0.9))+
+<pre class="r"><code>ggplot(cbind(meta.sniff, vol.sniff), aes(x=pop, y=rowSums(vol.sniff), color=scented)) +   geom_boxplot(position=position_dodge(width=0.9))+
   geom_point(position=position_dodge(width=0.9), size=3)+  scale_y_sqrt(&quot;Total emissions (ng/hr)&quot;) + theme_minimal() </code></pre>
 <p><img src="plots/cap_scented-4.svg" width="960" /></p>
 </div>
@@ -820,25 +1102,30 @@ ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) +
 <h1>CAP of elevation</h1>
 <pre class="r"><code>lup.cap &lt;- capscale(sqrt(vol) ~ elev, dist=&quot;bray&quot;, data=meta)
 lup.cap</code></pre>
-<pre><code>Call: capscale(formula = sqrt(vol) ~ elev, data = meta, distance =
-&quot;bray&quot;)
+<pre><code>
+Call: capscale(formula = sqrt(vol) ~ elev, data = meta, distance = &quot;bray&quot;)
 
-               Inertia Proportion Rank
-Total         37.63542    1.00000     
-Constrained    2.40241    0.06383    1
-Unconstrained 43.10478    1.14532   63
-Imaginary     -7.87177   -0.20916   87
-Inertia is squared Bray distance 
-Species scores projected from &#39;sqrt&#39; &#39;vol&#39; 
+                Inertia Proportion Rank
+Total          67.87417                
+RealTotal      86.91477    1.00000     
+Constrained     2.65302    0.03052    1
+Unconstrained  84.26174    0.96948   83
+Imaginary     -19.04060                
+
+Inertia is squared Bray distance
+
+-- NOTE:
+Species scores projected from &#39;sqrt&#39;
+Species scores projected from &#39;vol&#39;
 
 Eigenvalues for constrained axes:
-  CAP1 
-2.4024 
+ CAP1 
+2.653 
 
 Eigenvalues for unconstrained axes:
- MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-7.016 5.366 3.132 2.704 2.182 1.878 1.818 1.749 
-(Showing 8 of 63 unconstrained eigenvalues)</code></pre>
+  MDS1   MDS2   MDS3   MDS4   MDS5   MDS6   MDS7   MDS8 
+11.114  8.408  5.866  5.508  4.380  3.744  3.108  2.950 
+(Showing 8 of 83 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -847,17 +1134,17 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol) ~ elev, data = meta, distance = &quot;bray&quot;)
           Df SumOfSqs      F Pr(&gt;F)    
-elev       1    2.402 8.3044  0.001 ***
-Residual 149   43.105                  
+elev       1    2.653 7.2417  0.001 ***
+Residual 230   84.262                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
-lup.cap.samples &lt;- lup.cap.points %&gt;% filter(Score==&quot;sites&quot;) %&gt;% bind_cols(meta)
-lup.cap.chems &lt;- lup.cap.points %&gt;% filter(Score==&quot;species&quot;)
+lup.cap.samples &lt;- lup.cap.points %&gt;% filter(score==&quot;sites&quot;) %&gt;% bind_cols(meta)
+lup.cap.chems &lt;- lup.cap.points %&gt;% filter(score==&quot;species&quot;)
 
 ggplot(lup.cap.samples, aes(x=CAP1, y=MDS1)) + 
   geom_text(aes(label=paste0(pop, plant), color=elev)) + scale_color_viridis_c()+ 
-  geom_text(data=lup.cap.chems, aes(label=Label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
+  geom_text(data=lup.cap.chems, aes(label=label, alpha=chm$freq.floral)) + theme_classic()</code></pre>
 <p><img src="plots/cap_elevation-1.svg" width="960" /></p>
 <pre class="r"><code>ggplot(cbind(meta, vol), aes(x=elev, y=`(E)-b-ocimene`, color=sample_year, shape=scented, linetype=scented)) + geom_point() + 
   stat_summary(fun=mean, geom=&quot;line&quot;)+ stat_summary(fun=mean, geom=&quot;point&quot;, size=4)+
