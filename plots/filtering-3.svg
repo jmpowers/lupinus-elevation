@@ -682,7 +682,7 @@
 <circle cx='326.74' cy='529.65' r='3.04' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='429.13' cy='313.27' r='10.63' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='309.63' cy='498.56' r='5.75' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
-<circle cx='388.11' cy='372.42' r='4.69' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
+<circle cx='388.11' cy='372.42' r='4.69' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
 <circle cx='304.57' cy='598.27' r='4.51' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='316.33' cy='632.02' r='2.84' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='397.71' cy='406.97' r='8.98' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -1692,7 +1692,7 @@
 <text x='326.74' y='533.59' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Hexyl octyl ether</text>
 <text x='429.13' y='317.21' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Homosalate</text>
 <text x='309.63' y='502.50' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Hydracrylic acid, monoanhydride with 1-butaneboronic acid, cyclic ester</text>
-<text x='388.11' y='376.36' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Indole</text>
+<text x='388.11' y='376.36' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";'>indole</text>
 <text x='304.57' y='602.21' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Isobutyl acetate</text>
 <text x='316.33' y='635.96' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Isopropoxycarbamic acid, ethyl ester</text>
 <text x='397.71' y='410.91' text-anchor='middle' style='font-size: 11.00px;fill: none; font-family: "Arial";'>Isopropyl myristate</text>
@@ -2098,7 +2098,7 @@
 <line x1='574.48' y1='475.59' x2='591.76' y2='458.31' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <text x='597.24' y='452.82' style='font-size: 8.80px; font-family: "Arial";'>Minimum ratio</text>
 <text x='597.24' y='470.10' style='font-size: 8.80px; font-family: "Arial";'>Equal</text>
-<text x='48.05' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 43/5855 compounds included</text>
+<text x='48.05' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 44/5855 compounds included</text>
 </g>
 </g>
 </svg>

@@ -200,11 +200,11 @@ lup.cap.points %>% filter(score=="sites")%>% bind_cols(lupmeta) %>%
 
 ```{r filtering}
 lup.data.cut <- lup.data[lup.data$Filename %in% lupmeta$FileName,]
-lup.data.cut$Filename <- lupmeta$sample[match(lup.data.cut$Filename, lupmeta$FileName)]
+#lup.data.cut$Filename <- lupmeta$sample[match(lup.data.cut$Filename, lupmeta$FileName)] #don't use sample!
 lup.data.cut <- lup.data.cut[lup.data.cut$Name != "", ]
 lup.data.cut$Name <- droplevels(lup.data.cut$Name)
 longdata <- load_longdata(lup.data.cut, sample="Filename", RT="Ret.Time", name="Name", area="Area", match = "SI", maxmatch=100)
-metadata <- load_metadata(lupmeta, sample="sample", type="type")
+metadata <- load_metadata(lupmeta %>% select(-sample), sample="FileName", type="type")#was sample="sample"
 metadata$type <- factor(metadata$type)
 vol.all <- make_sampletable(longdata, metadata)
 chems <- make_chemtable(longdata, metadata)
@@ -222,8 +222,8 @@ chemsf <- chems %>%
   filter_ambient_ratio(vol.all, metadata, ratio = 4) %>%
   filter_ambient_ttest(vol.all, metadata, alpha = 0.05, adjust = "fdr") %>%
   combine_filters() 
-chemsf$filter_final <- with(chemsf, filter_RT == "OK" & filter_match=="OK" & filter_freq.floral == "OK" & 
-                              filter_contaminant == "OK" & filter_area == "OK" & filter_ambient_ratio == "OK")
+chemsf$filter_final <- with(chemsf, (filter_RT == "OK" & filter_match=="OK" & filter_freq.floral == "OK" & 
+                              filter_contaminant == "OK" & filter_area == "OK" & filter_ambient_ratio == "OK") | name=="indole")
 
 plot_filters(chemsf, option="prop")
 plot_filters(chemsf, option="rarity")
@@ -246,6 +246,65 @@ save(vol, meta, chm, file="output/lupinus_filtered_2017thru2025.rda")
 write_csv(vol, "output/lupinus_vol.csv")
 write_csv(meta, "output/lupinus_meta.csv")
 write_csv(chm, "output/lupinus_chm.csv")
+```
+
+```{r diverse, eval=FALSE}
+tointegrate <- colnames(vol)
+best <- list()
+i <- 1
+vol.left <- vol[,tointegrate]^(1/4) # halfway between areas and presence-absence
+while(ncol(vol.left)>0) {
+  print(dim(vol.left))
+  best[[i]] <- which.max(rowSums(vol.left))
+  vol.left <- vol.left[ , !decostand(vol.left[best[[i]],], method="pa"), drop=FALSE]
+  i <- i+1
+}
+(best.vol <- as.data.frame(t(vol[unlist(best),tointegrate])))
+```
+
+# Quant
+
+```{r quant}
+source("read_shimadzu.R")
+quant.full <- read.shimadzu.quant("./data/lupinus_2017_2025_quant35.txt") %>%
+  mutate(Name = trimws(Name), Area=replace_na(Area, 0)) %>%
+  distinct(Filename, Name, .keep_all=T)
+
+quant.full %>% drop_na(Ret.Time) %>% mutate(Name = fct_reorder(Name, Ret.Time)) %>%
+  ggplot(aes(x=Ret.Time, y=Name)) + geom_jitter(width=0, size=0.2)
+quant.full %>% drop_na(Ret.Time) %>% group_by(Name) %>% mutate(RT.median = median(Ret.Time)) %>%
+  ggplot(aes(x=Ret.Time-RT.median, y=Name, size=Area)) + geom_jitter(width=0)
+
+quant <- quant.full %>% select(Dirname, Filename, Name, Area) %>%
+  mutate(Dirname = fct_relabel(Dirname, str_remove, "C:/GCMSsolution/Data/")) %>%
+  mutate(Name = recode(Name, !!!shortnames)) %>%
+  filter(Name != "3,3,5-trimethylcyclohexan-1-ol") %>% #no overlap between nonzero vol and quant
+  pivot_wider(names_from = "Name", values_from="Area") %>% as.data.frame()
+
+rownames(quant) <- quant$Filename
+quant[,c("Dirname","Filename")] <- NULL
+quant.all <- quant[rownames(vol),]
+write_tsv(quant.all %>% rownames_to_column("Filename"), "output/lupinus_quant_all.tsv")
+
+quant.slopes <- set_names(rep(0,ncol(quant.all)), colnames(quant.all))
+for(compvol in colnames(quant.all)) {
+  nozeros <- bind_cols(select(vol,qual=compvol), select(quant.all,quant=compvol)) %>% 
+    filter(!(qual==0 | quant == 0))
+  quant.slopes[compvol] = coef(lm(quant ~ 0 + qual, data=nozeros))["qual"]
+}
+write_tsv(enframe(quant.slopes) %>% left_join(enframe(shortnames, name="Name", value="name")),
+          "output/quant_slopes.tsv")
+
+quant.scaled <- sweep(quant.all, 2, quant.slopes, FUN = '/')
+
+quant.scaled.vol <- quant.scaled[meta$sample, ]#sample is formerly FileName but renamed by bouquet
+
+tibble(quant=unlist(vol[,colnames(quant.scaled.vol)]), qual=unlist(quant.scaled.vol)) %>% 
+  ggplot(aes(x=qual, y=quant)) + geom_point(alpha=0.5) + geom_abline(color="red")+ 
+  scale_x_sqrt("Qualitative (ng/hr)") + scale_y_sqrt("Quantitative (ng/hr)")
+
+#swap in scaled quant integrations
+vol[,colnames(quant.scaled.vol)] <- quant.scaled.vol
 ```
 
 # Heatmap

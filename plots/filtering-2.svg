@@ -2345,7 +2345,7 @@
 <circle cx='77.75' cy='513.52' r='1.63' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='72.09' cy='647.82' r='1.04' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='81.52' cy='581.87' r='1.16' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='139.97' cy='166.08' r='3.88' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
+<circle cx='139.97' cy='166.08' r='3.88' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
 <circle cx='73.97' cy='591.13' r='1.14' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='75.86' cy='515.87' r='1.54' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='72.09' cy='604.36' r='1.24' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -8500,8 +8500,8 @@
 <text x='72.09' y='655.99' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Inf×</text>
 <text x='81.52' y='579.80' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indeno[2,1-a]indene, hexadecahydro-</text>
 <text x='81.52' y='590.05' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>0.8×</text>
-<text x='139.97' y='164.02' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indole</text>
-<text x='139.97' y='174.26' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>2.3×</text>
+<text x='139.97' y='164.02' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>indole</text>
+<text x='139.97' y='174.26' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>2.3×</text>
 <text x='73.97' y='589.06' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indole, 3-methyl-</text>
 <text x='73.97' y='599.30' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Inf×</text>
 <text x='75.86' y='513.80' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indolizine</text>
@@ -11660,7 +11660,7 @@
 <text x='583.04' y='424.26' style='font-size: 8.80px; font-family: "Arial";'>3e+07</text>
 <text x='583.04' y='448.21' style='font-size: 8.80px; font-family: "Arial";'>4e+07</text>
 <text x='48.05' y='31.05' style='font-size: 11.00px; font-family: "Arial";'>Bottom label: relative amount in floral vs. ambient, Inf = not in ambients</text>
-<text x='48.05' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 43/5855 compounds included</text>
+<text x='48.05' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 44/5855 compounds included</text>
 </g>
 </g>
 </svg>

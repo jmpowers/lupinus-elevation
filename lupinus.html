@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jacob Heiling, John Powers" />
 
-<meta name="date" content="2026-07-29" />
+<meta name="date" content="2026-08-20" />
 
 <title>Lupine volatiles</title>
 
@@ -252,7 +252,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Lupine volatiles</h1>
 <h4 class="author">Jacob Heiling, John Powers</h4>
-<h4 class="date">2026-07-29</h4>
+<h4 class="date">2026-08-20</h4>
 
 </div>
 
@@ -843,11 +843,11 @@ lup.cap.points %&gt;% filter(score==&quot;sites&quot;)%&gt;% bind_cols(lupmeta) 
 <div id="filtering" class="section level1">
 <h1>Filtering</h1>
 <pre class="r"><code>lup.data.cut &lt;- lup.data[lup.data$Filename %in% lupmeta$FileName,]
-lup.data.cut$Filename &lt;- lupmeta$sample[match(lup.data.cut$Filename, lupmeta$FileName)]
+#lup.data.cut$Filename &lt;- lupmeta$sample[match(lup.data.cut$Filename, lupmeta$FileName)] #don&#39;t use sample!
 lup.data.cut &lt;- lup.data.cut[lup.data.cut$Name != &quot;&quot;, ]
 lup.data.cut$Name &lt;- droplevels(lup.data.cut$Name)
 longdata &lt;- load_longdata(lup.data.cut, sample=&quot;Filename&quot;, RT=&quot;Ret.Time&quot;, name=&quot;Name&quot;, area=&quot;Area&quot;, match = &quot;SI&quot;, maxmatch=100)
-metadata &lt;- load_metadata(lupmeta, sample=&quot;sample&quot;, type=&quot;type&quot;)
+metadata &lt;- load_metadata(lupmeta %&gt;% select(-sample), sample=&quot;FileName&quot;, type=&quot;type&quot;)#was sample=&quot;sample&quot;
 metadata$type &lt;- factor(metadata$type)
 vol.all &lt;- make_sampletable(longdata, metadata)
 chems &lt;- make_chemtable(longdata, metadata)
@@ -865,8 +865,8 @@ chemsf &lt;- chems %&gt;%
   filter_ambient_ratio(vol.all, metadata, ratio = 4) %&gt;%
   filter_ambient_ttest(vol.all, metadata, alpha = 0.05, adjust = &quot;fdr&quot;) %&gt;%
   combine_filters() 
-chemsf$filter_final &lt;- with(chemsf, filter_RT == &quot;OK&quot; &amp; filter_match==&quot;OK&quot; &amp; filter_freq.floral == &quot;OK&quot; &amp; 
-                              filter_contaminant == &quot;OK&quot; &amp; filter_area == &quot;OK&quot; &amp; filter_ambient_ratio == &quot;OK&quot;)
+chemsf$filter_final &lt;- with(chemsf, (filter_RT == &quot;OK&quot; &amp; filter_match==&quot;OK&quot; &amp; filter_freq.floral == &quot;OK&quot; &amp; 
+                              filter_contaminant == &quot;OK&quot; &amp; filter_area == &quot;OK&quot; &amp; filter_ambient_ratio == &quot;OK&quot;) | name==&quot;indole&quot;)
 
 plot_filters(chemsf, option=&quot;prop&quot;)</code></pre>
 <p><img src="plots/filtering-1.svg" width="960" /></p>
@@ -892,6 +892,61 @@ save(vol, meta, chm, file=&quot;output/lupinus_filtered_2017thru2025.rda&quot;)
 write_csv(vol, &quot;output/lupinus_vol.csv&quot;)
 write_csv(meta, &quot;output/lupinus_meta.csv&quot;)
 write_csv(chm, &quot;output/lupinus_chm.csv&quot;)</code></pre>
+<pre class="r"><code>tointegrate &lt;- colnames(vol)
+best &lt;- list()
+i &lt;- 1
+vol.left &lt;- vol[,tointegrate]^(1/4) # halfway between areas and presence-absence
+while(ncol(vol.left)&gt;0) {
+  print(dim(vol.left))
+  best[[i]] &lt;- which.max(rowSums(vol.left))
+  vol.left &lt;- vol.left[ , !decostand(vol.left[best[[i]],], method=&quot;pa&quot;), drop=FALSE]
+  i &lt;- i+1
+}
+(best.vol &lt;- as.data.frame(t(vol[unlist(best),tointegrate])))</code></pre>
+</div>
+<div id="quant" class="section level1">
+<h1>Quant</h1>
+<pre class="r"><code>source(&quot;read_shimadzu.R&quot;)
+quant.full &lt;- read.shimadzu.quant(&quot;./data/lupinus_2017_2025_quant35.txt&quot;) %&gt;%
+  mutate(Name = trimws(Name), Area=replace_na(Area, 0)) %&gt;%
+  distinct(Filename, Name, .keep_all=T)
+
+quant.full %&gt;% drop_na(Ret.Time) %&gt;% mutate(Name = fct_reorder(Name, Ret.Time)) %&gt;%
+  ggplot(aes(x=Ret.Time, y=Name)) + geom_jitter(width=0, size=0.2)</code></pre>
+<p><img src="plots/quant-1.svg" width="960" /></p>
+<pre class="r"><code>quant.full %&gt;% drop_na(Ret.Time) %&gt;% group_by(Name) %&gt;% mutate(RT.median = median(Ret.Time)) %&gt;%
+  ggplot(aes(x=Ret.Time-RT.median, y=Name, size=Area)) + geom_jitter(width=0)</code></pre>
+<p><img src="plots/quant-2.svg" width="960" /></p>
+<pre class="r"><code>quant &lt;- quant.full %&gt;% select(Dirname, Filename, Name, Area) %&gt;%
+  mutate(Dirname = fct_relabel(Dirname, str_remove, &quot;C:/GCMSsolution/Data/&quot;)) %&gt;%
+  mutate(Name = recode(Name, !!!shortnames)) %&gt;%
+  filter(Name != &quot;3,3,5-trimethylcyclohexan-1-ol&quot;) %&gt;% #no overlap between nonzero vol and quant
+  pivot_wider(names_from = &quot;Name&quot;, values_from=&quot;Area&quot;) %&gt;% as.data.frame()
+
+rownames(quant) &lt;- quant$Filename
+quant[,c(&quot;Dirname&quot;,&quot;Filename&quot;)] &lt;- NULL
+quant.all &lt;- quant[rownames(vol),]
+write_tsv(quant.all %&gt;% rownames_to_column(&quot;Filename&quot;), &quot;output/lupinus_quant_all.tsv&quot;)
+
+quant.slopes &lt;- set_names(rep(0,ncol(quant.all)), colnames(quant.all))
+for(compvol in colnames(quant.all)) {
+  nozeros &lt;- bind_cols(select(vol,qual=compvol), select(quant.all,quant=compvol)) %&gt;% 
+    filter(!(qual==0 | quant == 0))
+  quant.slopes[compvol] = coef(lm(quant ~ 0 + qual, data=nozeros))[&quot;qual&quot;]
+}
+write_tsv(enframe(quant.slopes) %&gt;% left_join(enframe(shortnames, name=&quot;Name&quot;, value=&quot;name&quot;)),
+          &quot;output/quant_slopes.tsv&quot;)
+
+quant.scaled &lt;- sweep(quant.all, 2, quant.slopes, FUN = &#39;/&#39;)
+
+quant.scaled.vol &lt;- quant.scaled[meta$sample, ]#sample is formerly FileName but renamed by bouquet
+
+tibble(quant=unlist(vol[,colnames(quant.scaled.vol)]), qual=unlist(quant.scaled.vol)) %&gt;% 
+  ggplot(aes(x=qual, y=quant)) + geom_point(alpha=0.5) + geom_abline(color=&quot;red&quot;)+ 
+  scale_x_sqrt(&quot;Qualitative (ng/hr)&quot;) + scale_y_sqrt(&quot;Quantitative (ng/hr)&quot;)</code></pre>
+<p><img src="plots/quant-3.svg" width="960" /></p>
+<pre class="r"><code>#swap in scaled quant integrations
+vol[,colnames(quant.scaled.vol)] &lt;- quant.scaled.vol</code></pre>
 </div>
 <div id="heatmap" class="section level1">
 <h1>Heatmap</h1>
@@ -954,10 +1009,10 @@ Permutation: free
 Number of permutations: 999
 
 adonis2(formula = sqrt(vol) ~ sample_year + population, data = meta)
-          Df SumOfSqs      R2      F Pr(&gt;F)    
-Model     20   19.401 0.28584 4.2226  0.001 ***
-Residual 211   48.473 0.71416                  
-Total    231   67.874 1.00000                  
+          Df SumOfSqs      R2     F Pr(&gt;F)    
+Model     20   14.168 0.34317 5.512  0.001 ***
+Residual 211   27.118 0.65683                 
+Total    231   41.287 1.00000                 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -970,11 +1025,11 @@ Call: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta,
 distance = &quot;bray&quot;)
 
                Inertia Proportion Rank
-Total          67.8742                
-RealTotal      86.9148     1.0000     
-Constrained    20.8664     0.2401   20
-Unconstrained  66.0484     0.7599   83
-Imaginary     -19.0406                
+Total          41.2868                
+RealTotal      51.4189     1.0000     
+Constrained    14.9697     0.2911   20
+Unconstrained  36.4492     0.7089   89
+Imaginary     -10.1321                
 
 Inertia is squared Bray distance
 
@@ -984,14 +1039,14 @@ Species scores projected from &#39;vol&#39;
 
 Eigenvalues for constrained axes:
  CAP1  CAP2  CAP3  CAP4  CAP5  CAP6  CAP7  CAP8  CAP9 CAP10 CAP11 CAP12 CAP13 
-7.248 4.463 1.636 1.540 1.197 1.016 0.767 0.682 0.474 0.392 0.309 0.249 0.182 
+5.011 3.737 1.511 1.170 1.005 0.593 0.411 0.363 0.212 0.198 0.172 0.127 0.100 
 CAP14 CAP15 CAP16 CAP17 CAP18 CAP19 CAP20 
-0.171 0.138 0.120 0.089 0.083 0.069 0.040 
+0.081 0.072 0.060 0.046 0.041 0.033 0.025 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-7.271 5.844 4.934 4.227 3.821 3.052 2.667 2.391 
-(Showing 8 of 83 unconstrained eigenvalues)</code></pre>
+7.024 2.808 2.514 2.121 1.716 1.309 1.298 1.143 
+(Showing 8 of 89 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -1000,9 +1055,9 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol) ~ sample_year + population, data = meta, distance = &quot;bray&quot;)
              Df SumOfSqs      F Pr(&gt;F)    
-sample_year   5    8.169 5.2196  0.001 ***
-population   15    8.901 1.8957  0.001 ***
-Residual    211   66.048                  
+sample_year   5    6.037 6.9894  0.001 ***
+population   15    6.567 2.5342  0.001 ***
+Residual    211   36.449                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
@@ -1045,12 +1100,12 @@ lup.cap</code></pre>
 Call: capscale(formula = sqrt(vol.sniff) ~ scented, data = meta.sniff,
 distance = &quot;bray&quot;)
 
-                Inertia Proportion Rank
-Total          45.81861                
-RealTotal      57.25024    1.00000     
-Constrained     2.46808    0.04311    1
-Unconstrained  54.78217    0.95689   69
-Imaginary     -11.43164                
+               Inertia Proportion Rank
+Total         29.45953                
+RealTotal     35.58226    1.00000     
+Constrained    2.03590    0.05722    1
+Unconstrained 33.54636    0.94278   74
+Imaginary     -6.12274                
 
 Inertia is squared Bray distance
 
@@ -1060,12 +1115,12 @@ Species scores projected from &#39;vol.sniff&#39;
 
 Eigenvalues for constrained axes:
   CAP1 
-2.4681 
+2.0359 
 
 Eigenvalues for unconstrained axes:
  MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
-7.520 6.635 3.739 3.185 2.898 2.686 2.506 1.929 
-(Showing 8 of 69 unconstrained eigenvalues)</code></pre>
+7.676 3.806 2.741 2.108 1.636 1.395 1.109 1.029 
+(Showing 8 of 74 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -1074,8 +1129,8 @@ Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol.sniff) ~ scented, data = meta.sniff, distance = &quot;bray&quot;)
           Df SumOfSqs      F Pr(&gt;F)    
-scented    1    2.468 7.9292  0.001 ***
-Residual 176   54.782                  
+scented    1    2.036 10.681  0.001 ***
+Residual 176   33.546                  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()
@@ -1106,11 +1161,11 @@ lup.cap</code></pre>
 Call: capscale(formula = sqrt(vol) ~ elev, data = meta, distance = &quot;bray&quot;)
 
                 Inertia Proportion Rank
-Total          67.87417                
-RealTotal      86.91477    1.00000     
-Constrained     2.65302    0.03052    1
-Unconstrained  84.26174    0.96948   83
-Imaginary     -19.04060                
+Total          41.28683                
+RealTotal      51.41890    1.00000     
+Constrained     2.12253    0.04128    1
+Unconstrained  49.29638    0.95872   89
+Imaginary     -10.13207                
 
 Inertia is squared Bray distance
 
@@ -1119,13 +1174,13 @@ Species scores projected from &#39;sqrt&#39;
 Species scores projected from &#39;vol&#39;
 
 Eigenvalues for constrained axes:
- CAP1 
-2.653 
+  CAP1 
+2.1225 
 
 Eigenvalues for unconstrained axes:
-  MDS1   MDS2   MDS3   MDS4   MDS5   MDS6   MDS7   MDS8 
-11.114  8.408  5.866  5.508  4.380  3.744  3.108  2.950 
-(Showing 8 of 83 unconstrained eigenvalues)</code></pre>
+ MDS1  MDS2  MDS3  MDS4  MDS5  MDS6  MDS7  MDS8 
+9.265 6.650 3.395 2.708 2.300 1.738 1.526 1.388 
+(Showing 8 of 89 unconstrained eigenvalues)</code></pre>
 <pre class="r"><code>anova(lup.cap, by=&quot;margin&quot;)</code></pre>
 <pre><code>Permutation test for capscale under reduced model
 Marginal effects of terms
@@ -1133,9 +1188,9 @@ Permutation: free
 Number of permutations: 999
 
 Model: capscale(formula = sqrt(vol) ~ elev, data = meta, distance = &quot;bray&quot;)
-          Df SumOfSqs      F Pr(&gt;F)    
-elev       1    2.653 7.2417  0.001 ***
-Residual 230   84.262                  
+          Df SumOfSqs     F Pr(&gt;F)    
+elev       1    2.123 9.903  0.001 ***
+Residual 230   49.296                 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>lup.cap.points &lt;-  fortify(lup.cap) %&gt;% as_tibble()

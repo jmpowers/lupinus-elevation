@@ -3301,7 +3301,7 @@
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='173.05' cy='654.45' r='2.10' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='231.19' cy='636.45' r='4.69' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
+<circle cx='231.19' cy='636.45' r='4.69' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='1.54' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
@@ -8681,7 +8681,7 @@
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Imidazole, 2-fluoro-1-ribofuranosyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indene-1,7(4H)-dione, 3a,7a-dihydro-5-methyl-</text>
 <text x='173.05' y='657.51' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indeno[2,1-a]indene, hexadecahydro-</text>
-<text x='231.19' y='639.51' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indole</text>
+<text x='231.19' y='639.51' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>indole</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indole, 3-methyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Indolizine</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>iso-Butyl aldehyde propylene glycol acetal 1</text>
@@ -10843,7 +10843,7 @@
 <text x='604.67' y='389.06' style='font-size: 8.80px; font-family: "Arial";'>25%</text>
 <text x='604.67' y='407.83' style='font-size: 8.80px; font-family: "Arial";'>50%</text>
 <text x='604.67' y='430.31' style='font-size: 8.80px; font-family: "Arial";'>75%</text>
-<text x='40.46' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 43/5855 compounds included</text>
+<text x='40.46' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 44/5855 compounds included</text>
 </g>
 </g>
 </svg>
