@@ -74,7 +74,6 @@ shortnames <- lupchems %>% select(name, shortname) %>% filter(shortname!="") %>%
 #shortnames[shortnames %in% shortnames[duplicated(shortnames)]]
 lup.data$Name <- recode(lup.data$Name, !!!shortnames)
 
-sort(unique(lup.data$Filename))
 lup.all <- lup.data %>% 
   #filter(str_detect(Filename, "Lupinus|Blank")) %>% 
   dcast(Filename~Name, sum, value.var="Area")
@@ -98,11 +97,13 @@ lup.km <- tibble(FileName=rownames(lup.all)) %>%
   mutate(kBlank = Cluster %in% (count(., nameBlank, Cluster) %>% filter(nameBlank, n>2) %>% pull(Cluster)),
          Mixup = nameBlank != kBlank)
 
-lup.km %>% count(kBlank, nameBlank)
+lup.km %>% count(kBlank, nameBlank) %>% kable(caption = "k-means attempt to separate blanks")
 #Blanks are in two clusters near other samples, so kmeans not working very well to distinguish them (unless high n)
 ```
 
 #  Read metadata
+
+Samples dropped (blanks, leaks, nonfloral, or other users):
 
 ```{r metadata}
 # Moved this section from markes_sequence.R, code above that section outputs this Rdata:
@@ -145,8 +146,11 @@ lupmeta <- list.files("./data/markes_sequence/annotated", patter=".csv", full.na
   filter(type %in% c("ambient","floral")) %>% #exclude leaf controls and insects
   left_join(pops) %>% mutate(pop = factor(pop, levels=pops$pop))
 
+(dropped_samples <- sort(setdiff(levels(lup.data$Filename), lupmeta$FileName)))
+
 with(lupmeta, table(population, sample_year))#sample_years are rough - split from filename
-lupmeta %>% filter(type=="floral") %>% count(population, sample_year, scented) %>% pivot_wider(names_from=scented,values_from=n)
+lupmeta %>% filter(type=="floral") %>% count(population, sample_year, scented) %>% pivot_wider(names_from=scented,values_from=n) %>% 
+  kable(caption = "Inventory of scented (1) or unscented (0) samples")
 
 lup <- lup.all[lupmeta$FileName,]
 rownames(lup) <- rownames(lupmeta) <- lupmeta$index
@@ -201,10 +205,11 @@ lup.cap.points %>% filter(score=="sites")%>% bind_cols(lupmeta) %>%
 ```{r filtering}
 lup.data.cut <- lup.data[lup.data$Filename %in% lupmeta$FileName,]
 #lup.data.cut$Filename <- lupmeta$sample[match(lup.data.cut$Filename, lupmeta$FileName)] #don't use sample!
-lup.data.cut <- lup.data.cut[lup.data.cut$Name != "", ]
+lup.data.cut <- lup.data.cut[lup.data.cut$Name != "", ]#drop peaks that were not identified
 lup.data.cut$Name <- droplevels(lup.data.cut$Name)
 longdata <- load_longdata(lup.data.cut, sample="Filename", RT="Ret.Time", name="Name", area="Area", match = "SI", maxmatch=100)
-metadata <- load_metadata(lupmeta %>% select(-sample), sample="FileName", type="type")#was sample="sample"
+metadata <- load_metadata(lupmeta %>% rename(realsample=sample), 
+                          sample="FileName", type="type")#was sample="sample"
 metadata$type <- factor(metadata$type)
 vol.all <- make_sampletable(longdata, metadata)
 chems <- make_chemtable(longdata, metadata)
@@ -216,24 +221,24 @@ chemsf <- chems %>%
   filter_freq(0.1, group = FALSE) %>% 
   filter_contaminant(cont.list = c("Acetic acid, trichloro-, nonyl ester",
                                    "2-Pentanol, 3-chloro-4-methyl-, (R*,R*)-(.+/-.)-",
-                                   "Hexyl chloroformate",
-                                   "Oxirane, decyl-")) %>% 
+                                   "Hexyl chloroformate", "Oxirane, decyl-", #below: alkanes with many RTs
+                                   "4-methylpentanoic acid", "hexadecane", "1-nonoxytetradecane",
+                                   "13-methyltetradecanal", "nonylcyclohexane", "3,8-dimethyldecane",
+                                   "farnesane", "2,5-dimethylnonane", "3,3,5-trimethylheptane",
+                                   "3,3,5-trimethylcyclohexan-1-ol")) %>% #quant and quant never both nonzero
   filter_area(min_maximum = 1e6) %>% 
   filter_ambient_ratio(vol.all, metadata, ratio = 4) %>%
   filter_ambient_ttest(vol.all, metadata, alpha = 0.05, adjust = "fdr") %>%
   combine_filters() 
 chemsf$filter_final <- with(chemsf, (filter_RT == "OK" & filter_match=="OK" & filter_freq.floral == "OK" & 
-                              filter_contaminant == "OK" & filter_area == "OK" & filter_ambient_ratio == "OK") | name=="indole")
+                              filter_contaminant == "OK" & filter_area == "OK" & 
+                                filter_ambient_ratio == "OK") | name=="indole")
 
-plot_filters(chemsf, option="prop")
-plot_filters(chemsf, option="rarity")
-plot_filters(chemsf, option="ambient")
-plot_filters(chemsf, option="volcano")
-
-#Pruning 
+#Prune based on bouquet filters
 vol <- prune_sampletable(vol.all, chemsf, metadata)
-meta <- metadata[metadata$type == "floral",][rowSums(vol)>0,]
-vol <- vol[rowSums(vol)>0,]
+exclude_low <- c("JH_Lup_arg_BVB_24-23redo_7102025_03.qgd", "JH_Lup_arg_BVB_24-30_792025_03.qgd") #<1 ng/hr volatiles
+meta <- metadata[metadata$type == "floral",][!rownames(vol) %in% exclude_low,]
+vol <- vol[!rownames(vol) %in% exclude_low,] 
 chm <- chemsf[match(colnames(vol), chemsf$name),]
 
 #Convert peak areas to nanograms
@@ -242,10 +247,11 @@ vol <- sweep(vol, 2, lupchems2$area_per_ng, FUN = '/')
 vol <- vol / (40/60 + 20/60) # divide by equilibration + pumping time in hours (40+20 min)
 meta$Total <- rowSums(vol)
 
-save(vol, meta, chm, file="output/lupinus_filtered_2017thru2025.rda")
-write_csv(vol, "output/lupinus_vol.csv")
-write_csv(meta, "output/lupinus_meta.csv")
-write_csv(chm, "output/lupinus_chm.csv")
+#bouquet diagnostics
+plot_filters(chemsf, option="prop")
+plot_filters(chemsf, option="rarity")
+plot_filters(chemsf, option="ambient")
+plot_filters(chemsf, option="volcano")
 ```
 
 ```{r diverse, eval=FALSE}
@@ -265,6 +271,7 @@ while(ncol(vol.left)>0) {
 # Quant
 
 ```{r quant}
+#Load quantitative integrations
 source("read_shimadzu.R")
 quant.full <- read.shimadzu.quant("./data/lupinus_2017_2025_quant35.txt") %>%
   mutate(Name = trimws(Name), Area=replace_na(Area, 0)) %>%
@@ -286,6 +293,7 @@ quant[,c("Dirname","Filename")] <- NULL
 quant.all <- quant[rownames(vol),]
 write_tsv(quant.all %>% rownames_to_column("Filename"), "output/lupinus_quant_all.tsv")
 
+#compare areas of quant ions and qual peaks to find conversion factor
 quant.slopes <- set_names(rep(0,ncol(quant.all)), colnames(quant.all))
 for(compvol in colnames(quant.all)) {
   nozeros <- bind_cols(select(vol,qual=compvol), select(quant.all,quant=compvol)) %>% 
@@ -304,7 +312,13 @@ tibble(quant=unlist(vol[,colnames(quant.scaled.vol)]), qual=unlist(quant.scaled.
   scale_x_sqrt("Qualitative (ng/hr)") + scale_y_sqrt("Quantitative (ng/hr)")
 
 #swap in scaled quant integrations
+#make sure not to run above code after this line has run, or start vol over with pruning
 vol[,colnames(quant.scaled.vol)] <- quant.scaled.vol
+
+save(vol, meta, chm, file="output/lupinus_filtered_2017thru2025.rda")
+write_csv(vol, "output/lupinus_vol.csv")
+write_csv(meta, "output/lupinus_meta.csv")
+write_csv(chm, "output/lupinus_chm.csv")
 ```
 
 # Retention times
@@ -326,6 +340,21 @@ ggplot(longdata.RT, aes(x=RT, y=name,color=RT.sd)) + geom_point(position=positio
 
 ggplot(longdata.RT,  aes(y=RT, x=factor(sample_year), color=RT.sd)) + 
   facet_wrap(vars(name), scales="free_y") + geom_boxplot() + scale_color_viridis_c(option="magma") + theme_dark() 
+```
+
+```{r mess, eval=FALSE}
+mess <- c("allo-ocimene", "carveol", "cosmene", "3,4-dimethylocta-2,4,6-triene")
+longdata.RT.mess <- longdata.RT %>% filter(name %in% mess) %>%
+  arrange(RT) %>% mutate(cluster = kmeans(RT, 3, nstart=4)$cluster) %>%
+  group_by(cluster) %>% mutate(RT.cluster = round(mean(RT),2)) %>% ungroup()
+
+#shows 4 peaks that come up & their retention times. Color shows you what compound it gets identified as
+ggplot(longdata.RT.mess, aes(x=factor(RT.cluster), fill=name)) + geom_bar()
+#are there differences in retention times? answer: no
+ggplot(longdata.RT.mess, aes(x=RT, color=name, fill=name)) + facet_wrap(vars(RT.cluster), scales="free_x") + theme_minimal() +
+  geom_density(alpha=0.2, linewidth=2) + geom_jitter(aes(y=-as.integer(factor(name))*10), width=0.0002, height=4)
+
+mess.wide <- longdata.RT.mess %>% select(sample, RT.cluster, area) %>% pivot_wider(names_from = RT.cluster, values_from=area, values_fn=sum, values_fill=0)
 ```
 
 

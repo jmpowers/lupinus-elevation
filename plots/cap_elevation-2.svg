@@ -245,6 +245,8 @@
 <line x1='146.83' y1='635.93' x2='150.74' y2='639.84' style='stroke-width: 0.71; stroke: #00BA38;' />
 <line x1='146.83' y1='605.54' x2='150.74' y2='601.63' style='stroke-width: 0.71; stroke: #00BA38;' />
 <line x1='146.83' y1='601.63' x2='150.74' y2='605.54' style='stroke-width: 0.71; stroke: #00BA38;' />
+<line x1='146.83' y1='639.84' x2='150.74' y2='635.93' style='stroke-width: 0.71; stroke: #00BA38;' />
+<line x1='146.83' y1='635.93' x2='150.74' y2='639.84' style='stroke-width: 0.71; stroke: #00BA38;' />
 <line x1='159.93' y1='639.84' x2='163.84' y2='635.93' style='stroke-width: 0.71; stroke: #F8766D;' />
 <line x1='159.93' y1='635.93' x2='163.84' y2='639.84' style='stroke-width: 0.71; stroke: #F8766D;' />
 <line x1='159.93' y1='614.36' x2='163.84' y2='610.45' style='stroke-width: 0.71; stroke: #F8766D;' />
@@ -373,7 +375,7 @@
 <polygon points='509.81,487.28 513.72,487.28 513.72,483.37 509.81,483.37 ' style='stroke-width: 0.71; stroke: none; fill: #00BA38;' />
 <polygon points='509.81,620.09 513.72,620.09 513.72,616.18 509.81,616.18 ' style='stroke-width: 0.71; stroke: none; fill: #00BA38;' />
 <polygon points='509.81,608.04 513.72,608.04 513.72,604.13 509.81,604.13 ' style='stroke-width: 0.71; stroke: none; fill: #00BA38;' />
-<polyline points='148.78,623.65 154.48,627.90 299.79,614.28 340.81,597.47 373.86,627.12 419.45,602.42 473.58,609.00 498.66,539.66 ' style='stroke-width: 1.07; stroke: #00BA38; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;' />
+<polyline points='148.78,625.69 154.48,627.90 299.79,614.28 340.81,597.47 373.86,627.12 419.45,602.42 473.58,609.00 498.66,539.66 ' style='stroke-width: 1.07; stroke: #00BA38; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;' />
 <polyline points='340.81,634.22 373.86,411.10 394.38,491.01 419.45,614.03 473.58,502.35 498.66,502.91 511.76,539.82 602.93,555.88 ' style='stroke-width: 1.07; stroke: #00BA38; stroke-linecap: butt;' />
 <polyline points='69.58,599.98 148.78,615.27 273.57,452.40 299.22,597.52 340.81,580.35 471.30,601.51 ' style='stroke-width: 1.07; stroke: #00BFC4; stroke-dasharray: 5.69,5.69; stroke-linecap: butt;' />
 <polyline points='69.58,603.54 273.57,222.72 299.22,530.12 340.81,569.13 442.24,435.38 471.30,553.31 ' style='stroke-width: 1.07; stroke: #00BFC4; stroke-linecap: butt;' />
@@ -386,8 +388,8 @@
 <line x1='336.19' y1='620.44' x2='345.44' y2='611.20' style='stroke-width: 0.71; stroke: #B79F00;' />
 <line x1='336.19' y1='611.20' x2='345.44' y2='620.44' style='stroke-width: 0.71; stroke: #B79F00;' />
 <polygon points='336.19,565.83 345.44,565.83 345.44,556.58 336.19,556.58 ' style='stroke-width: 0.71; stroke: none; fill: #B79F00;' />
-<line x1='144.16' y1='628.28' x2='153.40' y2='619.03' style='stroke-width: 0.71; stroke: #00BA38;' />
-<line x1='144.16' y1='619.03' x2='153.40' y2='628.28' style='stroke-width: 0.71; stroke: #00BA38;' />
+<line x1='144.16' y1='630.31' x2='153.40' y2='621.06' style='stroke-width: 0.71; stroke: #00BA38;' />
+<line x1='144.16' y1='621.06' x2='153.40' y2='630.31' style='stroke-width: 0.71; stroke: #00BA38;' />
 <line x1='149.86' y1='632.52' x2='159.10' y2='623.28' style='stroke-width: 0.71; stroke: #00BA38;' />
 <line x1='149.86' y1='623.28' x2='159.10' y2='632.52' style='stroke-width: 0.71; stroke: #00BA38;' />
 <line x1='295.16' y1='618.90' x2='304.41' y2='609.66' style='stroke-width: 0.71; stroke: #00BA38;' />

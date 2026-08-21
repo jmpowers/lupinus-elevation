@@ -739,7 +739,7 @@
 <circle cx='263.66' cy='641.12' r='1.25' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='218.07' cy='637.17' r='4.00' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='273.92' cy='610.73' r='5.84' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='273.92' cy='610.73' r='5.84' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='267.19' cy='635.21' r='1.54' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
@@ -2546,7 +2546,7 @@
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='1.76' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
-<circle cx='291.20' cy='620.52' r='4.20' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='291.20' cy='620.52' r='4.20' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='145.73' cy='639.51' r='3.04' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.54' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='1.76' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
@@ -2755,7 +2755,7 @@
 <circle cx='83.77' cy='640.63' r='0.57' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='2.74' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='113.67' cy='635.88' r='1.76' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='276.59' cy='626.23' r='4.74' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='276.59' cy='626.23' r='4.74' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='119.15' cy='645.10' r='0.57' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='182.34' cy='657.86' r='2.38' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -2853,7 +2853,7 @@
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='299.61' cy='635.21' r='1.76' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='244.44' cy='635.21' r='4.45' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='281.01' cy='611.05' r='4.74' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='281.01' cy='611.05' r='4.74' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='231.88' cy='635.21' r='4.85' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='149.82' cy='647.84' r='3.56' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
@@ -3151,7 +3151,7 @@
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='192.56' cy='652.22' r='4.96' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='228.28' cy='635.21' r='2.95' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='273.17' cy='619.16' r='4.33' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='273.17' cy='619.16' r='4.33' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
@@ -3184,7 +3184,7 @@
 <circle cx='161.67' cy='648.09' r='4.20' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='258.12' cy='642.89' r='1.76' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='162.02' cy='643.33' r='3.56' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='264.67' cy='635.21' r='5.84' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='264.67' cy='635.21' r='5.84' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='180.67' cy='657.11' r='2.63' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='256.11' cy='635.21' r='4.39' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -3489,7 +3489,7 @@
 <circle cx='99.48' cy='641.97' r='1.76' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='199.25' cy='635.21' r='9.39' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
-<circle cx='269.02' cy='635.21' r='4.07' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='269.02' cy='635.21' r='4.07' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='187.86' cy='652.96' r='8.63' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='151.72' cy='647.05' r='2.38' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -3553,7 +3553,7 @@
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='137.73' cy='636.90' r='4.45' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='1.25' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
-<circle cx='280.81' cy='635.21' r='4.33' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='280.81' cy='635.21' r='4.33' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='293.20' cy='638.78' r='1.54' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='172.51' cy='653.87' r='3.14' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='248.02' cy='635.21' r='4.39' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -3571,7 +3571,7 @@
 <circle cx='558.04' cy='635.21' r='1.54' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='152.01' cy='650.45' r='2.63' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='136.80' cy='636.25' r='2.25' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
-<circle cx='269.42' cy='635.21' r='4.74' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='269.42' cy='635.21' r='4.74' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='1.94' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
@@ -3824,7 +3824,7 @@
 <circle cx='128.22' cy='646.08' r='1.54' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='558.04' cy='635.21' r='0.57' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
 <circle cx='558.04' cy='635.21' r='2.38' style='stroke-width: 0.71; stroke: #FFA500; fill: #FFA500;' />
-<circle cx='279.32' cy='637.44' r='5.93' style='stroke-width: 0.71; stroke: #32CD32; fill: #32CD32;' />
+<circle cx='279.32' cy='637.44' r='5.93' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='190.73' cy='654.89' r='3.56' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='159.21' cy='652.11' r='1.76' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
 <circle cx='94.51' cy='637.99' r='0.57' style='stroke-width: 0.71; stroke: #FF3030; fill: #FF3030;' />
@@ -6119,7 +6119,7 @@
 <text x='263.66' y='644.17' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>12-Oxododecanoic acid, ethyl ester</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>12,15-Octadecadiynoic acid, methyl ester</text>
 <text x='218.07' y='640.23' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>13-Methylheptacosane</text>
-<text x='273.92' y='613.79' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>13-methyltetradecanal</text>
+<text x='273.92' y='613.79' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>13-methyltetradecanal</text>
 <text x='267.19' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>13-Octadecenal</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>13-Octadecenal, (Z)-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>13-Oxabicyclo[10.1.0]tridecane</text>
@@ -7926,7 +7926,7 @@
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Cyclohexanol, 2,3-dimethyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Cyclohexanol, 2,4-dimethyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Cyclohexanol, 3-ethenyl-3-methyl-2-(1-methylethenyl)-6-(1-methylethyl)-, [1R-(1.alpha.,2.alpha.,3.beta.,6.alpha.)]-</text>
-<text x='291.20' y='623.57' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>3,3,5-trimethylcyclohexan-1-ol</text>
+<text x='291.20' y='623.57' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>3,3,5-trimethylcyclohexan-1-ol</text>
 <text x='145.73' y='642.56' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Cyclohexanol, 3,3,5-trimethyl-, cis-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Cyclohexanol, 4-(1-methylethyl)-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Cyclohexanol, 5-methyl-2-(1-methylethyl)-</text>
@@ -8135,7 +8135,7 @@
 <text x='83.77' y='643.68' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Decane, 3,4-dimethyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Decane, 3,6-dimethyl-</text>
 <text x='113.67' y='638.93' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Decane, 3,7-dimethyl-</text>
-<text x='276.59' y='629.29' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>3,8-dimethyldecane</text>
+<text x='276.59' y='629.29' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>3,8-dimethyldecane</text>
 <text x='119.15' y='648.16' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Decane, 4-methyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Decane, 5-cyclohexyl-</text>
 <text x='182.34' y='660.92' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Decane, 5-ethyl-5-methyl-</text>
@@ -8233,7 +8233,7 @@
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Dodecane, 2-methyl-6-propyl-</text>
 <text x='299.61' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Dodecane, 2,2,11,11-tetramethyl-</text>
 <text x='244.44' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Dodecane, 2,5-dimethyl-</text>
-<text x='281.01' y='614.11' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>farnesane</text>
+<text x='281.01' y='614.11' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>farnesane</text>
 <text x='231.88' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Dodecane, 2,6,11-trimethyl-</text>
 <text x='149.82' y='650.90' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Dodecane, 2,7,10-trimethyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Dodecane, 3-cyclohexyl-</text>
@@ -8531,7 +8531,7 @@
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Heptane, 3-ethyl-5-methylene-</text>
 <text x='192.56' y='655.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Heptane, 3-methyl-</text>
 <text x='228.28' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Heptane, 3-methylene-</text>
-<text x='273.17' y='622.21' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>3,3,5-trimethylheptane</text>
+<text x='273.17' y='622.21' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>3,3,5-trimethylheptane</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Heptane, 4-(1-methylethyl)-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Heptane, 4-chloro-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Heptane, 4-methylene-</text>
@@ -8564,7 +8564,7 @@
 <text x='161.67' y='651.14' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Hexadecanal</text>
 <text x='258.12' y='645.94' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Hexadecanal, 2-methyl-</text>
 <text x='162.02' y='646.38' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Hexadecanamide</text>
-<text x='264.67' y='638.27' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>hexadecane</text>
+<text x='264.67' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>hexadecane</text>
 <text x='180.67' y='660.16' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Hexadecane, 1-(ethenyloxy)-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Hexadecane, 1-bromo-</text>
 <text x='256.11' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Hexadecane, 1-chloro-</text>
@@ -8869,7 +8869,7 @@
 <text x='99.48' y='645.03' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>N-Methyl-9-aza-tricyclo[6.2.2.0(2,7)]dodec-2,4,6,11-tetraene-10-one</text>
 <text x='199.25' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>n-Nonadecanol-1</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>n-Nonenylsuccinic anhydride</text>
-<text x='269.02' y='638.27' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>nonylcyclohexane</text>
+<text x='269.02' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>nonylcyclohexane</text>
 <text x='187.86' y='656.01' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>n-Pentadecanol</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>n-Pentyl isothiocyanate</text>
 <text x='151.72' y='650.11' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>n-Propyl acetate</text>
@@ -8933,7 +8933,7 @@
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonane, 2-methyl-3-methylene-</text>
 <text x='137.73' y='639.96' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonane, 2-methyl-5-propyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonane, 2,3-dimethyl-</text>
-<text x='280.81' y='638.27' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>2,5-dimethylnonane</text>
+<text x='280.81' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>2,5-dimethylnonane</text>
 <text x='293.20' y='641.84' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonane, 2,6-dimethyl-</text>
 <text x='172.51' y='656.93' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonane, 3-methyl-</text>
 <text x='248.02' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonane, 3-methyl-5-propyl-</text>
@@ -8951,7 +8951,7 @@
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonanoic acid, pentafluorophenyl ester</text>
 <text x='152.01' y='653.50' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonyl chloroformate</text>
 <text x='136.80' y='639.31' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Nonyl tetracosyl ether</text>
-<text x='269.42' y='638.27' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>1-nonoxytetradecane</text>
+<text x='269.42' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>1-nonoxytetradecane</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Norbornane, 2-isobutyl-</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>O-Butylisourea</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>O-Desmethyl-cis-tramadol</text>
@@ -9204,7 +9204,7 @@
 <text x='128.22' y='649.13' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Pentanoic acid, 2,2,4-trimethyl-3-carboxyisopropyl, isobutyl ester</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Pentanoic acid, 2,4-dimethyl-4-nitro-, methyl ester</text>
 <text x='558.04' y='638.27' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Pentanoic acid, 3-methyl-2-oxo-, methyl ester</text>
-<text x='279.32' y='640.50' text-anchor='middle' style='font-size: 8.54px; font-family: "Arial";'>4-methylpentanoic acid</text>
+<text x='279.32' y='640.50' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>4-methylpentanoic acid</text>
 <text x='190.73' y='657.95' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Pentanoic acid, 4-oxo-</text>
 <text x='159.21' y='655.16' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Pentanoic acid, 5-hydroxy-, p-t-butylphenyl ester</text>
 <text x='94.51' y='641.05' text-anchor='middle' style='font-size: 8.54px;fill: none; font-family: "Arial";'>Pentanoic acid, 9-decenyl ester</text>
@@ -10843,7 +10843,7 @@
 <text x='604.67' y='389.06' style='font-size: 8.80px; font-family: "Arial";'>25%</text>
 <text x='604.67' y='407.83' style='font-size: 8.80px; font-family: "Arial";'>50%</text>
 <text x='604.67' y='430.31' style='font-size: 8.80px; font-family: "Arial";'>75%</text>
-<text x='40.46' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 44/5855 compounds included</text>
+<text x='40.46' y='14.93' style='font-size: 13.20px; font-family: "Arial";'>Filtering diagnostics: 34/5855 compounds included</text>
 </g>
 </g>
 </svg>
