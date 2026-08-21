@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jacob Heiling, John Powers" />
 
-<meta name="date" content="2026-08-20" />
+<meta name="date" content="2026-08-21" />
 
 <title>Lupine volatiles</title>
 
@@ -252,7 +252,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Lupine volatiles</h1>
 <h4 class="author">Jacob Heiling, John Powers</h4>
-<h4 class="date">2026-08-20</h4>
+<h4 class="date">2026-08-21</h4>
 
 </div>
 
@@ -947,6 +947,39 @@ tibble(quant=unlist(vol[,colnames(quant.scaled.vol)]), qual=unlist(quant.scaled.
 <p><img src="plots/quant-3.svg" width="960" /></p>
 <pre class="r"><code>#swap in scaled quant integrations
 vol[,colnames(quant.scaled.vol)] &lt;- quant.scaled.vol</code></pre>
+</div>
+<div id="retention-times" class="section level1">
+<h1>Retention times</h1>
+<pre class="r"><code>longdata.RT &lt;- longdata %&gt;% filter(name %in% chemsf$name[chemsf$filter_final]) %&gt;% 
+  left_join(select(metadata, sample, sample_year)) %&gt;%
+  group_by(name) %&gt;%  mutate(n=n(), RT.sd=sd(RT)) %&gt;% ungroup() %&gt;% 
+  mutate(name=fct_reorder(name, RT))
+
+RT.year &lt;- longdata.RT %&gt;% group_by(name, sample_year) %&gt;% summarize(RT=median(RT)) %&gt;% pivot_wider(names_from=sample_year, values_from=RT) 
+RT.year %&gt;% filter(name %in% setdiff(colnames(vol), colnames(quant.all))) %&gt;% arrange(`17`)</code></pre>
+<pre><code># A tibble: 10 × 7
+# Groups:   name [10]
+   name                            `17`  `18`  `19`  `20`  `23`  `24`
+   &lt;fct&gt;                          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 4-methylpentanoic acid          7.41 NA     7.38  7.35  7.34 10.8 
+ 2 2,5-dimethylnonane              8.56  8.71 NA    NA     6.48  8.56
+ 3 3,3,5-trimethylcyclohexan-1-ol  9.24  9.30 NA     9.22  9.16  9.14
+ 4 farnesane                       9.97 NA    17.4  14.0  13.9  13.6 
+ 5 3,8-dimethyldecane             11.5  13.2  17.2  19.0  NA    13.8 
+ 6 13-methyltetradecanal          12.7  13.1  13.8  13.1  16.9  10.2 
+ 7 1-nonoxytetradecane            15.0  NA    21.2  16.0  16.0  15.8 
+ 8 hexadecane                     16.8  16.9  19.0  12.9  12.9  12.9 
+ 9 3,3,5-trimethylheptane         NA     8.76  8.72  8.46  8.42  8.62
+10 nonylcyclohexane               NA    16.4  16.3  16.3  16.2  13.1 </code></pre>
+<pre class="r"><code>RT.tol &lt;- 0.1  # set in quantitative params
+ggplot(longdata.RT, aes(x=RT, y=name,color=RT.sd)) + geom_point(position=position_jitter(width=0, height=0.5)) + 
+  scale_color_viridis_c(option=&quot;magma&quot;) + theme_dark()+
+  geom_text(aes(x=4.5, label=n), color=&quot;grey80&quot;) +
+  stat_summary(fun=&quot;median&quot;, fun.max=~median(.x)+RT.tol, fun.min=~median(.x)-RT.tol, geom=&quot;pointrange&quot;, color=&quot;white&quot;, size=0.5, shape=15)</code></pre>
+<p><img src="plots/retention-1.svg" width="960" /></p>
+<pre class="r"><code>ggplot(longdata.RT,  aes(y=RT, x=factor(sample_year), color=RT.sd)) + 
+  facet_wrap(vars(name), scales=&quot;free_y&quot;) + geom_boxplot() + scale_color_viridis_c(option=&quot;magma&quot;) + theme_dark() </code></pre>
+<p><img src="plots/retention-2.svg" width="960" /></p>
 </div>
 <div id="heatmap" class="section level1">
 <h1>Heatmap</h1>

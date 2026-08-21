@@ -307,6 +307,28 @@ tibble(quant=unlist(vol[,colnames(quant.scaled.vol)]), qual=unlist(quant.scaled.
 vol[,colnames(quant.scaled.vol)] <- quant.scaled.vol
 ```
 
+# Retention times
+
+```{r retention}
+longdata.RT <- longdata %>% filter(name %in% chemsf$name[chemsf$filter_final]) %>% 
+  left_join(select(metadata, sample, sample_year)) %>%
+  group_by(name) %>%  mutate(n=n(), RT.sd=sd(RT)) %>% ungroup() %>% 
+  mutate(name=fct_reorder(name, RT))
+
+RT.year <- longdata.RT %>% group_by(name, sample_year) %>% summarize(RT=median(RT)) %>% pivot_wider(names_from=sample_year, values_from=RT) 
+RT.year %>% filter(name %in% setdiff(colnames(vol), colnames(quant.all))) %>% arrange(`17`)
+
+RT.tol <- 0.1  # set in quantitative params
+ggplot(longdata.RT, aes(x=RT, y=name,color=RT.sd)) + geom_point(position=position_jitter(width=0, height=0.5)) + 
+  scale_color_viridis_c(option="magma") + theme_dark()+
+  geom_text(aes(x=4.5, label=n), color="grey80") +
+  stat_summary(fun="median", fun.max=~median(.x)+RT.tol, fun.min=~median(.x)-RT.tol, geom="pointrange", color="white", size=0.5, shape=15)
+
+ggplot(longdata.RT,  aes(y=RT, x=factor(sample_year), color=RT.sd)) + 
+  facet_wrap(vars(name), scales="free_y") + geom_boxplot() + scale_color_viridis_c(option="magma") + theme_dark() 
+```
+
+
 # Heatmap
 
 ```{r heatmap,  dev="png", dev.args=list(), fig.width=16}
